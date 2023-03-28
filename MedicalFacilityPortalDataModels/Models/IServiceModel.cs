@@ -11,5 +11,7 @@ namespace MedicalFacilityPortalDataModels.Models
         double ServicePrice { get; }
 
         Dictionary<int, IJobModel> ServiceJobs { get; }
+
+        Dictionary<int, IDoctorModel> ServiceDoctors { get; }
     }
 }

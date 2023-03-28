@@ -13,5 +13,7 @@ namespace MedicalFacilityPortalContracts.BindingModels
         public double ServicePrice { get; set; }
 
         public Dictionary<int, IJobModel> ServiceJobs { get; set; } = new();
+
+        public Dictionary<int, IDoctorModel> ServiceDoctors { get; set; } = new();
     }
 }

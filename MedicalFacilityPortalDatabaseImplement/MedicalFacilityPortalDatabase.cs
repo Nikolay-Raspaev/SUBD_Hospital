@@ -17,7 +17,7 @@ namespace MedicalFacilityPortalDatabaseImplement
         public virtual DbSet<Job> Jobs { set; get; }
         public virtual DbSet<Patient> Patients { set; get; }
         public virtual DbSet<Service> Services { set; get; }
-        public virtual DbSet<ServiceJob> ServicesJobs { set; get; }
+        public virtual DbSet<JobService> JobsServices { set; get; }
 
     }
 }

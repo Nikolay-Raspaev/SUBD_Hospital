@@ -10,6 +10,7 @@ using MedicalFacilityPortalDataModels.Models;
 using MedicalFacilityPortalContracts.BindingModels;
 using System.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
+using MedicalFacilityPortalContracts.ViewModels;
 
 namespace MedicalFacilityPortalDatabaseImplement.Models
 {
@@ -84,6 +85,34 @@ namespace MedicalFacilityPortalDatabaseImplement.Models
             };
         }
         //при обнофлении с изменением должности нужно удалять старую ссылку в связи с работой
+        public void UpdateServices(MedicalFacilityPortalDatabase context, DoctorBindingModel model)
+        {
+            var doctorService = context.DoctorsServices.Where(rec => rec.DoctorId == model.Id).ToList();
+            if (doctorService != null && doctorService.Count > 0)
+            {   // удалили те в бд, которых нет в модели
+                context.DoctorsServices.RemoveRange(doctorService.Where(rec => !model.DoctorServices.ContainsKey(rec.ServiceId)));
+                context.SaveChanges();
+                // обновили количество у существующих записей
+                foreach (var updateService in doctorService)
+                {
+                    model.DoctorServices.Remove(updateService.ServiceId);
+                }
+                context.SaveChanges();
+            }
+            var doctor = context.Doctors.First(x => x.Id == Id);
+            //добавляем в бд блюда которые есть в моделе, но ещё нет в бд
+            foreach (var ds in model.DoctorServices)
+            {
+                context.DoctorsServices.Add(new DoctorService
+                {
+                    Doctor = doctor,
+                    Service = context.Services.First(x => x.Id == ds.Key),
+                });
+                context.SaveChanges();
+            }
+            _doctorServices = null;
+        }
+
         public void Update(DoctorBindingModel model)
         {
             if (model == null)
@@ -100,5 +129,19 @@ namespace MedicalFacilityPortalDatabaseImplement.Models
             JobId = model.JobId;
             AcademicDegree = model.AcademicDegree;
         }
+
+    public DoctorViewModel GetViewModel => new()
+        {
+            Surname = Surname,
+            Pathronymic = Pathronymic,
+            Name = Name,
+            Birttday = Birttday,
+            PassportSeries = PassportSeries,
+            PassportNumber = PassportNumber,
+            Education = Education,
+            JobId = JobId,
+            AcademicDegree = AcademicDegree,
+            DoctorServices = DoctorServices
+        };
     }
 }
