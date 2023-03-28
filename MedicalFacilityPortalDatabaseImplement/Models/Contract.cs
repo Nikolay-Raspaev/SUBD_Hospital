@@ -1,4 +1,5 @@
 ﻿using MedicalFacilityPortalContracts.BindingModels;
+using MedicalFacilityPortalContracts.ViewModels;
 using MedicalFacilityPortalDataModels.Enums;
 using MedicalFacilityPortalDataModels.Models;
 using System;
@@ -43,6 +44,26 @@ namespace MedicalFacilityPortalDatabaseImplement.Models
                 ContractPrice = model.ContractPrice
             };
         }
+
+        public void Update(ContractBindingModel model)
+        {
+            if (model == null)
+            {
+                return;
+            }
+            ExecutoinStatus = model.ExecutoinStatus;
+            ExecutionDate = model.ExecutionDate;
+        }
+
+        public ContractViewModel GetViewModel => new()
+        {
+            Id = Id,
+            ExecutionDate = ExecutionDate,
+            ExecutoinStatus = ExecutoinStatus,
+            PatientId = PatientId,
+            DoctorServiceId = DoctorServiceId,
+            ContractPrice = ContractPrice
+        };
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -21,5 +22,9 @@ namespace MedicalFacilityPortalDatabaseImplement.Models
 
         [ForeignKey("DoctorServiceId")]
         public virtual List<Contract> Contracts { get; set; } = new();
+
+        public virtual Doctor Doctor { get; set; } = new();
+
+        public virtual Service Service { get; set; } = new();
     }
 }

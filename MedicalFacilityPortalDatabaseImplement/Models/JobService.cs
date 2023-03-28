@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MedicalFacilityPortalDataModels.Models;
+using System.ComponentModel;
 
 namespace MedicalFacilityPortalDatabaseImplement.Models
 {
-    public class ServiceJob
+    public class JobService
     {
         public int Id { get; private set; }
 
@@ -18,5 +19,9 @@ namespace MedicalFacilityPortalDatabaseImplement.Models
 
         [Required]
         public int JobId { get; private set; }
+
+        public virtual Service Service { get; set; } = new();
+
+        public virtual Job Job { get; set; } = new();
     }
 }

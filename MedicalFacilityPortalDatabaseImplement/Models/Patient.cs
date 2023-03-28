@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MedicalFacilityPortalContracts.BindingModels;
+using MedicalFacilityPortalContracts.ViewModels;
 using MedicalFacilityPortalDataModels.Models;
 
 namespace MedicalFacilityPortalDatabaseImplement.Models
@@ -33,9 +35,52 @@ namespace MedicalFacilityPortalDatabaseImplement.Models
 
         public string TelephoneNumber { get; private set; } = string.Empty;
 
-        [ForeignKey("ContractId")]
+        [ForeignKey("PatientId")]
         public virtual List<Contract> Contracts { get; set; } = new();
 
-        public Dictionary<int, IContractModel> PatientContracts { get; set; } = new();
+        public Dictionary<int, IContractModel>? _patientContracts = null;
+
+        [NotMapped]
+        public Dictionary<int, IContractModel> PatientContracts
+        {
+            get
+            {
+                if (_patientContracts == null)
+                {
+                    _patientContracts = Contracts.ToDictionary(recPC => recPC.Id, recPC => (recPC as IContractModel));
+                }
+                return _patientContracts;
+            }
+        }
+
+        public static Patient Create(MedicalFacilityPortalDatabase context, PatientBindingModel model)
+        {
+            return new Patient()
+            {
+                Id = model.Id,
+                Surname = model.Surname,
+                Name = model.Name,
+                Pathronymic = model.Pathronymic,
+                Birttday = model.Birttday,
+                PassportSeries = model.PassportSeries,
+                PassportNumber = model.PassportNumber,
+                TelephoneNumber = model.TelephoneNumber,
+                Contracts = model.PatientContracts.Select(x =>  context.Contracts.First(y => y.Id == x.Key)).ToList()
+            };
+        }
+
+        public PatientViewModel GetViewModel => new()
+        {
+            Id = Id,
+            Surname = Surname,
+            Name = Name,
+            Pathronymic = Pathronymic,
+            Birttday = Birttday,
+            PassportSeries = PassportSeries,
+            PassportNumber = PassportNumber,
+            TelephoneNumber = TelephoneNumber,
+            PatientContracts = PatientContracts
+        };
+
     }
 }
