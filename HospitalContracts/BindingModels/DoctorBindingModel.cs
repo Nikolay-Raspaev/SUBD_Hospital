@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HospitalContracts.BindingModels;
 
-public class DoctorBindingModel
+public class DoctorBindingModel : IDoctor
 {
     public int Id { get; set; }
 

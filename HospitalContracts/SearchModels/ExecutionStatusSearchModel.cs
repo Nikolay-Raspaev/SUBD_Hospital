@@ -12,6 +12,6 @@ namespace HospitalContracts.SearchModels
     {
         public int? Id { get; set; }
 
-        public string? ExecutionstatusName { get; set; } = string.Empty;
+        public string? ExecutionStatusName { get; set; } = string.Empty;
     }
 }

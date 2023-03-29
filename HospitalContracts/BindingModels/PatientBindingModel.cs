@@ -1,9 +1,10 @@
-﻿using System;
+﻿using HospitalDataModels.Models;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalContracts.BindingModels;
 
-public class PatientBindingModel
+public class PatientBindingModel : IPatient
     {
         public int Id { get; set; }
 

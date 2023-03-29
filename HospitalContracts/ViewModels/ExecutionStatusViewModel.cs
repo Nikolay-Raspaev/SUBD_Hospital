@@ -13,6 +13,6 @@ namespace HospitalContracts.ViewModels
         public int Id { get; set; }
 
         [DisplayName("Статус исполнения")]
-        public string ExecutionstatusName { get; set; } = string.Empty;
+        public string ExecutionStatusName { get; set; } = string.Empty;
     }
 }

@@ -9,6 +9,6 @@ namespace HospitalDataModels.Models
     public interface IExecutionStatus : IId
     {
 
-        string ExecutionstatusName { get; }
+        string ExecutionStatusName { get; }
     }
 }
