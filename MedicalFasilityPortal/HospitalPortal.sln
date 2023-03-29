@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalDataModels", "..\Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalContracts", "..\HospitalContracts\HospitalContracts.csproj", "{C833C292-A12F-4CB7-A689-3CE4CF1AE82B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalBuisnessLogic", "..\HospitalBuisnessLogic\HospitalBuisnessLogic.csproj", "{B726C660-C1DD-4D9F-8E2D-49888734D4DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C833C292-A12F-4CB7-A689-3CE4CF1AE82B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C833C292-A12F-4CB7-A689-3CE4CF1AE82B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C833C292-A12F-4CB7-A689-3CE4CF1AE82B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
