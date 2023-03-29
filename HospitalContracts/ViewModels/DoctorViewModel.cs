@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HospitalContracts.ViewModels
 {
-    public class DoctorViewModel : IDoctor
+    public class DoctorSearchModel : IDoctor
     {
         public int Id { get; set; }
 

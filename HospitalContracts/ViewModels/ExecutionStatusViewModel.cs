@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HospitalContracts.ViewModels
 {
-    public class ExecutionStatusViewModel : IExecutionStatus
+    public class ExecutionStatusSearchModel : IExecutionStatus
     {
         public int Id { get; set; }
 

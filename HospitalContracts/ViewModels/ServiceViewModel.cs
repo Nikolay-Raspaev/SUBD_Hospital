@@ -8,7 +8,7 @@ using HospitalDataModels.Models;
 
 namespace HospitalContracts.ViewModels
 {
-    public class ServiceViewModel : IService
+    public class ServiceSearchModel : IService
     {
         public int Id { get; set; }
 
