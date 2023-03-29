@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedDataModels.Models;
+using System;
 using System.Collections.Generic;
 
 namespace MedDataBaseImplement.Models;

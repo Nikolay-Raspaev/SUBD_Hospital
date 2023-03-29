@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MedDataBaseImplement.Models;
 
-public partial class DoctorsService : IDoctorsService
+public partial class DoctorsService
 {
     public int DoctorsId { get; set; }
 

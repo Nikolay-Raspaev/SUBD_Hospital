@@ -71,6 +71,7 @@ namespace MedDataBaseImplement.Implements
         public ServiceViewModel? Insert(ServiceBindingModel model)
         {
             using var context = new MedBdContext();
+            model.Id = context.Services.Count() > 0 ? context.Services.Max(x => x.Id) + 1 : 1;
             var newService = Service.Create(model);
             if (newService == null)
             {

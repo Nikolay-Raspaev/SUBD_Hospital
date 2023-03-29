@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MedContracts\MedContracts.csproj" />
-    <ProjectReference Include="..\ЬувВфеыЬщвуды\MedDataModels.csproj" />
   </ItemGroup>
 
 </Project>
