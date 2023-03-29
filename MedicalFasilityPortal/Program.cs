@@ -1,3 +1,4 @@
+using MedDataBaseImplement;
 namespace MedicalFasilityPortal
 {
     internal static class Program
