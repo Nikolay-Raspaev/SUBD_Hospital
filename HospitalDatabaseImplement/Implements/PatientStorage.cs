@@ -2,6 +2,7 @@
 using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,32 +15,63 @@ namespace HospitalDatabaseImplement.Implements
     {
         public PatientViewModel? Delete(PatientBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var element = context.Patients.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element != null)
+            {
+                context.Patients.Remove(element);
+                context.SaveChanges();
+                return element.GetViewModel;
+            }
+            return null;
         }
 
         public PatientViewModel? GetElement(PatientSearchModel model)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(model.Passport) && !model.Id.HasValue)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            return context.Patients
+                    .FirstOrDefault(x => (!string.IsNullOrEmpty(model.Passport) && x.Passport == model.Passport) ||
+                    (model.Id.HasValue && x.Id == model.Id))
+                    ?.GetViewModel;
         }
 
-        public List<PatientViewModel> GetFilteredList(PatientSearchModel model)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<PatientViewModel> GetFullList()
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            return context.Patients
+                    .Select(x => x.GetViewModel)
+                    .ToList();
         }
 
         public PatientViewModel? Insert(PatientBindingModel model)
         {
-            throw new NotImplementedException();
+            var newPatient = Patient.Create(model);
+            if (newPatient == null)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            context.Patients.Add(newPatient);
+            context.SaveChanges();
+            return newPatient.GetViewModel;
         }
 
         public PatientViewModel? Update(PatientBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var patient = context.Patients.FirstOrDefault(x => x.Id == model.Id);
+            if (patient == null)
+            {
+                return null;
+            }
+            patient.Update(model);
+            context.SaveChanges();
+            return patient.GetViewModel;
         }
     }
 }

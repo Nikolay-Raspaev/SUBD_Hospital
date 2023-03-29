@@ -14,7 +14,18 @@ namespace HospitalDatabaseImplement.Implements
     {
         public JobViewModel? Delete(JobBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var element = context.Jobs
+                .Include(x => x.Doctors)
+                .Include(x => x.ServicesJobs)
+                .FirstOrDefault(rec => rec.Id == model.Id);
+            if (element != null)
+            {
+                context.Dishes.Remove(element);
+                context.SaveChanges();
+                return element.GetViewModel;
+            }
+            return null;
         }
 
         public JobViewModel? GetElement(JobSearchModel model)
