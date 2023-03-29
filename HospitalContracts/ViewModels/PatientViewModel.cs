@@ -10,24 +10,24 @@ namespace HospitalContracts.ViewModels
 {
     public class PatientViewModel : IPatient
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Фамилия")]
-        public string Surname { get; } = string.Empty;
+        public string Surname { get; set; } = string.Empty;
 
         [DisplayName("Имя")]
-        public string Name { get; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
         [DisplayName("Отчество")]
-        public string Patronymic { get; } = string.Empty;
+        public string Patronymic { get; set; } = string.Empty;
 
         [DisplayName("Дата рождения")]
-        public DateOnly Birthdate { get; }
+        public DateOnly Birthdate { get; set; }
 
         [DisplayName("Паспорт")]
-        public string Passport { get; } = string.Empty;
+        public string Passport { get; set; } = string.Empty;
 
         [DisplayName("Телефон")]
-        public string TelephoneNumber { get; } = string.Empty;
+        public string TelephoneNumber { get; set; } = string.Empty;
     }
 }

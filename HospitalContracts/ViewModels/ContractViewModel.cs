@@ -10,24 +10,24 @@ namespace HospitalContracts.ViewModels
 {
     public class ContractViewModel : IContract
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Дата оплаты")]
-        public DateOnly ExerciseDate { get; }
+        public DateOnly ExerciseDate { get; set; }
 
         [DisplayName("Статус контракта")]
-        public string ExecutionStatusName { get; } = string.Empty;
+        public string ExecutionStatusName { get; set; } = string.Empty;
 
         [DisplayName("ФИО пациента")]
-        public string PatientFIO { get; } = string.Empty;
+        public string PatientFIO { get; set; } = string.Empty;
 
         [DisplayName("ФИО врача")]
-        public string DoctorFIO { get; } = string.Empty;
+        public string DoctorFIO { get; set; } = string.Empty;
 
         [DisplayName("Услуга")]
-        public string ServiceName { get; } = string.Empty;
+        public string ServiceName { get; set; } = string.Empty;
 
         [DisplayName("Цена услуги")]
-        public decimal ServicePrice { get; }
+        public decimal ServicePrice { get; set; }
     }
 }

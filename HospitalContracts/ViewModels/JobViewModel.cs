@@ -10,9 +10,9 @@ namespace HospitalContracts.ViewModels
 {
     public class JobViewModel : IJob
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Название должности")]
-        public string JobTitle { get; } = string.Empty;
+        public string JobTitle { get; set; } = string.Empty;
     }
 }

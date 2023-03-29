@@ -10,9 +10,9 @@ namespace HospitalContracts.ViewModels
 {
     public class ExecutionStatusViewModel : IExecutionStatus
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Статус исполнения")]
-        public string ExecutionstatusName { get; } = string.Empty;
+        public string ExecutionstatusName { get; set; } = string.Empty;
     }
 }

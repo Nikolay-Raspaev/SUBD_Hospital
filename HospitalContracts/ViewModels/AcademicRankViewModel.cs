@@ -10,9 +10,9 @@ namespace HospitalContracts.ViewModels
 {
      public class AcademicRankViewModel : IAcademicRank
      {
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Название учёной степени")]
-        public string AcademicRankName { get; } = string.Empty;
+        public string AcademicRankName { get; set; } = string.Empty;
     }
 }

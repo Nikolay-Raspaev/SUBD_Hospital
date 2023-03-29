@@ -10,12 +10,12 @@ namespace HospitalContracts.ViewModels
 {
     public class ServiceViewModel : IService
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Название услуги")]
-        public string ServiceName { get; }
+        public string ServiceName { get; set; }
 
         [DisplayName("Цена услуги")]
-        public decimal ServicePrice { get; }
+        public decimal ServicePrice { get; set; }
     }
 }
