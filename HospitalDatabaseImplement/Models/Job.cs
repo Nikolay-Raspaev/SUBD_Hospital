@@ -7,9 +7,9 @@ public partial class Job
 {
     public int Id { get; set; }
 
-    public string Jobtitle { get; set; } = null!;
+    public string JobTitle { get; set; } = null!;
 
-    public virtual ICollection<Doctor> Doctors { get; } = new List<Doctor>();
+    public virtual List<Doctor> Doctors { get; } = new List<Doctor>();
 
-    public virtual ICollection<Servicesjob> Servicesjobs { get; } = new List<Servicesjob>();
+    public virtual List<ServicesJob> ServicesJobs { get; } = new List<ServicesJob>();
 }

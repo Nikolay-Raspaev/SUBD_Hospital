@@ -7,11 +7,11 @@ public partial class Service
 {
     public int Id { get; set; }
 
-    public string Servicesname { get; set; } = null!;
+    public string ServicesName { get; set; } = null!;
 
-    public decimal Servicesprice { get; set; }
+    public decimal ServicesPrice { get; set; }
 
-    public virtual ICollection<Doctorsservice> Doctorsservices { get; } = new List<Doctorsservice>();
+    public virtual List<DoctorsService> DoctorsServices { get; } = new List<DoctorsService>();
 
-    public virtual ICollection<Servicesjob> Servicesjobs { get; } = new List<Servicesjob>();
+    public virtual List<ServicesJob> ServicesJobs { get; } = new List<ServicesJob>();
 }

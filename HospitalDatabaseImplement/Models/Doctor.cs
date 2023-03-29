@@ -17,17 +17,17 @@ public partial class Doctor
 
     public string Passport { get; set; } = null!;
 
-    public string? Telephonenumber { get; set; }
+    public string? TelephoneNumber { get; set; }
 
     public string Education { get; set; } = null!;
 
     public int Jobid { get; set; }
 
-    public int? Academicrankid { get; set; }
+    public int? AcademicRankId { get; set; }
 
-    public virtual Academicrank? Academicrank { get; set; }
+    public virtual AcademicRank? Academicrank { get; set; }
 
-    public virtual ICollection<Doctorsservice> Doctorsservices { get; } = new List<Doctorsservice>();
+    public virtual List<DoctorsService> Doctorsservices { get; } = new List<DoctorsService>();
 
     public virtual Job Job { get; set; } = null!;
 }
