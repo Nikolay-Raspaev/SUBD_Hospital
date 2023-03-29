@@ -53,6 +53,7 @@
             this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click_1);
             // 
             // buttonSave
             // 
@@ -63,6 +64,7 @@
             this.buttonSave.TabIndex = 10;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click_1);
             // 
             // textBoxName
             // 
@@ -186,6 +188,7 @@
             this.Controls.Add(this.labelBlankName);
             this.Name = "FormPatient";
             this.Text = "Блюдо";
+            this.Load += new System.EventHandler(this.FormPatient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

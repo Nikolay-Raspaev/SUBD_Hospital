@@ -49,12 +49,13 @@ namespace HospitalDatabaseImplement.Implements
 
         public ContractViewModel? Insert(ContractBindingModel model)
         {
+            using var context = new HospitalBdContext();
+            model.Id = context.Contracts.Count() > 0 ? context.Contracts.Max(x => x.Id) + 1 : 1;
             var newContract = Contract.Create(model);
             if (newContract == null)
             {
                 return null;
             }
-            using var context = new HospitalBdContext();
             context.Contracts.Add(newContract);
             context.SaveChanges();
             return newContract.GetViewModel;

@@ -59,6 +59,7 @@ namespace HospitalDatabaseImplement.Implements
         public JobViewModel? Insert(JobBindingModel model)
         {
             using var context = new HospitalBdContext();
+            model.Id = context.Jobs.Count() > 0 ? context.Jobs.Max(x => x.Id) + 1 : 1;
             var newJob = Job.Create(context, model);
             if (newJob == null)
             {

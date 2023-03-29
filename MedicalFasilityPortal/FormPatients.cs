@@ -21,7 +21,7 @@ namespace HospitalView
             InitializeComponent();
             _patientLogic = logic;
         }
-        private void FormComponents_Load(object sender, EventArgs e)
+        private void FormPatients_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -42,7 +42,8 @@ namespace HospitalView
                MessageBoxIcon.Error);
             }
         }
-        private void ButtonAdd_Click(object sender, EventArgs e)
+
+        private void buttonAdd_Click_1(object sender, EventArgs e)
         {
             var service = Program.ServiceProvider?.GetService(typeof(FormPatient));
             if (service is FormPatient form)
@@ -53,7 +54,8 @@ namespace HospitalView
                 }
             }
         }
-        private void ButtonUpd_Click(object sender, EventArgs e)
+
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
@@ -68,7 +70,8 @@ namespace HospitalView
                 }
             }
         }
-        private void ButtonDel_Click(object sender, EventArgs e)
+
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
@@ -90,7 +93,8 @@ namespace HospitalView
                 }
             }
         }
-        private void ButtonRef_Click(object sender, EventArgs e)
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
         {
             LoadData();
         }

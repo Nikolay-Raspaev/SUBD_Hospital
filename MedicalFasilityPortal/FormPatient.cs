@@ -36,9 +36,16 @@ namespace HospitalView
                     {
                         Id = _id.Value,
                     });
+                    DateTime dateTime = view.Birthdate.ToDateTime(TimeOnly.Parse("10:00 PM"));
                     if (view != null)
                     {
                         textBoxName.Text = view.Name;
+                        textBoxSurname.Text = view.Surname;
+                        textBoxName.Text = view.Name;
+                        textBoxPatronymic.Text = view.Patronymic;
+                        dateTimePicker.Value = dateTime;
+                        textBoxPassport.Text = view.Passport;
+                        textBoxTelephoneNumber.Text = view.TelephoneNumber;
                     }
                 }
                 catch (Exception ex)
@@ -49,7 +56,7 @@ namespace HospitalView
             }
         }
 
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
             {
@@ -84,11 +91,10 @@ namespace HospitalView
             }
         }
 
-        private void ButtonCancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click_1(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
     }
 }

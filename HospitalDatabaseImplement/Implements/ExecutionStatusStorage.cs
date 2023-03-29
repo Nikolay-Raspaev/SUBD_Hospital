@@ -62,12 +62,13 @@ namespace HospitalDatabaseImplement.Implements
 
         public ExecutionStatusViewModel? Insert(ExecutionStatusBindingModel model)
         {
+            using var context = new HospitalBdContext();
+            model.Id = context.ExecutionStatuses.Count() > 0 ? context.ExecutionStatuses.Max(x => x.Id) + 1 : 1;
             var newExecutionStatus = ExecutionStatus.Create(model);
             if (newExecutionStatus == null)
             {
                 return null;
             }
-            using var context = new HospitalBdContext();
             context.ExecutionStatuses.Add(newExecutionStatus);
             context.SaveChanges();
             return newExecutionStatus.GetViewModel;

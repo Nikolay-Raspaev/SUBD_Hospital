@@ -62,12 +62,13 @@ namespace HospitalDatabaseImplement.Implements
 
         public AcademicRankViewModel? Insert(AcademicRankBindingModel model)
         {
+            using var context = new HospitalBdContext();
+            model.Id = context.AcademicRanks.Count() > 0 ? context.AcademicRanks.Max(x => x.Id) + 1 : 1;
             var newAcademicRank = AcademicRank.Create(model);
             if (newAcademicRank == null)
             {
                 return null;
             }
-            using var context = new HospitalBdContext();
             context.AcademicRanks.Add(newAcademicRank);
             context.SaveChanges();
             return newAcademicRank.GetViewModel;

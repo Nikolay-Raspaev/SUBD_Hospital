@@ -43,6 +43,7 @@ namespace HospitalDatabaseImplement.Implements
         public DoctorViewModel? Insert(DoctorBindingModel model)
         {
             using var context = new HospitalBdContext();
+            model.Id = context.Doctors.Count() > 0 ? context.Doctors.Max(x => x.Id) + 1 : 1;
             var newDoctor = Doctor.Create(context, model);
             if (newDoctor == null)
             {
