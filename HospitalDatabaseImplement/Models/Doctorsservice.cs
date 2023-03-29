@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace HospitalDatabaseImplement.Models;
 
-public partial class Doctorsservice
+public partial class DoctorsService
 {
-    public int Doctorsid { get; set; }
+    public int DoctorsId { get; set; }
 
-    public int Servicesid { get; set; }
+    public int ServicesId { get; set; }
 
-    public virtual ICollection<Contract> Contracts { get; } = new List<Contract>();
+    public virtual List<Contract> Contracts { get; } = new List<Contract>();
 
     public virtual Doctor Doctors { get; set; } = null!;
 
