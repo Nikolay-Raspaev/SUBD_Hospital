@@ -32,7 +32,7 @@ public partial class Doctor : IDoctor
 
     public virtual AcademicRank AcademicRank { get; set; }
 
-    public virtual List<DoctorsService> DoctorsServices { get; } = new List<DoctorsService>();
+    public virtual List<DoctorsService> DoctorsServices { get; set; } = new List<DoctorsService>();
 
     public virtual Job Job { get; set; }
 
@@ -49,6 +49,27 @@ public partial class Doctor : IDoctor
             }
             return _doctorServices;
         }
+    }
+
+    public static Doctor Create(HospitalBdContext context, DoctorBindingModel model)
+    {
+        return new Doctor()
+        {
+            Id = model.Id,
+            Surname = model.Surname,
+            Name = model.Name,
+            Patronymic = model.Patronymic,
+            Birthdate = model.Birthdate,
+            Passport = model.Passport,
+            TelephoneNumber = model.TelephoneNumber,
+            Education = model.Education,
+            Jobid = model.Jobid,
+            AcademicRankId = model.AcademicRankId,
+            DoctorsServices = model.DoctorServices.Select(x => new DoctorsService
+            {
+                Services = context.Services.First(y => y.Id == x.Key),
+            }).ToList()
+        };
     }
 
     public void Update(DoctorBindingModel model)
