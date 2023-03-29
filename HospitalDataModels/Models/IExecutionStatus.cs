@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IAcademicRank
+    internal interface IExecutionStatus
     {
+        public int Id { get; set; }
+
+        public string ExecutionstatusName { get; set; } = null!;
+
+        public virtual List<Contract> Contracts { get; } = new List<Contract>();
     }
 }

@@ -8,5 +8,8 @@ namespace HospitalDataModels.Models
 {
     public interface IAcademicRank
     {
+        int Id { get; }
+
+        string AcademicRankName { get; }
     }
 }
