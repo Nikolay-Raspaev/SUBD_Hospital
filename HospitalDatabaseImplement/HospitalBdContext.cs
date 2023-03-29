@@ -22,7 +22,7 @@ public partial class HospitalBdContext : DbContext
 
     public virtual DbSet<Doctor> Doctors { get; set; }
 
-    public virtual DbSet<DoctorsService> Doctorsservices { get; set; }
+    public virtual DbSet<DoctorsService> DoctorsServices { get; set; }
 
     public virtual DbSet<ExecutionStatus> Executionstatuses { get; set; }
 

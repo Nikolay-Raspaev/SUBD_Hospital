@@ -74,33 +74,31 @@ public partial class Doctor : IDoctor
         JobTitle = Job.JobTitle,
         AcademicRankName = AcademicRank.AcademicRankName
     };
-    public void UpdateServices(HospitalBdContext context, DishBindingModel model)
+    public void UpdateServices(HospitalBdContext context, DoctorBindingModel model)
     {
-        var dishComponents = context.DishComponents.Where(rec => rec.DishId == model.Id).ToList();
-        if (dishComponents != null && dishComponents.Count > 0)
+        var doctorServices = context.DoctorsServices.Where(rec => rec.DoctorsId == model.Id).ToList();
+        if (doctorServices != null && doctorServices.Count > 0)
         {   // удалили те в бд, которых нет в модели
-            context.DishComponents.RemoveRange(dishComponents.Where(rec => !model.DishComponents.ContainsKey(rec.ComponentId)));
+            context.DoctorsServices.RemoveRange(doctorServices.Where(rec => !model.DoctorServices.ContainsKey(rec.ServicesId)));
             context.SaveChanges();
             // обновили количество у существующих записей
-            foreach (var updateComponent in dishComponents)
+            foreach (var updateServices in doctorServices)
             {
-                updateComponent.Count = model.DishComponents[updateComponent.ComponentId].Item2;
-                model.DishComponents.Remove(updateComponent.ComponentId);
+                model.DoctorServices.Remove(updateServices.ServicesId);
             }
             context.SaveChanges();
         }
-        var dish = context.Dishes.First(x => x.Id == Id);
+        var doctor = context.Doctors.First(x => x.Id == Id);
         //добавляем в бд блюда которые есть в моделе, но ещё нет в бд
-        foreach (var dc in model.DishComponents)
+        foreach (var ds in model.DoctorServices)
         {
-            context.DishComponents.Add(new DishComponent
+            context.DoctorsServices.Add(new DoctorsService
             {
-                Dish = dish,
-                Component = context.Components.First(x => x.Id == dc.Key),
-                Count = dc.Value.Item2
+                Doctors = doctor,
+                Services = context.Services.First(x => x.Id == ds.Key),
             });
             context.SaveChanges();
         }
-        _dishComponents = null;
+        _doctorServices = null;
     }
 }
