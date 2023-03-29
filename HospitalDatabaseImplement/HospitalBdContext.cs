@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HospitalDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HospitalDatabaseImplement;
