@@ -9,5 +9,5 @@ public partial class AcademicRank
 
     public string AcademicRankName { get; set; } = null!;
 
-    public virtual ICollection<Doctor> Doctors { get; } = new List<Doctor>();
+    public virtual List<Doctor> Doctors { get; } = new List<Doctor>();
 }

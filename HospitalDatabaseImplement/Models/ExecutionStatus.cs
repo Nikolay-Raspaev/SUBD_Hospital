@@ -9,5 +9,5 @@ public partial class ExecutionStatus
 
     public string ExecutionstatusName { get; set; } = null!;
 
-    public virtual ICollection<Contract> Contracts { get; } = new List<Contract>();
+    public virtual List<Contract> Contracts { get; } = new List<Contract>();
 }
