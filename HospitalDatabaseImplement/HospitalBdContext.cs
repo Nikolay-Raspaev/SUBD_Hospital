@@ -155,7 +155,7 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Executionstatus1)
+            entity.Property(e => e.ExecutionstatusName)
                 .HasMaxLength(80)
                 .HasColumnName("executionstatus");
         });
