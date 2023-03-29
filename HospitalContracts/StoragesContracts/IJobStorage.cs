@@ -12,7 +12,6 @@ namespace HospitalContracts.StoragesContracts;
 public interface IJobStorage
 {
     List<JobViewModel> GetFullList();
-    List<JobViewModel> GetFilteredList(JobSearchModel model);
     JobViewModel? GetElement(JobSearchModel model);
     JobViewModel? Insert(JobBindingModel model);
     JobViewModel? Update(JobBindingModel model);

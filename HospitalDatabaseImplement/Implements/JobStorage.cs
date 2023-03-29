@@ -2,6 +2,8 @@
 using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace HospitalDatabaseImplement.Implements
                 .FirstOrDefault(rec => rec.Id == model.Id);
             if (element != null)
             {
-                context.Dishes.Remove(element);
+                context.Jobs.Remove(element);
                 context.SaveChanges();
                 return element.GetViewModel;
             }
@@ -30,27 +32,65 @@ namespace HospitalDatabaseImplement.Implements
 
         public JobViewModel? GetElement(JobSearchModel model)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<JobViewModel> GetFilteredList(JobSearchModel model)
-        {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(model.JobTitle) && !model.Id.HasValue)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            return context.Jobs
+                .Include(x => x.ServicesJobs)
+                .ThenInclude(x => x.Services)
+                .FirstOrDefault(x => (!string.IsNullOrEmpty(model.JobTitle) && x.JobTitle == model.JobTitle) ||
+                                (model.Id.HasValue && x.Id == model.Id))
+                ?.GetViewModel;
         }
 
         public List<JobViewModel> GetFullList()
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            return context.Jobs
+                    .Include(x => x.ServicesJobs)
+                    .ThenInclude(x => x.Services)
+                    .ToList()
+                    .Select(x => x.GetViewModel)
+                    .ToList();
         }
 
         public JobViewModel? Insert(JobBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var newJob = Job.Create(context, model);
+            if (newJob == null)
+            {
+                return null;
+            }
+            context.Jobs.Add(newJob);
+            context.SaveChanges();
+            return newJob.GetViewModel;
         }
 
         public JobViewModel? Update(JobBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            using var transaction = context.Database.BeginTransaction();
+            try
+            {
+                var job = context.Jobs.FirstOrDefault(rec => rec.Id == model.Id);
+                if (job == null)
+                {
+                    return null;
+                }
+                job.Update(model);
+                context.SaveChanges();
+                job.UpdateServices(context, model);
+                transaction.Commit();
+                return job.GetViewModel;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
         }
     }
 }

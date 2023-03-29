@@ -1,8 +1,10 @@
 ﻿using HospitalContracts.BindingModels;
+using HospitalContracts.ViewModels;
 using HospitalDataModels.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 
 namespace HospitalDatabaseImplement.Models;
 
@@ -43,6 +45,11 @@ public partial class Job : IJob
         };
     }
 
+    public void Update(JobBindingModel model)
+    {
+        JobTitle = model.JobTitle;
+    }
+
     public void UpdateServices(HospitalBdContext context, JobBindingModel model)
     {
         var jobServices = context.ServicesJobs.Where(rec => rec.JobId == model.Id).ToList();
@@ -70,5 +77,11 @@ public partial class Job : IJob
         }
         _jobServices = null;
     }
+    public JobViewModel GetViewModel => new()
+    {
+        Id = Id,
+        JobTitle = JobTitle,
+        JobServices = JobServices
+    };
 
 }
