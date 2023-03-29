@@ -40,6 +40,7 @@ public partial class Job : IJob
             JobTitle = model.JobTitle,
             ServicesJobs = model.JobServices.Select(x => new ServicesJob
             {
+                Id = context.ServicesJobs.Count() > 0 ? context.ServicesJobs.Max(x => x.Id) + 1 : 1,
                 Services = context.Services.First(y => y.Id == x.Key),
             }).ToList()
         };
@@ -70,6 +71,7 @@ public partial class Job : IJob
         {
             context.ServicesJobs.Add(new ServicesJob
             {
+                Id = context.ServicesJobs.Count() > 0 ? context.ServicesJobs.Max(x => x.Id) + 1 : 1,
                 Job = job,
                 Services = context.Services.First(x => x.Id == dc.Key),
             });
