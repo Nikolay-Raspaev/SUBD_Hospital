@@ -1,4 +1,4 @@
-﻿namespace FoodOrdersDataModels.Enums
+﻿namespace MedicalFacilityPortalDataModels.Enums
 {
     public enum AcademicDegree
     {

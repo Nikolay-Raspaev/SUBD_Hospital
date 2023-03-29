@@ -9,9 +9,9 @@ namespace MedicalFacilityPortalDataModels.Models
 
         string Name { get; }
 
-        string Pathronymic { get; }
+        string Patronymic { get; }
 
-        DateTime Birttday { get; }
+        DateTime Birthdate { get; }
 
         int PassportSeries { get; }
 
@@ -19,6 +19,5 @@ namespace MedicalFacilityPortalDataModels.Models
 
         string TelephoneNumber { get; }
 
-        Dictionary<int, IContractModel> PatientContracts { get; }
     }
 }

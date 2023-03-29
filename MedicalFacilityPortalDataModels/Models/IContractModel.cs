@@ -7,15 +7,15 @@ namespace MedicalFacilityPortalDataModels.Models
     public interface IContractModel : IId
     {
 
-        DateTime ExecutionDate { get; }
+        DateTime? ExerciseDate { get; }
 
-        ContractStatus ExecutoinStatus { get; }
+        ContractStatus ExecutionStatus { get; }
 
         int PatientId { get; }
 
-        int DoctorServiceId { get; }
+        int DoctorsServicesId { get; }
 
-        double ContractPrice { get; }
+        decimal Price { get; }
 
     }
 }

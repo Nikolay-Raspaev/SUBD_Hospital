@@ -8,9 +8,9 @@ namespace MedicalFacilityPortalContracts.BindingModels
     {
         public int Id { get; set; }
 
-        public string ServiceName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
-        public double ServicePrice { get; set; }
+        public decimal Price { get; set; }
 
         public Dictionary<int, IJobModel> ServiceJobs { get; set; } = new();
 

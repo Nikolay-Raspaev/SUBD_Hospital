@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalFacilityPortalView",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalFacilityPortalDatabaseImplement", "..\MedicalFacilityPortalDatabaseImplement\MedicalFacilityPortalDatabaseImplement.csproj", "{7463D3EF-80B2-464F-A1CB-B57C3C9DFEA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalFacilityPortalDataModels", "..\MedicalFacilityPortalDataModels\MedicalFacilityPortalDataModels.csproj", "{79AEA97B-E95D-46C4-A473-21405CA95413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalFacilityPortalDataModels", "..\MedicalFacilityPortalDataModels\MedicalFacilityPortalDataModels.csproj", "{79AEA97B-E95D-46C4-A473-21405CA95413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalFacilityPortalContracts", "..\MedicalFacilityPortalContracts\MedicalFacilityPortalContracts.csproj", "{CE8274DB-F444-4DAB-94DF-A4E378E9F79A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalFacilityPortalContracts", "..\MedicalFacilityPortalContracts\MedicalFacilityPortalContracts.csproj", "{CE8274DB-F444-4DAB-94DF-A4E378E9F79A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalFacilityPortalDataBaseImplement2", "..\MedicalFacilityPortalDataBaseImplement2\MedicalFacilityPortalDataBaseImplement2.csproj", "{DCAB1094-E543-42CD-AD89-1C5639DD916D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalFacilityPortalBuisnesLogic", "..\MedicalFacilityPortalBuisnesLogic\MedicalFacilityPortalBuisnesLogic.csproj", "{D5D228B0-76A3-4471-BD4C-FDA48523447A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{CE8274DB-F444-4DAB-94DF-A4E378E9F79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE8274DB-F444-4DAB-94DF-A4E378E9F79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE8274DB-F444-4DAB-94DF-A4E378E9F79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCAB1094-E543-42CD-AD89-1C5639DD916D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCAB1094-E543-42CD-AD89-1C5639DD916D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCAB1094-E543-42CD-AD89-1C5639DD916D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCAB1094-E543-42CD-AD89-1C5639DD916D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D228B0-76A3-4471-BD4C-FDA48523447A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D228B0-76A3-4471-BD4C-FDA48523447A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D228B0-76A3-4471-BD4C-FDA48523447A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D228B0-76A3-4471-BD4C-FDA48523447A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

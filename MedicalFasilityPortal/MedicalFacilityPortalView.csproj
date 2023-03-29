@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MedicalFacilityPortalDatabaseImplement\MedicalFacilityPortalDatabaseImplement.csproj" />
+    <ProjectReference Include="..\MedicalFacilityPortalBuisnesLogic\MedicalFacilityPortalBuisnesLogic.csproj" />
+    <ProjectReference Include="..\MedicalFacilityPortalDataBaseImplement2\MedicalFacilityPortalDataBaseImplement2.csproj" />
   </ItemGroup>
 
 </Project>

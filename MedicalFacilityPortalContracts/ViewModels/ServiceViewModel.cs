@@ -10,11 +10,13 @@ namespace MedicalFacilityPortalContracts.ViewModels
         public int Id { get; set; }
 
         [DisplayName("Название услуги")]
-        public string ServiceName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
         [DisplayName("Цена")]
-        public double ServicePrice { get; set; }
+        public decimal Price { get; set; }
 
         public Dictionary<int, IJobModel> ServiceJobs { get; set; } = new();
+
+        public Dictionary<int, IDoctorModel> ServiceDoctors { get; set; } = new();
     }
 }

@@ -8,13 +8,13 @@ namespace MedicalFacilityPortalContracts.BindingModels
     {
         public int Id { get; set; }
 
-        public DateTime ExecutionDate { get; set; } = DateTime.Now;
+        public DateTime? ExerciseDate { get; set; } = DateTime.Now;
 
-        public ContractStatus ExecutoinStatus { get; set; } = ContractStatus.Неизвестен;
+        public ContractStatus ExecutionStatus { get; set; } = ContractStatus.Неизвестен;
 
         public int PatientId { get; set; }
 
-        public int DoctorServiceId { get; set; }
-        public double ContractPrice { get; set; }
+        public int DoctorsServicesId { get; set; }
+        public decimal Price { get; set; }
     }
 }

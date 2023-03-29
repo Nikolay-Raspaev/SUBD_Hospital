@@ -1,6 +1,6 @@
 ﻿
 
-using FoodOrdersDataModels.Enums;
+using MedicalFacilityPortalDataModels.Enums;
 using System.ComponentModel;
 
 namespace MedicalFacilityPortalDataModels.Models
@@ -11,9 +11,9 @@ namespace MedicalFacilityPortalDataModels.Models
 
         string Name { get; }
 
-        string Pathronymic { get; }
+        string Patronymic { get; }
 
-        DateTime Birttday{ get;  }
+        DateTime Birthdate { get;  }
 
         int PassportSeries { get; }
 
@@ -26,7 +26,5 @@ namespace MedicalFacilityPortalDataModels.Models
         int JobId { get;  }
 
         AcademicDegree AcademicDegree { get;  }
-
-        Dictionary<int, IServiceModel> DoctorServices { get; }
     }
 }

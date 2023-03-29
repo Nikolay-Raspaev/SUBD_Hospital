@@ -1,4 +1,4 @@
-﻿using FoodOrdersDataModels.Enums;
+﻿using MedicalFacilityPortalDataModels.Enums;
 using MedicalFacilityPortalDataModels.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -17,10 +17,10 @@ namespace MedicalFacilityPortalContracts.ViewModels
         public string Name { get; set; } = string.Empty;
 
         [DisplayName("Отчество")]
-        public string Pathronymic { get; set; } = string.Empty;
+        public string Patronymic { get; set; } = string.Empty;
 
         [DisplayName("Дата рождения")]
-        public DateTime Birttday { get; set; }
+        public DateTime Birthdate { get; set; }
 
         [DisplayName("Серия паспорта")]
         public int PassportSeries { get; set; }

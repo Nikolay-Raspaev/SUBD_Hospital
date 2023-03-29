@@ -6,6 +6,5 @@ namespace MedicalFacilityPortalDataModels.Models
     {
         public string JobTitle { get; }
 
-        Dictionary<int, IServiceModel> JobServices { get; }
     }
 }

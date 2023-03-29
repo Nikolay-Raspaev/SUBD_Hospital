@@ -10,10 +10,10 @@ namespace MedicalFacilityPortalContracts.ViewModels
         public int Id { get; set; }
 
         [DisplayName("Дата исполнения")]
-        public DateTime ExecutionDate { get; set; }
+        public DateTime? ExerciseDate { get; set; }
 
         [DisplayName("Статус контракта")]
-        public ContractStatus ExecutoinStatus { get; set; }
+        public ContractStatus ExecutionStatus { get; set; }
 
         [DisplayName("ФИО пациента")]
         public int FIOPatient { get; set; }
@@ -21,10 +21,10 @@ namespace MedicalFacilityPortalContracts.ViewModels
         public int PatientId { get; set; }
 
         [DisplayName("Оказанная услуга")]
-        public int DoctorServiceId { get; set; }
+        public int DoctorsServicesId { get; set; }
 
         [DisplayName("Цена услуги")]
-        public double ContractPrice { get; set; }
+        public decimal Price { get; set; }
 
     }
 }

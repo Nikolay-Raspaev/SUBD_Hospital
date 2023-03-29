@@ -6,12 +6,9 @@ namespace MedicalFacilityPortalDataModels.Models
     {
         int Id { get; }
 
-        string ServiceName { get; }
+        string Name { get; }
 
-        double ServicePrice { get; }
+        decimal Price { get; }
 
-        Dictionary<int, IJobModel> ServiceJobs { get; }
-
-        Dictionary<int, IDoctorModel> ServiceDoctors { get; }
     }
 }
