@@ -16,7 +16,7 @@ public partial class HospitalBdContext : DbContext
     {
     }
 
-    public virtual DbSet<AcademicRank> Academicranks { get; set; }
+    public virtual DbSet<AcademicRank> AcademicRanks { get; set; }
 
     public virtual DbSet<Contract> Contracts { get; set; }
 

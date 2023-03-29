@@ -2,6 +2,7 @@
 using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,32 +15,75 @@ namespace HospitalDatabaseImplement.Implements
     {
         public AcademicRankViewModel? Delete(AcademicRankBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var element = context.AcademicRanks.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element != null)
+            {
+                context.AcademicRanks.Remove(element);
+                context.SaveChanges();
+                return element.GetViewModel;
+            }
+            return null;
         }
 
         public AcademicRankViewModel? GetElement(AcademicRankSearchModel model)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(model.AcademicRankName) && !model.Id.HasValue)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            return context.AcademicRanks
+                    .FirstOrDefault(x => (!string.IsNullOrEmpty(model.AcademicRankName) && x.AcademicRankName == model.AcademicRankName) ||
+                    (model.Id.HasValue && x.Id == model.Id))
+                    ?.GetViewModel;
         }
 
         public List<AcademicRankViewModel> GetFilteredList(AcademicRankSearchModel model)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(model.AcademicRankName))
+            {
+                return new();
+            }
+            using var context = new HospitalBdContext();
+            return context.AcademicRanks
+                    .Where(x => x.AcademicRankName.Contains(model.AcademicRankName))
+                    .Select(x => x.GetViewModel)
+                    .ToList();
         }
 
         public List<AcademicRankViewModel> GetFullList()
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            return context.AcademicRanks
+                    .Select(x => x.GetViewModel)
+                    .ToList();
         }
 
         public AcademicRankViewModel? Insert(AcademicRankBindingModel model)
         {
-            throw new NotImplementedException();
+            var newAcademicRank = AcademicRank.Create(model);
+            if (newAcademicRank == null)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            context.AcademicRanks.Add(newAcademicRank);
+            context.SaveChanges();
+            return newAcademicRank.GetViewModel;
         }
 
         public AcademicRankViewModel? Update(AcademicRankBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var academicRank = context.AcademicRanks.FirstOrDefault(x => x.Id == model.Id);
+            if (academicRank == null)
+            {
+                return null;
+            }
+            academicRank.Update(model);
+            context.SaveChanges();
+            return academicRank.GetViewModel;
         }
     }
 }

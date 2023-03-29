@@ -50,12 +50,14 @@ namespace HospitalDatabaseImplement.Implements
 
         public PatientViewModel? Insert(PatientBindingModel model)
         {
+            using var context = new HospitalBdContext();
+            model.Id = context.Patients.Count() > 0 ? context.Patients.Max(x => x.Id) + 1 : 1;
             var newPatient = Patient.Create(model);
             if (newPatient == null)
             {
                 return null;
             }
-            using var context = new HospitalBdContext();
+
             context.Patients.Add(newPatient);
             context.SaveChanges();
             return newPatient.GetViewModel;
