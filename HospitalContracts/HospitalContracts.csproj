@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HospitalDatabaseImplement\HospitalDatabaseImplement.csproj" />
     <ProjectReference Include="..\HospitalDataModels\HospitalDataModels.csproj" />
   </ItemGroup>
 

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IContract : IId
+    public interface IContract : IId
     {
-        int Id { get; }
-
-        DateOnly? ExerciseDate { get; }
+        DateOnly ExerciseDate { get; }
     }
 }

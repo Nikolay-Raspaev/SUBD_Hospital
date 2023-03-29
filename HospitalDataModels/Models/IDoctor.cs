@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IDoctor : IId
+    public interface IDoctor : IId
     {
-        int Id { get; }
-
         string Surname { get; }
 
         string Name { get; }
@@ -20,7 +18,7 @@ namespace HospitalDataModels.Models
 
         string Passport { get; }
 
-        string? TelephoneNumber { get; }
+        string TelephoneNumber { get; }
 
         string Education { get; }
     }

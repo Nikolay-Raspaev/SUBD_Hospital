@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    interface IAcademicRank : IId
+    public interface IAcademicRank : IId
     {
-        int Id { get; }
-
         string AcademicRankName { get; }
     }
 }

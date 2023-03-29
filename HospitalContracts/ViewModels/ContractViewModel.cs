@@ -1,9 +1,10 @@
-﻿using System;
+﻿using HospitalDataModels.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HospitalDatabaseImplement.Models;
 
 namespace HospitalContracts.ViewModels
 {
@@ -11,14 +12,22 @@ namespace HospitalContracts.ViewModels
     {
         public int Id { get; }
 
-        public DateOnly? ExerciseDate { get; }
+        [DisplayName("Дата оплаты")]
+        public DateOnly ExerciseDate { get; }
 
-        public int ExecutionStatusId { get; }
+        [DisplayName("Статус контракта")]
+        public string ExecutionStatusName { get; } = string.Empty;
 
-        public int PatientId { get; }
+        [DisplayName("ФИО пациента")]
+        public string PatientFIO { get; }
 
-        public int ContractDoctorsId { get; }
+        [DisplayName("ФИО врача")]
+        public string DoctorFIO { get; }
 
-        public int ContractServicesId { get; }
+        [DisplayName("Услуга")]
+        public string ServiceName { get; }
+
+        [DisplayName("Цена услуги")]
+        public decimal ServicePrice { get; }
     }
 }

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IService : IId
+    public interface IService : IId
     {
-        int Id { get; }
 
-        string ServicesName { get; }
+        string ServiceName { get; }
 
-        decimal ServicesPrice { get; }
+        decimal ServicePrice { get; }
     }
 }

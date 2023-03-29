@@ -210,10 +210,10 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.ServicesName)
+            entity.Property(e => e.ServiceName)
                 .HasMaxLength(30)
                 .HasColumnName("servicesname");
-            entity.Property(e => e.ServicesPrice)
+            entity.Property(e => e.ServicePrice)
                 .HasPrecision(10, 2)
                 .HasColumnName("servicesprice");
         });

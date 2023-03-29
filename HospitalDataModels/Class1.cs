@@ -1,6 +1,6 @@
 ﻿namespace HospitalDataModels
 {
-    interface IId
+    public interface IId
     {
         int Id { get; }
     }

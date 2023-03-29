@@ -11,8 +11,8 @@ namespace HospitalContracts.ViewModels
     {
         public int Id { get; }
 
-        public string ServicesName { get; }
+        public string ServiceName { get; }
 
-        public decimal ServicesPrice { get; }
+        public decimal ServicePrice { get; }
     }
 }
