@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IJob
+    internal interface IJob : IId
     {
         int Id { get; }
 

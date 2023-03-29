@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IContract
+    internal interface IContract : IId
     {
         int Id { get; }
 

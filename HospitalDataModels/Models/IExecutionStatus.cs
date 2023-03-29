@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    internal interface IExecutionStatus
+    internal interface IExecutionStatus : IId
     {
         int Id { get; }
 

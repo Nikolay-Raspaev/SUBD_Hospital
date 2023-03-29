@@ -1,7 +1,7 @@
 ﻿namespace HospitalDataModels
 {
-    class Class1
+    interface IId
     {
-
+        int Id { get; }
     }
 }
