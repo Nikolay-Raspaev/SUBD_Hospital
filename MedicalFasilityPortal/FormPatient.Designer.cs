@@ -38,6 +38,10 @@
             this.textBoxTelephoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxPassport = new System.Windows.Forms.TextBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -62,7 +66,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(84, 118);
+            this.textBoxName.Location = new System.Drawing.Point(113, 118);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(329, 23);
@@ -71,24 +75,24 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(12, 295);
+            this.labelPrice.Location = new System.Drawing.Point(3, 118);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(38, 15);
+            this.labelPrice.Size = new System.Drawing.Size(31, 15);
             this.labelPrice.TabIndex = 7;
-            this.labelPrice.Text = "Цена:";
+            this.labelPrice.Text = "Имя";
             // 
             // labelBlankName
             // 
             this.labelBlankName.AutoSize = true;
-            this.labelBlankName.Location = new System.Drawing.Point(1, 118);
+            this.labelBlankName.Location = new System.Drawing.Point(3, 91);
             this.labelBlankName.Name = "labelBlankName";
-            this.labelBlankName.Size = new System.Drawing.Size(62, 15);
+            this.labelBlankName.Size = new System.Drawing.Size(58, 15);
             this.labelBlankName.TabIndex = 6;
-            this.labelBlankName.Text = "Название:";
+            this.labelBlankName.Text = "Фамилия";
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(84, 91);
+            this.textBoxSurname.Location = new System.Drawing.Point(113, 91);
             this.textBoxSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(329, 23);
@@ -96,7 +100,7 @@
             // 
             // textBoxPatronymic
             // 
-            this.textBoxPatronymic.Location = new System.Drawing.Point(84, 145);
+            this.textBoxPatronymic.Location = new System.Drawing.Point(113, 145);
             this.textBoxPatronymic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPatronymic.Name = "textBoxPatronymic";
             this.textBoxPatronymic.Size = new System.Drawing.Size(329, 23);
@@ -104,7 +108,7 @@
             // 
             // textBoxTelephoneNumber
             // 
-            this.textBoxTelephoneNumber.Location = new System.Drawing.Point(84, 210);
+            this.textBoxTelephoneNumber.Location = new System.Drawing.Point(113, 210);
             this.textBoxTelephoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxTelephoneNumber.Name = "textBoxTelephoneNumber";
             this.textBoxTelephoneNumber.Size = new System.Drawing.Size(329, 23);
@@ -112,7 +116,7 @@
             // 
             // textBoxPassport
             // 
-            this.textBoxPassport.Location = new System.Drawing.Point(84, 172);
+            this.textBoxPassport.Location = new System.Drawing.Point(113, 172);
             this.textBoxPassport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPassport.Name = "textBoxPassport";
             this.textBoxPassport.Size = new System.Drawing.Size(329, 23);
@@ -120,16 +124,56 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(94, 63);
+            this.dateTimePicker.Location = new System.Drawing.Point(123, 63);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 15);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Дата";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 145);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Отчество";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 210);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 15);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Номер телефона";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 172);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Паспорт";
             // 
             // FormPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 378);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.textBoxPassport);
             this.Controls.Add(this.textBoxTelephoneNumber);
@@ -159,5 +203,9 @@
         private TextBox textBoxTelephoneNumber;
         private TextBox textBoxPassport;
         private DateTimePicker dateTimePicker;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }
