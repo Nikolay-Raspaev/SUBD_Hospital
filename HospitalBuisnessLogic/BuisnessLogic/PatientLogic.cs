@@ -1,6 +1,7 @@
 ﻿using HospitalContracts.BindingModels;
 using HospitalContracts.BuisnessLogicsContracts;
 using HospitalContracts.SearchModels;
+using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,29 +13,78 @@ namespace HospitalBuisnessLogic.BuisnessLogic
 {
     public class PatientLogic : IPatientLogic
     {
-        public bool Create(PatientBindingModel model)
+        private readonly IPatientStorage _patientStorage;
+        public PatientLogic(IPatientStorage PatientStorage)
         {
-            throw new NotImplementedException();
+            _patientStorage = PatientStorage;
         }
-
-        public bool Delete(PatientBindingModel model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PatientViewModel? ReadElement(PatientSearchModel model)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<PatientViewModel>? ReadList(PatientSearchModel? model)
         {
-            throw new NotImplementedException();
+            var list = _patientStorage.GetFullList();
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
         }
-
+        public PatientViewModel? ReadElement(PatientSearchModel model)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+            var element = _patientStorage.GetElement(model);
+            if (element == null)
+            {
+                return null;
+            }
+            return element;
+        }
+        public bool Create(PatientBindingModel model)
+        {
+            CheckModel(model);
+            if (_patientStorage.Insert(model) == null)
+            {
+                return false;
+            }
+            return true;
+        }
         public bool Update(PatientBindingModel model)
         {
-            throw new NotImplementedException();
+            CheckModel(model);
+            if (_patientStorage.Update(model) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool Delete(PatientBindingModel model)
+        {
+            CheckModel(model, false);
+            if (_patientStorage.Delete(model) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        private void CheckModel(PatientBindingModel model, bool withParams = true)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+            if (!withParams)
+            {
+                return;
+            }
+            var element = _patientStorage.GetElement(new PatientSearchModel
+            {
+                Passport = model.Passport
+            });
+            if (element != null && element.Id != model.Id)
+            {
+                throw new InvalidOperationException("Компонент с таким названием уже есть");
+            }
         }
     }
 }
