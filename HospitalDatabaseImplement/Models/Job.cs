@@ -43,4 +43,32 @@ public partial class Job : IJob
         };
     }
 
+    public void UpdateServices(HospitalBdContext context, JobBindingModel model)
+    {
+        var jobServices = context.ServicesJobs.Where(rec => rec.JobId == model.Id).ToList();
+        if (jobServices != null && jobServices.Count > 0)
+        {   // удалили те в бд, которых нет в модели
+            context.ServicesJobs.RemoveRange(jobServices.Where(rec => !model.JobServices.ContainsKey(rec.ServicesId)));
+            context.SaveChanges();
+            // обновили количество у существующих записей
+            foreach (var updateService in jobServices)
+            {
+                model.JobServices.Remove(updateService.ServicesId);
+            }
+            context.SaveChanges();
+        }
+        var job = context.Jobs.First(x => x.Id == Id);
+        //добавляем в бд блюда которые есть в моделе, но ещё нет в бд
+        foreach (var dc in model.JobServices)
+        {
+            context.ServicesJobs.Add(new ServicesJob
+            {
+                Job = job,
+                Services = context.Services.First(x => x.Id == dc.Key),
+            });
+            context.SaveChanges();
+        }
+        _jobServices = null;
+    }
+
 }
