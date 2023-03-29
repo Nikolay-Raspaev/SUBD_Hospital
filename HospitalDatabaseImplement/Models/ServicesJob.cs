@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalContracts.BindingModels;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalDatabaseImplement.Models;
@@ -14,4 +15,5 @@ public partial class ServicesJob
     public virtual Job Job { get; set; }
 
     public virtual Service Services { get; set; }
+
 }
