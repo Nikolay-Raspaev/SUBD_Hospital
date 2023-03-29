@@ -2,6 +2,7 @@
 using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,32 +15,75 @@ namespace HospitalDatabaseImplement.Implements
     {
         public ExecutionStatusViewModel? Delete(ExecutionStatusBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var element = context.ExecutionStatuses.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element != null)
+            {
+                context.ExecutionStatuses.Remove(element);
+                context.SaveChanges();
+                return element.GetViewModel;
+            }
+            return null;
         }
 
         public ExecutionStatusViewModel? GetElement(ExecutionStatusSearchModel model)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(model.ExecutionStatusName) && !model.Id.HasValue)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            return context.ExecutionStatuses
+                    .FirstOrDefault(x => (!string.IsNullOrEmpty(model.ExecutionStatusName) && x.ExecutionStatusName == model.ExecutionStatusName) ||
+                    (model.Id.HasValue && x.Id == model.Id))
+                    ?.GetViewModel;
         }
 
         public List<ExecutionStatusViewModel> GetFilteredList(ExecutionStatusSearchModel model)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(model.ExecutionStatusName))
+            {
+                return new();
+            }
+            using var context = new HospitalBdContext();
+            return context.ExecutionStatuses
+                    .Where(x => x.ExecutionStatusName.Contains(model.ExecutionStatusName))
+                    .Select(x => x.GetViewModel)
+                    .ToList();
         }
 
         public List<ExecutionStatusViewModel> GetFullList()
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            return context.ExecutionStatuses
+                    .Select(x => x.GetViewModel)
+                    .ToList();
         }
 
         public ExecutionStatusViewModel? Insert(ExecutionStatusBindingModel model)
         {
-            throw new NotImplementedException();
+            var newExecutionStatus = ExecutionStatus.Create(model);
+            if (newExecutionStatus == null)
+            {
+                return null;
+            }
+            using var context = new HospitalBdContext();
+            context.ExecutionStatuses.Add(newExecutionStatus);
+            context.SaveChanges();
+            return newExecutionStatus.GetViewModel;
         }
 
         public ExecutionStatusViewModel? Update(ExecutionStatusBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new HospitalBdContext();
+            var executionStatus = context.ExecutionStatuses.FirstOrDefault(x => x.Id == model.Id);
+            if (executionStatus == null)
+            {
+                return null;
+            }
+            executionStatus.Update(model);
+            context.SaveChanges();
+            return executionStatus.GetViewModel;
         }
     }
 }

@@ -24,7 +24,7 @@ public partial class HospitalBdContext : DbContext
 
     public virtual DbSet<DoctorsService> DoctorsServices { get; set; }
 
-    public virtual DbSet<ExecutionStatus> Executionstatuses { get; set; }
+    public virtual DbSet<ExecutionStatus> ExecutionStatuses { get; set; }
 
     public virtual DbSet<Job> Jobs { get; set; }
 
