@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HospitalContracts.BindingModels;
+using HospitalContracts.SearchModels;
+using HospitalContracts.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
