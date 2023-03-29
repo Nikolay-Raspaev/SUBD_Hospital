@@ -1,9 +1,10 @@
-﻿using System;
+﻿using HospitalDataModels.Models;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalDatabaseImplement.Models;
 
-public partial class Doctor
+public partial class Doctor : IDoctor
 {
     public int Id { get; set; }
 
@@ -30,4 +31,6 @@ public partial class Doctor
     public virtual List<DoctorsService> Doctorsservices { get; } = new List<DoctorsService>();
 
     public virtual Job Job { get; set; } = null!;
+
+    public Dictionary<int, IService> DoctorServices { get; set; } = new();
 }

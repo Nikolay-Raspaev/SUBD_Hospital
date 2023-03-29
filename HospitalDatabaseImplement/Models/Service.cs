@@ -1,9 +1,10 @@
-﻿using System;
+﻿using HospitalDataModels.Models;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalDatabaseImplement.Models;
 
-public partial class Service
+public partial class Service : IService
 {
     public int Id { get; set; }
 

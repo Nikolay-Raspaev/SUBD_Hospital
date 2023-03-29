@@ -1,9 +1,10 @@
-﻿using System;
+﻿using HospitalDataModels.Models;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalDatabaseImplement.Models;
 
-public partial class Contract
+public partial class Contract : IContract
 {
     public int Id { get; set; }
 

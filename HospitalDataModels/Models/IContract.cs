@@ -8,6 +8,6 @@ namespace HospitalDataModels.Models
 {
     public interface IContract : IId
     {
-        DateOnly ExerciseDate { get; }
+        DateOnly? ExerciseDate { get; }
     }
 }
