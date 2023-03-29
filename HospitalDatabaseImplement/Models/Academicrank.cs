@@ -27,15 +27,6 @@ public partial class AcademicRank : IAcademicRank
         };
     }
 
-    public static AcademicRank Create(AcademicRankViewModel model)
-    {
-        return new AcademicRank
-        {
-            Id = model.Id,
-            AcademicRankName = model.AcademicRankName,
-        };
-    }
-
     public void Update(AcademicRankBindingModel model)
     {
         if (model == null)
