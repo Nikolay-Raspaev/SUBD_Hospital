@@ -12,7 +12,6 @@ namespace HospitalContracts.StoragesContracts;
 public interface IContractStorage
 {
     List<ContractViewModel> GetFullList();
-    List<ContractViewModel> GetFilteredList(ContractSearchModel model);
     ContractViewModel? GetElement(ContractSearchModel model);
     ContractViewModel? Insert(ContractBindingModel model);
     ContractViewModel? Update(ContractBindingModel model);
