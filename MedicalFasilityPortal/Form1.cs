@@ -1,4 +1,4 @@
-namespace MedicalFasilityPortal
+namespace HospitalView
 {
     public partial class Form1 : Form
     {

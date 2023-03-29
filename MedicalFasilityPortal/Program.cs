@@ -1,4 +1,5 @@
-namespace MedicalFasilityPortal
+using HospitalDatabaseImplement;
+namespace HospitalView
 {
     internal static class Program
     {
