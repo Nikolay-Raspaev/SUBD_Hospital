@@ -21,5 +21,7 @@ namespace HospitalDataModels.Models
         string TelephoneNumber { get; }
 
         string Education { get; }
+
+        Dictionary<int, IService> DoctorServices { get; }
     }
 }

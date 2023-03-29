@@ -10,5 +10,7 @@ namespace HospitalDataModels.Models
     {
 
         string JobTitle { get; }
+
+        Dictionary<int, IService> JobServices { get; }
     }
 }

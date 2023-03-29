@@ -39,5 +39,6 @@ namespace HospitalContracts.ViewModels
         [DisplayName("Учёная степень")]
         public string AcademicRankName { get; set; } = string.Empty;
 
+        public Dictionary<int, IService> DoctorServices { get; set; } = new();
     }
 }

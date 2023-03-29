@@ -14,5 +14,7 @@ namespace HospitalContracts.ViewModels
 
         [DisplayName("Название должности")]
         public string JobTitle { get; set; } = string.Empty;
+
+        public Dictionary<int, IService> JobServices { get; set; } = new();
     }
 }
