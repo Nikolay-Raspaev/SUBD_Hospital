@@ -19,13 +19,13 @@ namespace HospitalContracts.ViewModels
         public string ExecutionStatusName { get; } = string.Empty;
 
         [DisplayName("ФИО пациента")]
-        public string PatientFIO { get; }
+        public string PatientFIO { get; } = string.Empty;
 
         [DisplayName("ФИО врача")]
-        public string DoctorFIO { get; }
+        public string DoctorFIO { get; } = string.Empty;
 
         [DisplayName("Услуга")]
-        public string ServiceName { get; }
+        public string ServiceName { get; } = string.Empty;
 
         [DisplayName("Цена услуги")]
         public decimal ServicePrice { get; }

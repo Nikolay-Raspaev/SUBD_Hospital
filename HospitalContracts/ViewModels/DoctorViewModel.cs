@@ -1,6 +1,7 @@
 ﻿using HospitalDataModels.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,22 +12,32 @@ namespace HospitalContracts.ViewModels
     {
         public int Id { get; }
 
-        public string Surname { get; }
+        [DisplayName("Фамилия")]
+        public string Surname { get; } = string.Empty;
 
-        public string Name { get; }
+        [DisplayName("Имя")]
+        public string Name { get; } = string.Empty;
 
-        public string Patronymic { get; }
+        [DisplayName("Отчество")]
+        public string Patronymic { get; } = string.Empty;
 
+        [DisplayName("Дата рождения")]
         public DateOnly Birthdate { get; }
 
-        public string Passport { get; }
+        [DisplayName("Паспорт")]
+        public string Passport { get; } = string.Empty;
 
-        public string? TelephoneNumber { get; }
+        [DisplayName("Телефон")]
+        public string TelephoneNumber { get; } = string.Empty;
 
-        public string Education { get; }
+        [DisplayName("Образование")]
+        public string Education { get; } = string.Empty;
 
-        public int Jobid { get; }
+        [DisplayName("Профессия")]
+        public string JobTitle { get; } = string.Empty;
 
-        public int? AcademicRankId { get; }
+        [DisplayName("Учёная степень")]
+        public string AcademicRankName { get; } = string.Empty;
+
     }
 }

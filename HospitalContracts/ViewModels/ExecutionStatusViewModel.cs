@@ -1,6 +1,7 @@
 ﻿using HospitalDataModels.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace HospitalContracts.ViewModels
     {
         public int Id { get; }
 
-        public string ExecutionstatusName { get; }
+        [DisplayName("Статус исполнения")]
+        public string ExecutionstatusName { get; } = string.Empty;
     }
 }
