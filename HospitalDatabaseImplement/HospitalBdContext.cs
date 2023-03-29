@@ -135,7 +135,7 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.DoctorsId).HasColumnName("doctorsid");
             entity.Property(e => e.ServicesId).HasColumnName("servicesid");
 
-            entity.HasOne(d => d.Doctors).WithMany(p => p.Doctorsservices)
+            entity.HasOne(d => d.Doctors).WithMany(p => p.DoctorsServices)
                 .HasForeignKey(d => d.DoctorsId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_doctors_services_services");
