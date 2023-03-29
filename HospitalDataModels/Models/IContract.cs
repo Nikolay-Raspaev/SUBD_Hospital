@@ -8,22 +8,16 @@ namespace HospitalDataModels.Models
 {
     internal interface IContract
     {
-        public int Id { get; set; }
+        int Id { get; }
 
-        public DateOnly? ExerciseDate { get; set; }
+        DateOnly? ExerciseDate { get; }
 
-        public int ExecutionStatusId { get; set; }
+        int ExecutionStatusId { get; }
 
-        public int PatientId { get; set; }
+        int PatientId { get; }
 
-        public int ContractDoctorsId { get; set; }
+        int ContractDoctorsId { get; }
 
-        public int ContractServicesId { get; set; }
-
-        public virtual DoctorsService ContractNavigation { get; set; } = null!;
-
-        public virtual ExecutionStatus ExecutionStatus { get; set; } = null!;
-
-        public virtual Patient Patient { get; set; } = null!;
+        int ContractServicesId { get; }
     }
 }

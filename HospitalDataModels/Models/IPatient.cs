@@ -8,20 +8,18 @@ namespace HospitalDataModels.Models
 {
     internal interface IPatient
     {
-        public int Id { get; set; }
+        int Id { get; }
 
-        public string Surname { get; set; } = null!;
+        string Surname { get; }
 
-        public string Name { get; set; } = null!;
+        string Name { get; }
 
-        public string Patronymic { get; set; } = null!;
+        string Patronymic { get; }
 
-        public DateOnly Birthdate { get; set; }
+        DateOnly Birthdate { get; }
 
-        public string Passport { get; set; } = null!;
+        string Passport { get; }
 
-        public string? TelephoneNumber { get; set; }
-
-        public virtual List<Contract> Contracts { get; } = new List<Contract>();
+        string? TelephoneNumber { get; }
     }
 }

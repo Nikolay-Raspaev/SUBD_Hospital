@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    public interface IAcademicRank
+    interface IAcademicRank
     {
         int Id { get; }
 

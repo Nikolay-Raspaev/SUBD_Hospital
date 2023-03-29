@@ -8,32 +8,24 @@ namespace HospitalDataModels.Models
 {
     internal interface IDoctor
     {
-        public int Id { get; set; }
+        int Id { get; }
 
-        public string Surname { get; set; } = null!;
+        string Surname { get; }
 
-        public string Name { get; set; } = null!;
+        string Name { get; }
 
-        public string Patronymic { get; set; } = null!;
+        string Patronymic { get; }
 
-        public DateOnly Birthdate { get; set; }
+        DateOnly Birthdate { get; }
 
-        public string Passport { get; set; } = null!;
+        string Passport { get; }
 
-        public string? TelephoneNumber { get; set; }
+        string? TelephoneNumber { get; }
 
-        public string Education { get; set; } = null!;
+        string Education { get; }
 
-        public int Jobid { get; set; }
+        int Jobid { get; }
 
-        public int? AcademicRankId { get; set; }
-
-        public virtual AcademicRank? Academicrank { get; set; }
-
-        public virtual List<DoctorsService> Doctorsservices { get; } = new List<DoctorsService>();
-
-        public virtual Job Job { get; set; } = null!;
-
-        Dictionary<int, (IComponentModel, int)> DishComponents { get; }
+        int? AcademicRankId { get; }
     }
 }

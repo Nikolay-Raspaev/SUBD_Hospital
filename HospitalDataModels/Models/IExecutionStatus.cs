@@ -8,10 +8,8 @@ namespace HospitalDataModels.Models
 {
     internal interface IExecutionStatus
     {
-        public int Id { get; set; }
+        int Id { get; }
 
-        public string ExecutionstatusName { get; set; } = null!;
-
-        public virtual List<Contract> Contracts { get; } = new List<Contract>();
+        string ExecutionstatusName { get; }
     }
 }

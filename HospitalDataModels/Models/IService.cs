@@ -8,14 +8,10 @@ namespace HospitalDataModels.Models
 {
     internal interface IService
     {
-        public int Id { get; set; }
+        int Id { get; }
 
-        public string ServicesName { get; set; } = null!;
+        string ServicesName { get; }
 
-        public decimal ServicesPrice { get; set; }
-
-        public virtual List<DoctorsService> DoctorsServices { get; } = new List<DoctorsService>();
-
-        public virtual List<ServicesJob> ServicesJobs { get; } = new List<ServicesJob>();
+        decimal ServicesPrice { get; }
     }
 }
