@@ -35,8 +35,8 @@ namespace HospitalView
                 {
                     dataGridView.DataSource = list;
                     dataGridView.Columns["Id"].Visible = false;
-                    dataGridView.Columns["JobName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridView.Columns["JobComponents"].Visible = false;
+                    dataGridView.Columns["JobTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns["JobServices"].Visible = false;
                 }
             }
             catch (Exception ex)

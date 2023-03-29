@@ -53,10 +53,12 @@ namespace HospitalView
             services.AddTransient<FormContracts>();
             services.AddTransient<FormDoctor>();
             services.AddTransient<FormDoctors>();
+            services.AddTransient<FormDoctorServices>();
             services.AddTransient<FormExecutionStatus>();
             services.AddTransient<FormExecutionStatuses>();
             services.AddTransient<FormJob>();
             services.AddTransient<FormJobs>();
+            services.AddTransient<FormJobServices>();
             services.AddTransient<FormPatient>();
             services.AddTransient<FormPatients>();
             services.AddTransient<FormService>();

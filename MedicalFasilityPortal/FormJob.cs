@@ -84,11 +84,11 @@ namespace HospitalView
                     }
                     if (_jobServices.ContainsKey(form.Id))
                     {
-                        _jobServices[form.Id] = (form.ServiceModel, form.Count);
+                        _jobServices[form.Id] = form.ServiceModel;
                     }
                     else
                     {
-                        _jobServices.Add(form.Id, (form.ServiceModel, form.Count));
+                        _jobServices.Add(form.Id, form.ServiceModel);
                     }
                     LoadData();
                 }
@@ -103,14 +103,13 @@ namespace HospitalView
                 {
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     form.Id = id;
-                    form.Count = _jobServices[id].Item2;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         if (form.ServiceModel == null)
                         {
                             return;
                         }
-                        _jobServices[form.Id] = (form.ServiceModel, form.Count);
+                        _jobServices[form.Id] = form.ServiceModel;
                         LoadData();
                     }
                 }
@@ -187,15 +186,14 @@ namespace HospitalView
             DialogResult = DialogResult.Cancel;
             Close();
         }
-        private double CalcPrice()
+        private decimal CalcPrice()
         {
-            decimal price = 0;
-            decimal 
+            decimal price = 0; 
             foreach (var elem in _jobServices)
             {
                 price += (elem.Value.ServicePrice);
             }
-            return Decimal.Multiply(price, 1,1);
+            return Decimal.Multiply(price, 1.1m);
         }
     }
 }
