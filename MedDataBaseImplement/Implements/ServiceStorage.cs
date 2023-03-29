@@ -84,7 +84,15 @@ namespace MedDataBaseImplement.Implements
 
         public ServiceViewModel? Update(ServiceBindingModel model)
         {
-            throw new NotImplementedException();
+            using var context = new MedBdContext();
+            var component = context.Services.FirstOrDefault(x => x.Id == model.Id);
+            if (component == null)
+            {
+                return null;
+            }
+            component.Update(model);
+            context.SaveChanges();
+            return component.GetViewModel;
         }
     }
 }

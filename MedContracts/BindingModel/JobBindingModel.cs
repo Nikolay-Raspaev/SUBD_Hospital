@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedDataModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace MedContracts.BindingModel
         public string JobTitle { get; set; } = string.Empty;
 
         public int Id { get; set; }
+
+        public Dictionary<int, IService> Services { get; set; } = new();
     }
 }

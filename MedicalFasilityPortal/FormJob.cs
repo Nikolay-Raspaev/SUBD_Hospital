@@ -5,16 +5,16 @@ using MedContracts.BuisnessLogics;
 
 namespace MedView
 {
-    public partial class FormService : Form
+    public partial class FormJob : Form
     {
-        private readonly IServiceLogic _serviceLogic;
+        private readonly IJobLogig _jobLogic;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormService(IServiceLogic logic)
+        public FormJob(IJobLogig logic)
         {
             InitializeComponent();
-            _serviceLogic = logic;
+            _jobLogic = logic;
         }
 
         private void FormComponent_Load(object sender, EventArgs e)
@@ -23,14 +23,13 @@ namespace MedView
             {
                 try
                 {
-                    var view = _serviceLogic.ReadElement(new ServiceSearchModel
+                    var view = _jobLogic.ReadElement(new JobSearchModel
                     {
                         Id = _id.Value
                     });
                     if (view != null)
                     {
-                        textBoxName.Text = view.ServicesName;
-                        textBoxCost.Text = view.ServicesPrice.ToString();
+                        textBoxName.Text = view.JobTitle;
                     }
                 }
                 catch (Exception ex)
@@ -50,13 +49,12 @@ namespace MedView
             }
             try
             {
-                var model = new ServiceBindingModel
+                var model = new JobBindingModel
                 {
                     Id = _id ?? 0,
-                    ServicesName = textBoxName.Text,
-                    ServicesPrice = Convert.ToDecimal(textBoxCost.Text)
+                    JobTitle = textBoxName.Text,
                 };
-                var operationResult = _id.HasValue ? _serviceLogic.Update(model) : _serviceLogic.Create(model);
+                var operationResult = _id.HasValue ? _jobLogic.Update(model) : _jobLogic.Create(model);
                 if (!operationResult)
                 {
                     throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");

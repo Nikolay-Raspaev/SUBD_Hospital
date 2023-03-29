@@ -9,5 +9,7 @@ namespace MedDataModels.Models
     public interface IJob : IId
     {
         string JobTitle { get; }
+
+        Dictionary<int, IService> JobServices { get; }
     }
 }

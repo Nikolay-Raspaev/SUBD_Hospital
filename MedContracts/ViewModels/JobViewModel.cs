@@ -14,5 +14,7 @@ namespace MedContracts.ViewModels
         public string JobTitle { get; set; } = string.Empty;
 
         public int Id { get; set; }
+
+        public Dictionary<int, IService> JobServices { get; set; } = new();
     }
 }

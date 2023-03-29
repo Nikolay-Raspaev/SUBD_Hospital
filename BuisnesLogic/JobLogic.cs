@@ -3,20 +3,19 @@ using MedContracts.BuisnessLogics;
 using MedContracts.SearchModels;
 using MedContracts.StoragesContracts;
 using MedContracts.ViewModels;
-using Microsoft.Extensions.Logging;
 
 namespace BuisnessLogic
 {
-    public class ServiceLogic : IServiceLogic
+    public class JobLogic : IJobLogig
     {
-        private readonly IServiceStorage _serviceStorage;
+        private readonly IJobStorage _serviceStorage;
 
-        public ServiceLogic(IServiceStorage serviceStorage)
+        public JobLogic(IJobStorage serviceStorage)
         {
             _serviceStorage = serviceStorage;
         }
 
-        public bool Create(ServiceBindingModel model)
+        public bool Create(JobBindingModel model)
         {
             CheckModel(model);
             if (_serviceStorage.Insert(model) == null)
@@ -26,7 +25,7 @@ namespace BuisnessLogic
             return true;
         }
 
-        public bool Delete(ServiceBindingModel model)
+        public bool Delete(JobBindingModel model)
         {
             CheckModel(model, false);
             if (_serviceStorage.Delete(model) == null)
@@ -36,7 +35,7 @@ namespace BuisnessLogic
             return true;
         }
 
-        public ServiceViewModel? ReadElement(ServiceSearchModel model)
+        public JobViewModel? ReadElement(JobSearchModel model)
         {
             if (model == null)
             {
@@ -50,9 +49,9 @@ namespace BuisnessLogic
             return element;
         }
 
-        public List<ServiceViewModel>? ReadList(ServiceSearchModel? model)
+        public List<JobViewModel>? ReadList(JobSearchModel? model)
         {
-            var list = _serviceStorage.GetFullList();/*: _serviceStorage.GetFilteredList(model)*/
+            var list = model == null ? _serviceStorage.GetFullList() : _serviceStorage.GetFilteredList(model);
             if (list == null)
             {
                 return null;
@@ -60,7 +59,7 @@ namespace BuisnessLogic
             return list;
         }
 
-        public bool Update(ServiceBindingModel model)
+        public bool Update(JobBindingModel model)
         {
             CheckModel(model);
             if (_serviceStorage.Update(model) == null)
@@ -69,7 +68,7 @@ namespace BuisnessLogic
             }
             return true;
         }
-        private void CheckModel(ServiceBindingModel model, bool withParams = true)
+        private void CheckModel(JobBindingModel model, bool withParams = true)
         {
             if (model == null)
             {
@@ -79,23 +78,19 @@ namespace BuisnessLogic
             {
                 return;
             }
-            if (string.IsNullOrEmpty(model.ServicesName))
+            if (string.IsNullOrEmpty(model.JobTitle))
             {
-                throw new ArgumentNullException("Нет названия услуги",
-               nameof(model.ServicesName));
+                throw new ArgumentNullException("Нет названия профессии",
+               nameof(model.JobTitle));
             }
-            if (model.ServicesPrice <= 0)
-            {
-                throw new ArgumentNullException("Цена услуги должна быть больше 0", nameof(model.ServicesPrice));
-            }
-            var element = _serviceStorage.GetElement(new ServiceSearchModel
+            var element = _serviceStorage.GetElement(new JobSearchModel
             {
                 Id = model.Id,
-                ServiceName = model.ServicesName
+                JobTitle = model.JobTitle
             });
             if (element != null && element.Id != model.Id)
             {
-                throw new InvalidOperationException("Услуга с таким названием уже есть");
+                throw new InvalidOperationException("Компонент с таким названием уже есть");
             }
         }
     }

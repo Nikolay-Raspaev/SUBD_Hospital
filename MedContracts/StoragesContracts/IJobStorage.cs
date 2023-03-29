@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MedContracts.StoragesContracts
 {
-    internal interface IJobStorage
+    public interface IJobStorage
     {
         List<JobViewModel> GetFullList();
         List<JobViewModel> GetFilteredList(JobSearchModel model);

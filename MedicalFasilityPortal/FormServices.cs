@@ -1,5 +1,5 @@
 ﻿using MedContracts.BindingModel;
-using MedContracts.BuisnessLogic;
+using MedContracts.BuisnessLogics;
 using Microsoft.Extensions.Logging;
 
 namespace MedView

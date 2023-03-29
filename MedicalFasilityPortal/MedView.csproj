@@ -21,4 +21,10 @@
     <ProjectReference Include="..\MedDataBaseImplement\MedDataBaseImplement.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="FormJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

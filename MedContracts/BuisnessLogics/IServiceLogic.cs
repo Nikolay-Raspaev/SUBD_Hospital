@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedContracts.BuisnessLogic
+namespace MedContracts.BuisnessLogics
 {
     public interface IServiceLogic
     {

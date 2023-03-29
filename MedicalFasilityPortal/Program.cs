@@ -1,5 +1,5 @@
 using BuisnessLogic;
-using MedContracts.BuisnessLogic;
+using MedContracts.BuisnessLogics;
 using MedContracts.StoragesContracts;
 using MedDataBaseImplement;
 using MedDataBaseImplement.Implements;
@@ -25,14 +25,19 @@ namespace MedView
             ConfigureServices(services);
             _serviceProvider = services.BuildServiceProvider();
 
-            Application.Run(_serviceProvider.GetRequiredService<FormServices>());
+            Application.Run(_serviceProvider.GetRequiredService<FormMain>());
         }
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddTransient<IServiceStorage, ServiceStorage>();
+            services.AddTransient<IJobStorage, JobStorage>();
             services.AddTransient<IServiceLogic, ServiceLogic>();
+            services.AddTransient<IJobLogig, JobLogic>();
             services.AddTransient<FormServices>();
             services.AddTransient<FormService>();
+            services.AddTransient<FormJobs>();
+            services.AddTransient<FormJob>();
+            services.AddTransient<FormMain>();
         }
     }
 }
