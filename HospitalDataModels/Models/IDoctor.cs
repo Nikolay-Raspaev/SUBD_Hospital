@@ -23,9 +23,5 @@ namespace HospitalDataModels.Models
         string? TelephoneNumber { get; }
 
         string Education { get; }
-
-        int Jobid { get; }
-
-        int? AcademicRankId { get; }
     }
 }

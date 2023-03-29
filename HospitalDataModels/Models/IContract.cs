@@ -11,13 +11,5 @@ namespace HospitalDataModels.Models
         int Id { get; }
 
         DateOnly? ExerciseDate { get; }
-
-        int ExecutionStatusId { get; }
-
-        int PatientId { get; }
-
-        int ContractDoctorsId { get; }
-
-        int ContractServicesId { get; }
     }
 }
