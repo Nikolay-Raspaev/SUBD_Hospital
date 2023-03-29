@@ -116,7 +116,7 @@ public partial class HospitalBdContext : DbContext
                 .HasMaxLength(16)
                 .HasColumnName("telephonenumber");
 
-            entity.HasOne(d => d.Academicrank).WithMany(p => p.Doctors)
+            entity.HasOne(d => d.AcademicRank).WithMany(p => p.Doctors)
                 .HasForeignKey(d => d.AcademicRankId)
                 .HasConstraintName("fk_doctors_academic_rank");
 
