@@ -16,15 +16,15 @@ public partial class HospitalBdContext : DbContext
     {
     }
 
-    public virtual DbSet<Academicrank> Academicranks { get; set; }
+    public virtual DbSet<AcademicRank> Academicranks { get; set; }
 
     public virtual DbSet<Contract> Contracts { get; set; }
 
     public virtual DbSet<Doctor> Doctors { get; set; }
 
-    public virtual DbSet<Doctorsservice> Doctorsservices { get; set; }
+    public virtual DbSet<DoctorsService> Doctorsservices { get; set; }
 
-    public virtual DbSet<Executionstatus> Executionstatuses { get; set; }
+    public virtual DbSet<ExecutionStatus> Executionstatuses { get; set; }
 
     public virtual DbSet<Job> Jobs { get; set; }
 
@@ -32,7 +32,7 @@ public partial class HospitalBdContext : DbContext
 
     public virtual DbSet<Service> Services { get; set; }
 
-    public virtual DbSet<Servicesjob> Servicesjobs { get; set; }
+    public virtual DbSet<ServicesJob> Servicesjobs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -40,7 +40,7 @@ public partial class HospitalBdContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Academicrank>(entity =>
+        modelBuilder.Entity<AcademicRank>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("academicranks_pkey");
 
@@ -49,7 +49,7 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Academicrankname)
+            entity.Property(e => e.AcademicRankName)
                 .HasMaxLength(50)
                 .HasColumnName("academicrankname");
         });
@@ -63,24 +63,24 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Contractdoctorsid).HasColumnName("contractdoctorsid");
-            entity.Property(e => e.Contractservicesid).HasColumnName("contractservicesid");
-            entity.Property(e => e.Executionstatusid).HasColumnName("executionstatusid");
-            entity.Property(e => e.Exercisedate).HasColumnName("exercisedate");
-            entity.Property(e => e.Patientid).HasColumnName("patientid");
+            entity.Property(e => e.ContractDoctorsId).HasColumnName("contractdoctorsid");
+            entity.Property(e => e.ContractServicesId).HasColumnName("contractservicesid");
+            entity.Property(e => e.ExecutionStatusId).HasColumnName("executionstatusid");
+            entity.Property(e => e.ExerciseDate).HasColumnName("exercisedate");
+            entity.Property(e => e.PatientId).HasColumnName("patientid");
 
-            entity.HasOne(d => d.Executionstatus).WithMany(p => p.Contracts)
-                .HasForeignKey(d => d.Executionstatusid)
+            entity.HasOne(d => d.ExecutionStatus).WithMany(p => p.Contracts)
+                .HasForeignKey(d => d.ExecutionStatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_contract_execution_status");
 
             entity.HasOne(d => d.Patient).WithMany(p => p.Contracts)
-                .HasForeignKey(d => d.Patientid)
+                .HasForeignKey(d => d.PatientId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_contract_patient");
 
             entity.HasOne(d => d.ContractNavigation).WithMany(p => p.Contracts)
-                .HasForeignKey(d => new { d.Contractdoctorsid, d.Contractservicesid })
+                .HasForeignKey(d => new { d.ContractDoctorsId, d.ContractServicesId })
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_contract_doctors_services");
         });
@@ -94,7 +94,7 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Academicrankid).HasColumnName("academicrankid");
+            entity.Property(e => e.AcademicRankId).HasColumnName("academicrankid");
             entity.Property(e => e.Birthdate).HasColumnName("birthdate");
             entity.Property(e => e.Education)
                 .HasMaxLength(50)
@@ -112,12 +112,12 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Surname)
                 .HasMaxLength(80)
                 .HasColumnName("surname");
-            entity.Property(e => e.Telephonenumber)
+            entity.Property(e => e.TelephoneNumber)
                 .HasMaxLength(16)
                 .HasColumnName("telephonenumber");
 
             entity.HasOne(d => d.Academicrank).WithMany(p => p.Doctors)
-                .HasForeignKey(d => d.Academicrankid)
+                .HasForeignKey(d => d.AcademicRankId)
                 .HasConstraintName("fk_doctors_academic_rank");
 
             entity.HasOne(d => d.Job).WithMany(p => p.Doctors)
@@ -126,27 +126,27 @@ public partial class HospitalBdContext : DbContext
                 .HasConstraintName("fk_doctors_job");
         });
 
-        modelBuilder.Entity<Doctorsservice>(entity =>
+        modelBuilder.Entity<DoctorsService>(entity =>
         {
-            entity.HasKey(e => new { e.Doctorsid, e.Servicesid }).HasName("doctorsservices_pkey");
+            entity.HasKey(e => new { e.DoctorsId, e.ServicesId }).HasName("doctorsservices_pkey");
 
             entity.ToTable("doctorsservices");
 
-            entity.Property(e => e.Doctorsid).HasColumnName("doctorsid");
-            entity.Property(e => e.Servicesid).HasColumnName("servicesid");
+            entity.Property(e => e.DoctorsId).HasColumnName("doctorsid");
+            entity.Property(e => e.ServicesId).HasColumnName("servicesid");
 
             entity.HasOne(d => d.Doctors).WithMany(p => p.Doctorsservices)
-                .HasForeignKey(d => d.Doctorsid)
+                .HasForeignKey(d => d.DoctorsId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_doctors_services_services");
 
-            entity.HasOne(d => d.Services).WithMany(p => p.Doctorsservices)
-                .HasForeignKey(d => d.Servicesid)
+            entity.HasOne(d => d.Services).WithMany(p => p.DoctorsServices)
+                .HasForeignKey(d => d.ServicesId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_doctors_services_doctors");
         });
 
-        modelBuilder.Entity<Executionstatus>(entity =>
+        modelBuilder.Entity<ExecutionStatus>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("executionstatus_pkey");
 
@@ -169,7 +169,7 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Jobtitle)
+            entity.Property(e => e.JobTitle)
                 .HasMaxLength(50)
                 .HasColumnName("jobtitle");
         });
@@ -210,34 +210,34 @@ public partial class HospitalBdContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Servicesname)
+            entity.Property(e => e.ServicesName)
                 .HasMaxLength(30)
                 .HasColumnName("servicesname");
-            entity.Property(e => e.Servicesprice)
+            entity.Property(e => e.ServicesPrice)
                 .HasPrecision(10, 2)
                 .HasColumnName("servicesprice");
         });
 
-        modelBuilder.Entity<Servicesjob>(entity =>
+        modelBuilder.Entity<ServicesJob>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("servicesjobs_pkey");
 
             entity.ToTable("servicesjobs");
 
-            entity.HasIndex(e => new { e.Servicesid, e.Jobid }, "servicesjobs_servicesid_jobid_key").IsUnique();
+            entity.HasIndex(e => new { e.ServicesId, e.JobId }, "servicesjobs_servicesid_jobid_key").IsUnique();
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Jobid).HasColumnName("jobid");
-            entity.Property(e => e.Servicesid).HasColumnName("servicesid");
+            entity.Property(e => e.JobId).HasColumnName("jobid");
+            entity.Property(e => e.ServicesId).HasColumnName("servicesid");
 
-            entity.HasOne(d => d.Job).WithMany(p => p.Servicesjobs)
-                .HasForeignKey(d => d.Jobid)
+            entity.HasOne(d => d.Job).WithMany(p => p.ServicesJobs)
+                .HasForeignKey(d => d.JobId)
                 .HasConstraintName("fkservicesjobjob");
 
-            entity.HasOne(d => d.Services).WithMany(p => p.Servicesjobs)
-                .HasForeignKey(d => d.Servicesid)
+            entity.HasOne(d => d.Services).WithMany(p => p.ServicesJobs)
+                .HasForeignKey(d => d.ServicesId)
                 .HasConstraintName("fkservicesjobservices");
         });
 
