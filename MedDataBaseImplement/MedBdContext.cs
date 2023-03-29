@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MedDataBaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedDataBaseImplement;
@@ -15,13 +16,13 @@ public partial class MedBdContext : DbContext
     {
     }
 
-    public virtual DbSet<Academicrank> Academicranks { get; set; }
+    public virtual DbSet<AcademicRank> AcademicRanks { get; set; }
 
     public virtual DbSet<Contract> Contracts { get; set; }
 
     public virtual DbSet<Doctor> Doctors { get; set; }
 
-    public virtual DbSet<Doctorsservice> Doctorsservices { get; set; }
+    public virtual DbSet<DoctorsService> DoctorsServices { get; set; }
 
     public virtual DbSet<ExecutionStatus> Executionstatuses { get; set; }
 
@@ -37,7 +38,7 @@ public partial class MedBdContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Academicrank>(entity =>
+        modelBuilder.Entity<AcademicRank>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("academicranks_pkey");
 
@@ -123,7 +124,7 @@ public partial class MedBdContext : DbContext
                 .HasConstraintName("fk_doctors_job");
         });
 
-        modelBuilder.Entity<Doctorsservice>(entity =>
+        modelBuilder.Entity<DoctorsService>(entity =>
         {
             entity.HasKey(e => new { e.DoctorsId, e.ServicesId }).HasName("doctorsservices_pkey");
 

@@ -10,8 +10,8 @@ namespace MedContracts.BindingModel
     {
         public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public string ServicesName { get; set; } = null!;
 
-        public decimal Price { get; set; }
+        public decimal ServicesPrice { get; set; }
     }
 }

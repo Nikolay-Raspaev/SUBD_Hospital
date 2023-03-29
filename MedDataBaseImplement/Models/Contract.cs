@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MedDataModels.Models;
+using System;
 using System.Collections.Generic;
 
-namespace MedDataBaseImplement;
+namespace MedDataBaseImplement.Models;
 
-public partial class Contract
+public partial class Contract : IContract
 {
     public int Id { get; set; }
 
@@ -17,9 +18,9 @@ public partial class Contract
 
     public int ContractServicesId { get; set; }
 
-    public virtual Doctorsservice ContractNavigation { get; set; } = null!;
+    public virtual DoctorsService ContractNavigation { get; set; } = null!;
 
-    public virtual Executionstatus ExecutionStatus { get; set; } = null!;
+    public virtual ExecutionStatus ExecutionStatus { get; set; } = null!;
 
     public virtual Patient Patient { get; set; } = null!;
 }

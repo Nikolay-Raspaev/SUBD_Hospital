@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MedDataBaseImplement;
+namespace MedDataBaseImplement.Models;
 
-public partial class Doctorsservice
+public partial class DoctorsService : IDoctorsService
 {
     public int DoctorsId { get; set; }
 

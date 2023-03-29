@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MedDataBaseImplement;
+namespace MedDataBaseImplement.Models;
 
-public partial class ExecutionStatus
+public partial class ExecutionStatus : IExecutionStatus
 {
     public int Id { get; set; }
 

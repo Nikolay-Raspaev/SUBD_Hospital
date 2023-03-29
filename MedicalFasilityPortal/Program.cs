@@ -1,8 +1,16 @@
+using BuisnessLogic;
+using MedContracts.BuisnessLogic;
+using MedContracts.StoragesContracts;
 using MedDataBaseImplement;
-namespace MedicalFasilityPortal
+using MedDataBaseImplement.Implements;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace MedView
 {
-    internal static class Program
+    public static class Program
     {
+        private static ServiceProvider? _serviceProvider;
+        public static ServiceProvider? ServiceProvider => _serviceProvider;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -12,7 +20,19 @@ namespace MedicalFasilityPortal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            _serviceProvider = services.BuildServiceProvider();
+
+            Application.Run(_serviceProvider.GetRequiredService<FormServices>());
+        }
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddTransient<IServiceStorage, ServiceStorage>();
+            services.AddTransient<IServiceLogic, ServiceLogic>();
+            services.AddTransient<FormServices>();
+            services.AddTransient<FormService>();
         }
     }
 }

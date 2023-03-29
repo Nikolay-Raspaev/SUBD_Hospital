@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MedDataModels.Models;
+using System;
 using System.Collections.Generic;
 
-namespace MedDataBaseImplement;
+namespace MedDataBaseImplement.Models;
 
-public partial class Patient
+public partial class Patient : IPatient
 {
     public int Id { get; set; }
 
@@ -19,5 +20,5 @@ public partial class Patient
 
     public string? TelephoneNumber { get; set; }
 
-    public virtual ICollection<Contract> Contracts { get; } = new List<Contract>();
+    public virtual List<Contract> Contracts { get; } = new List<Contract>();
 }

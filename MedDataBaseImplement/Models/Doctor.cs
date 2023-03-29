@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MedDataModels.Models;
+using System;
 using System.Collections.Generic;
 
-namespace MedDataBaseImplement;
+namespace MedDataBaseImplement.Models;
 
-public partial class Doctor
+public partial class Doctor : IDoctor
 {
     public int Id { get; set; }
 
@@ -25,9 +26,9 @@ public partial class Doctor
 
     public int? AcademicRankId { get; set; }
 
-    public virtual Academicrank? AcademicRank { get; set; }
+    public virtual AcademicRank? AcademicRank { get; set; }
 
-    public virtual List<Doctorsservice> DoctorsServices { get; } = new List<Doctorsservice>();
+    public virtual List<DoctorsService> DoctorsServices { get; } = new List<DoctorsService>();
 
     public virtual Job Job { get; set; } = null!;
 }
