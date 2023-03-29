@@ -19,5 +19,5 @@ public partial class Patient
 
     public string? TelephoneNumber { get; set; }
 
-    public virtual ICollection<Contract> Contracts { get; } = new List<Contract>();
+    public virtual List<Contract> Contracts { get; } = new List<Contract>();
 }
