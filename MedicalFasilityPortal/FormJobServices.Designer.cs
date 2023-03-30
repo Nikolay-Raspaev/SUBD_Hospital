@@ -36,7 +36,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(319, 80);
+            this.buttonCancel.Location = new System.Drawing.Point(277, 50);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(80, 22);
@@ -47,7 +47,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(233, 80);
+            this.buttonSave.Location = new System.Drawing.Point(191, 50);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(80, 22);
@@ -59,7 +59,7 @@
             // comboBoxComponent
             // 
             this.comboBoxComponent.FormattingEnabled = true;
-            this.comboBoxComponent.Location = new System.Drawing.Point(116, 11);
+            this.comboBoxComponent.Location = new System.Drawing.Point(75, 14);
             this.comboBoxComponent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxComponent.Name = "comboBoxComponent";
             this.comboBoxComponent.Size = new System.Drawing.Size(282, 23);
@@ -72,19 +72,19 @@
             this.labelComponent.Name = "labelComponent";
             this.labelComponent.Size = new System.Drawing.Size(47, 15);
             this.labelComponent.TabIndex = 6;
-            this.labelComponent.Text = "Блюдо:";
+            this.labelComponent.Text = "Услуга:";
             // 
             // FormJobServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 115);
+            this.ClientSize = new System.Drawing.Size(370, 86);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxComponent);
             this.Controls.Add(this.labelComponent);
             this.Name = "FormJobServices";
-            this.Text = "Добавление улсуг в профессию";
+            this.Text = "Добавление услуг в профессию";
             this.ResumeLayout(false);
             this.PerformLayout();
 

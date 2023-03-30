@@ -38,7 +38,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(200, 331);
+            this.buttonCancel.Location = new System.Drawing.Point(240, 81);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -49,7 +49,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(112, 331);
+            this.buttonSave.Location = new System.Drawing.Point(152, 81);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -60,16 +60,16 @@
             // 
             // textBoxServiceName
             // 
-            this.textBoxServiceName.Location = new System.Drawing.Point(113, 162);
+            this.textBoxServiceName.Location = new System.Drawing.Point(95, 17);
             this.textBoxServiceName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxServiceName.Name = "textBoxServiceName";
-            this.textBoxServiceName.Size = new System.Drawing.Size(329, 23);
+            this.textBoxServiceName.Size = new System.Drawing.Size(227, 23);
             this.textBoxServiceName.TabIndex = 8;
             // 
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(3, 162);
+            this.labelPrice.Location = new System.Drawing.Point(11, 17);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(59, 15);
             this.labelPrice.TabIndex = 7;
@@ -77,16 +77,16 @@
             // 
             // textBoxServicePrice
             // 
-            this.textBoxServicePrice.Location = new System.Drawing.Point(113, 210);
+            this.textBoxServicePrice.Location = new System.Drawing.Point(95, 44);
             this.textBoxServicePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxServicePrice.Name = "textBoxServicePrice";
-            this.textBoxServicePrice.Size = new System.Drawing.Size(329, 23);
+            this.textBoxServicePrice.Size = new System.Drawing.Size(227, 23);
             this.textBoxServicePrice.TabIndex = 14;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 210);
+            this.label3.Location = new System.Drawing.Point(35, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 19;
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 378);
+            this.ClientSize = new System.Drawing.Size(337, 114);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxServicePrice);
             this.Controls.Add(this.buttonCancel);

@@ -99,7 +99,7 @@
             this.groupBoxComponents.Size = new System.Drawing.Size(592, 206);
             this.groupBoxComponents.TabIndex = 8;
             this.groupBoxComponents.TabStop = false;
-            this.groupBoxComponents.Text = "Компоненты";
+            this.groupBoxComponents.Text = "Услуги";
             // 
             // buttonCancel
             // 
@@ -193,7 +193,7 @@
             // ColumnComponentName
             // 
             this.ColumnComponentName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColumnComponentName.HeaderText = "Блюдо";
+            this.ColumnComponentName.HeaderText = "Услуга";
             this.ColumnComponentName.MinimumWidth = 6;
             this.ColumnComponentName.Name = "ColumnComponentName";
             this.ColumnComponentName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -201,7 +201,7 @@
             // 
             // ColumnCount
             // 
-            this.ColumnCount.HeaderText = "Количество";
+            this.ColumnCount.HeaderText = "Цена";
             this.ColumnCount.MinimumWidth = 6;
             this.ColumnCount.Name = "ColumnCount";
             this.ColumnCount.Width = 125;

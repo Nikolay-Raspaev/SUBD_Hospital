@@ -36,7 +36,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(200, 331);
+            this.buttonCancel.Location = new System.Drawing.Point(246, 49);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -47,7 +47,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(112, 331);
+            this.buttonSave.Location = new System.Drawing.Point(158, 49);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -58,16 +58,16 @@
             // 
             // textBoxStatus
             // 
-            this.textBoxStatus.Location = new System.Drawing.Point(113, 118);
+            this.textBoxStatus.Location = new System.Drawing.Point(112, 11);
             this.textBoxStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxStatus.Name = "textBoxStatus";
-            this.textBoxStatus.Size = new System.Drawing.Size(329, 23);
+            this.textBoxStatus.Size = new System.Drawing.Size(216, 23);
             this.textBoxStatus.TabIndex = 8;
             // 
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(3, 118);
+            this.labelPrice.Location = new System.Drawing.Point(2, 11);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(102, 15);
             this.labelPrice.TabIndex = 7;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 378);
+            this.ClientSize = new System.Drawing.Size(345, 87);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxStatus);

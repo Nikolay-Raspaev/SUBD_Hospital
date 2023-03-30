@@ -36,7 +36,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(319, 80);
+            this.buttonCancel.Location = new System.Drawing.Point(318, 47);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(80, 22);
@@ -47,7 +47,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(233, 80);
+            this.buttonSave.Location = new System.Drawing.Point(232, 47);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(80, 22);
@@ -78,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 115);
+            this.ClientSize = new System.Drawing.Size(410, 80);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxComponent);
