@@ -36,13 +36,14 @@ namespace HospitalDatabaseImplement.Implements
             }
             using var context = new HospitalBdContext();
             return context.Contracts
-                                .Include(x => x.ContractNavigation)
-                .ThenInclude(x => x.Contracts)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Services)
                 .Include(x => x.ContractNavigation)
                 .ThenInclude(x => x.Doctors)
                 .Include(x => x.Patient)
-                    .FirstOrDefault(x => (model.Id.HasValue && x.Id == model.Id))
-                    ?.GetViewModel;
+                .Include(x => x.ExecutionStatus)
+                .FirstOrDefault(x => (x.Id == model.Id))
+                ?.GetViewModel;
         }
 
         public List<ContractViewModel> GetFullList()
@@ -71,19 +72,27 @@ namespace HospitalDatabaseImplement.Implements
             context.Contracts.Add(newContract);
             context.SaveChanges();
             return context.Contracts
-                                .Include(x => x.ContractNavigation)
-                .ThenInclude(x => x.Contracts)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Services)
                 .Include(x => x.ContractNavigation)
                 .ThenInclude(x => x.Doctors)
                 .Include(x => x.Patient)
-                    .FirstOrDefault(x => (x.Id == model.Id))
-                    ?.GetViewModel;
+                .Include(x => x.ExecutionStatus)
+                .FirstOrDefault(x => (x.Id == model.Id))
+                ?.GetViewModel;
         }
 
         public ContractViewModel? Update(ContractBindingModel model)
         {
             using var context = new HospitalBdContext();
-            var contracts = context.Contracts.FirstOrDefault(x => x.Id == model.Id);
+            var contracts = context.Contracts
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Services)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .Include(x => x.Patient)
+                .Include(x => x.ExecutionStatus)
+                .FirstOrDefault(x => (x.Id == model.Id));
             if (contracts == null)
             {
                 return null;

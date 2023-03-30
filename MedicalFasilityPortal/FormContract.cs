@@ -134,7 +134,7 @@ namespace HospitalView
                         Id = _id.Value,
                     });
                     DateTime dateTime = view.ExerciseDate.ToDateTime(TimeOnly.Parse("10:00 PM"));
-                    if (view != null)
+                    if (view != null && view.ExecutionStatusName == "Оплачен")
                     {
                         dateTimePicker.Value = dateTime;
                     }
@@ -151,10 +151,15 @@ namespace HospitalView
         {
             try
             {
-                DateOnly dateTime = DateOnly.FromDateTime(dateTimePicker.Value.Date);
+                DateOnly dateTime;
+                if (comboBoxExecutionStatus.Text == "Оплачен")
+                {
+                    dateTime = DateOnly.FromDateTime(dateTimePicker.Value.Date);
+                }
                 var model = new ContractBindingModel
                 {
                     Id = _id ?? 0,
+
                     ExerciseDate = dateTime,
                     ExecutionStatusId = (int)comboBoxExecutionStatus.SelectedValue,
                     PatientId = (int)comboBoxPatient.SelectedValue,
