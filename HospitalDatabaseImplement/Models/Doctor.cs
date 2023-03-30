@@ -80,6 +80,7 @@ public partial class Doctor : IDoctor
         Birthdate = model.Birthdate;
         Passport = model.Passport;
         TelephoneNumber = model.TelephoneNumber;
+        Education = model.Education;
         Jobid = model.Jobid;
         AcademicRankId = model.AcademicRankId;
     }
@@ -92,8 +93,10 @@ public partial class Doctor : IDoctor
         Birthdate = Birthdate,
         Passport = Passport,
         TelephoneNumber = TelephoneNumber,
+        Education = Education,
         JobTitle = Job.JobTitle,
-        AcademicRankName = AcademicRank.AcademicRankName
+        AcademicRankName = AcademicRank.AcademicRankName,
+        DoctorServices = DoctorServices
     };
     public void UpdateServices(HospitalBdContext context, DoctorBindingModel model)
     {

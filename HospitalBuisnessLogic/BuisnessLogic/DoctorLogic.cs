@@ -3,6 +3,7 @@ using HospitalContracts.BuisnessLogicsContracts;
 using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,13 +87,17 @@ namespace HospitalBuisnessLogic.BuisnessLogic
             {
                 throw new ArgumentNullException("Нет названия компонента", nameof(model.Passport));
             }
-            var element = _doctorStorage.GetElement(new DoctorSearchModel
+            using var context = new HospitalBdContext();
+            if(context.Doctors.Count() > 0)
             {
-                Passport = model.Passport
-            });
-            if (element != null && element.Id != model.Id)
-            {
-                throw new InvalidOperationException("Продукт с таким названием уже есть");
+                var element = _doctorStorage.GetElement(new DoctorSearchModel
+                {
+                    Passport = model.Passport
+                });
+                if (element != null && element.Id != model.Id)
+                {
+                    throw new InvalidOperationException("Продукт с таким названием уже есть");
+                }
             }
         }
     }

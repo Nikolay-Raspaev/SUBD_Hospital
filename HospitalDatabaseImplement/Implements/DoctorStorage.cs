@@ -17,12 +17,16 @@ namespace HospitalDatabaseImplement.Implements
         public List<DoctorViewModel> GetFullList()
         {
             using var context = new HospitalBdContext();
-            return context.Doctors
-                    .Include(x => x.DoctorsServices )
-                    .ThenInclude(x => x.Services)
-                    .ToList()
-                    .Select(x => x.GetViewModel)
-                    .ToList();
+            var list = context.Doctors
+                .Include(x => x.DoctorsServices)
+                .ThenInclude(x => x.Services)
+                .Include(x => x.AcademicRank)
+                .Include(x => x.Job)
+                .ToList()
+                .Select(x => x.GetViewModel)
+                .ToList();
+            return list;
+
         }
 
         public DoctorViewModel? GetElement(DoctorSearchModel model)
@@ -33,8 +37,10 @@ namespace HospitalDatabaseImplement.Implements
             }
             using var context = new HospitalBdContext();
             return context.Doctors
-                .Include(x => x.DoctorsServices)
-                .ThenInclude(x => x.Services)
+                    .Include(x => x.DoctorsServices)
+                    .ThenInclude(x => x.Services)
+                    .Include(x => x.AcademicRank)
+                    .Include(x => x.Job)
                 .FirstOrDefault(x => (!string.IsNullOrEmpty(model.Passport) && x.Passport == model.Passport) ||
                                 (model.Id.HasValue && x.Id == model.Id))
                 ?.GetViewModel;
@@ -51,7 +57,13 @@ namespace HospitalDatabaseImplement.Implements
             }
             context.Doctors.Add(newDoctor);
             context.SaveChanges();
-            return newDoctor.GetViewModel;
+            return context.Doctors
+                    .Include(x => x.DoctorsServices)
+                    .ThenInclude(x => x.Services)
+                    .Include(x => x.AcademicRank)
+                    .Include(x => x.Job)
+                .FirstOrDefault(x => (x.Id == model.Id))
+                ?.GetViewModel;
         }
 
         public DoctorViewModel? Update(DoctorBindingModel model)
@@ -69,7 +81,13 @@ namespace HospitalDatabaseImplement.Implements
                 context.SaveChanges();
                 doctor.UpdateServices(context, model);
                 transaction.Commit();
-                return doctor.GetViewModel;
+                return context.Doctors
+                    .Include(x => x.DoctorsServices)
+                    .ThenInclude(x => x.Services)
+                    .Include(x => x.AcademicRank)
+                    .Include(x => x.Job)
+                .FirstOrDefault(x => (x.Id == model.Id))
+                ?.GetViewModel;
             }
             catch
             {
@@ -79,10 +97,13 @@ namespace HospitalDatabaseImplement.Implements
         }
 
         public DoctorViewModel? Delete(DoctorBindingModel model)
-        {
+        ре{
             using var context = new HospitalBdContext();
             var element = context.Doctors
-                .Include(x => x.DoctorsServices)
+                    .Include(x => x.DoctorsServices)
+                    .ThenInclude(x => x.Services)
+                    .Include(x => x.AcademicRank)
+                    .Include(x => x.Job)
                 .FirstOrDefault(rec => rec.Id == model.Id);
             if (element != null)
             {
