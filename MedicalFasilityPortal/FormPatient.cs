@@ -1,45 +1,51 @@
-﻿using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
-using HospitalContracts.SearchModels;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HospitalContracts.BuisnessLogicsContracts;
+using HospitalContracts.SearchModels;
+using HospitalContracts.BindingModels;
 
 namespace HospitalView
 {
-    public partial class FormService : Form
+    public partial class FormPatient : Form
     {
-        private readonly IServiceLogic _perviceLogic;
+        private readonly IPatientLogic _patientLogic;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormService(IServiceLogic logic)
+        public FormPatient(IPatientLogic logic)
         {
             InitializeComponent();
-            _perviceLogic = logic;
+            _patientLogic = logic;
         }
 
-        private void FormService_Load(object sender, EventArgs e)
+        private void FormPatient_Load(object sender, EventArgs e)
         {
             if (_id.HasValue)
             {
                 try
                 {
-                    var view = _perviceLogic.ReadElement(new ServiceSearchModel
+                    var view = _patientLogic.ReadElement(new PatientSearchModel
                     {
                         Id = _id.Value,
                     });
+                    DateTime dateTime = view.Birthdate.ToDateTime(TimeOnly.Parse("10:00 PM"));
                     if (view != null)
                     {
-                        textBoxServiceName.Text = view.ServiceName;
-                        textBoxServicePrice.Text = view.ServicePrice.ToString();
+                        textBoxName.Text = view.Name;
+                        textBoxSurname.Text = view.Surname;
+                        textBoxName.Text = view.Name;
+                        textBoxPatronymic.Text = view.Patronymic;
+                        dateTimePicker.Value = dateTime;
+                        textBoxPassport.Text = view.Passport;
+                        textBoxTelephoneNumber.Text = view.TelephoneNumber;
                     }
                 }
                 catch (Exception ex)
@@ -52,20 +58,25 @@ namespace HospitalView
 
         private void buttonSave_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxServiceName.Text))
+            if (string.IsNullOrEmpty(textBoxName.Text))
             {
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                var model = new ServiceBindingModel
+                DateOnly Birthdate = DateOnly.FromDateTime(dateTimePicker.Value.Date);
+                var model = new PatientBindingModel
                 {
                     Id = _id ?? 0,
-                    ServiceName = textBoxServiceName.Text,
-                    ServicePrice = Convert.ToDecimal(textBoxServicePrice.Text)
+                    Surname = textBoxSurname.Text,
+                    Name = textBoxName.Text,
+                    Patronymic = textBoxPatronymic.Text,
+                    Birthdate = Birthdate,
+                    Passport = textBoxPassport.Text,
+                    TelephoneNumber = textBoxTelephoneNumber.Text,
                 };
-                var operationResult = _id.HasValue ? _perviceLogic.Update(model) : _perviceLogic.Create(model);
+                var operationResult = _id.HasValue ? _patientLogic.Update(model) : _patientLogic.Create(model);
                 if (!operationResult)
                 {
                     throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
@@ -85,6 +96,5 @@ namespace HospitalView
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
     }
 }

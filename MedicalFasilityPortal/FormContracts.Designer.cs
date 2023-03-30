@@ -1,6 +1,6 @@
 ﻿namespace HospitalView
 {
-    partial class FormServices
+    partial class FormContracts
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(374, 89);
+            this.buttonUpdate.Location = new System.Drawing.Point(998, 89);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(130, 22);
@@ -52,7 +52,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(374, 63);
+            this.buttonDelete.Location = new System.Drawing.Point(998, 63);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(130, 22);
@@ -63,7 +63,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(374, 37);
+            this.buttonEdit.Location = new System.Drawing.Point(998, 37);
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(130, 22);
@@ -74,7 +74,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(374, 11);
+            this.buttonAdd.Location = new System.Drawing.Point(998, 11);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(130, 22);
@@ -94,22 +94,22 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(362, 290);
+            this.dataGridView.Size = new System.Drawing.Size(969, 431);
             this.dataGridView.TabIndex = 5;
             // 
-            // FormServices
+            // FormContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 290);
+            this.ClientSize = new System.Drawing.Size(1140, 431);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
-            this.Name = "FormServices";
-            this.Text = "Услуги";
-            this.Load += new System.EventHandler(this.FormServices_Load);
+            this.Name = "FormContracts";
+            this.Text = "Контракты";
+            this.Load += new System.EventHandler(this.FormContracts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

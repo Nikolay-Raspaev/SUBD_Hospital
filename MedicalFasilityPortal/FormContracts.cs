@@ -1,5 +1,6 @@
 ﻿using HospitalContracts.BindingModels;
 using HospitalContracts.BuisnessLogicsContracts;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,15 +13,15 @@ using System.Windows.Forms;
 
 namespace HospitalView
 {
-    public partial class FormServices : Form
+    public partial class FormContracts : Form
     {
-        private readonly IServiceLogic _serviceLogic;
-        public FormServices(IServiceLogic logic)
+        private readonly IContractLogic _ContractLogic;
+        public FormContracts(IContractLogic logic)
         {
             InitializeComponent();
-            _serviceLogic = logic;
+            _ContractLogic = logic;
         }
-        private void FormServices_Load(object sender, EventArgs e)
+        private void FormContracts_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -28,7 +29,7 @@ namespace HospitalView
         {
             try
             {
-                var list = _serviceLogic.ReadList(null);
+                var list = _ContractLogic.ReadList(null);
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -44,8 +45,8 @@ namespace HospitalView
 
         private void buttonAdd_Click_1(object sender, EventArgs e)
         {
-            var service = Program.ServiceProvider?.GetService(typeof(FormService));
-            if (service is FormService form)
+            var service = Program.ServiceProvider?.GetService(typeof(FormContract));
+            if (service is FormContract form)
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -58,8 +59,8 @@ namespace HospitalView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var service = Program.ServiceProvider?.GetService(typeof(FormService));
-                if (service is FormService form)
+                var service = Program.ServiceProvider?.GetService(typeof(FormContract));
+                if (service is FormContract form)
                 {
                     form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["Id"].Value);
                     if (form.ShowDialog() == DialogResult.OK)
@@ -79,7 +80,7 @@ namespace HospitalView
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["Id"].Value);
                     try
                     {
-                        if (!_serviceLogic.Delete(new ServiceBindingModel { Id = id }))
+                        if (!_ContractLogic.Delete(new ContractBindingModel { Id = id }))
                         {
                             throw new Exception("Ошибка при удалении. Дополнительная информация в логах.");
                         }

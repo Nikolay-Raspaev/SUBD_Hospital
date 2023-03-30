@@ -12,15 +12,16 @@ using System.Windows.Forms;
 
 namespace HospitalView
 {
-    public partial class FormServices : Form
+    public partial class FormDoctors : Form
     {
-        private readonly IServiceLogic _serviceLogic;
-        public FormServices(IServiceLogic logic)
+        private readonly IDoctorLogic _doctorLogic;
+        public FormDoctors(IDoctorLogic logic)
         {
             InitializeComponent();
-            _serviceLogic = logic;
+            _doctorLogic = logic;
         }
-        private void FormServices_Load(object sender, EventArgs e)
+
+        private void FormDocuments_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -28,24 +29,25 @@ namespace HospitalView
         {
             try
             {
-                var list = _serviceLogic.ReadList(null);
+                var list = _doctorLogic.ReadList(null);
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
                     dataGridView.Columns["Id"].Visible = false;
+                    dataGridView.Columns["Passport"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns["DoctorServices"].Visible = false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void buttonAdd_Click_1(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            var service = Program.ServiceProvider?.GetService(typeof(FormService));
-            if (service is FormService form)
+            var service = Program.ServiceProvider?.GetService(typeof(FormDoctor));
+            if (service is FormDoctor form)
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -54,12 +56,12 @@ namespace HospitalView
             }
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+        private void ButtonEdit_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var service = Program.ServiceProvider?.GetService(typeof(FormService));
-                if (service is FormService form)
+                var service = Program.ServiceProvider?.GetService(typeof(FormDoctor));
+                if (service is FormDoctor form)
                 {
                     form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["Id"].Value);
                     if (form.ShowDialog() == DialogResult.OK)
@@ -70,7 +72,7 @@ namespace HospitalView
             }
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void ButtonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
@@ -79,7 +81,10 @@ namespace HospitalView
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["Id"].Value);
                     try
                     {
-                        if (!_serviceLogic.Delete(new ServiceBindingModel { Id = id }))
+                        if (!_doctorLogic.Delete(new DoctorBindingModel
+                        {
+                            Id = id
+                        }))
                         {
                             throw new Exception("Ошибка при удалении. Дополнительная информация в логах.");
                         }
@@ -93,7 +98,7 @@ namespace HospitalView
             }
         }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
+        private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             LoadData();
         }

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,32 +13,31 @@ using System.Windows.Forms;
 
 namespace HospitalView
 {
-    public partial class FormService : Form
+    public partial class FormExecutionStatus : Form
     {
-        private readonly IServiceLogic _perviceLogic;
+        private readonly IExecutionStatusLogic _executionStatusLogic;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormService(IServiceLogic logic)
+        public FormExecutionStatus(IExecutionStatusLogic logic)
         {
             InitializeComponent();
-            _perviceLogic = logic;
+            _executionStatusLogic = logic;
         }
 
-        private void FormService_Load(object sender, EventArgs e)
+        private void FormExecutionStatus_Load(object sender, EventArgs e)
         {
             if (_id.HasValue)
             {
                 try
                 {
-                    var view = _perviceLogic.ReadElement(new ServiceSearchModel
+                    var view = _executionStatusLogic.ReadElement(new ExecutionStatusSearchModel
                     {
                         Id = _id.Value,
                     });
                     if (view != null)
                     {
-                        textBoxServiceName.Text = view.ServiceName;
-                        textBoxServicePrice.Text = view.ServicePrice.ToString();
+                        textBoxStatus.Text = view.ExecutionStatusName;
                     }
                 }
                 catch (Exception ex)
@@ -52,20 +50,19 @@ namespace HospitalView
 
         private void buttonSave_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxServiceName.Text))
+            if (string.IsNullOrEmpty(textBoxStatus.Text))
             {
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                var model = new ServiceBindingModel
+                var model = new ExecutionStatusBindingModel
                 {
                     Id = _id ?? 0,
-                    ServiceName = textBoxServiceName.Text,
-                    ServicePrice = Convert.ToDecimal(textBoxServicePrice.Text)
+                    ExecutionStatusName = textBoxStatus.Text,
                 };
-                var operationResult = _id.HasValue ? _perviceLogic.Update(model) : _perviceLogic.Create(model);
+                var operationResult = _id.HasValue ? _executionStatusLogic.Update(model) : _executionStatusLogic.Create(model);
                 if (!operationResult)
                 {
                     throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
@@ -85,6 +82,5 @@ namespace HospitalView
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
     }
 }
