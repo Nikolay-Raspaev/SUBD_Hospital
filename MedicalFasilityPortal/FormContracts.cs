@@ -1,5 +1,6 @@
 ﻿using HospitalContracts.BindingModels;
 using HospitalContracts.BuisnessLogicsContracts;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

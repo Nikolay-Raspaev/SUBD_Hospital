@@ -163,8 +163,8 @@ namespace HospitalView
                     ExerciseDate = dateTime,
                     ExecutionStatusId = (int)comboBoxExecutionStatus.SelectedValue,
                     PatientId = (int)comboBoxPatient.SelectedValue,
-                    ContractDoctorsId = (int)comboBoxPatient.SelectedValue,
-                    ContractServicesId = (int)comboBoxDoctor.SelectedValue,
+                    ContractDoctorsId = (int)comboBoxDoctor.SelectedValue,
+                    ContractServicesId = (int)comboBoxService.SelectedValue,
                 };
                 var operationResult = _id.HasValue ? _contractLogic.Update(model) : _contractLogic.Create(model);
                 if (!operationResult)
