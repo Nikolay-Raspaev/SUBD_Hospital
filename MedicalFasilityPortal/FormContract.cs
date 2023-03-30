@@ -20,7 +20,8 @@ namespace HospitalView
 {
     public partial class FormContract : Form
     {
-        private readonly List<ExecutionStatusViewModel>? _listExecutionStatus;
+
+
         public int ExecutionStatusId
         {
             get
@@ -32,25 +33,7 @@ namespace HospitalView
                 comboBoxExecutionStatus.SelectedValue = value;
             }
         }
-        public IExecutionStatus? _executionStatus
-        {
-            get
-            {
-                if (_listExecutionStatus == null)
-                {
-                    return null;
-                }
-                foreach (var elem in _listExecutionStatus)
-                {
-                    if (elem.Id == ExecutionStatusId)
-                    {
-                        return elem;
-                    }
-                }
-                return null;
-            }
-        }
-        private readonly List<PatientViewModel>? _listPatient;
+        
         public int IdPatient
         {
             get
@@ -62,25 +45,7 @@ namespace HospitalView
                 comboBoxPatient.SelectedValue = value;
             }
         }
-        public IPatient? _patient
-        {
-            get
-            {
-                if (_listPatient == null)
-                {
-                    return null;
-                }
-                foreach (var elem in _listPatient)
-                {
-                    if (elem.Id == IdPatient)
-                    {
-                        return elem;
-                    }
-                }
-                return null;
-            }
-        }
-        private readonly List<DoctorServiceViewModel>? _listDoctorService;
+        
         public int IdDoctor
         {
             get
@@ -103,62 +68,58 @@ namespace HospitalView
                 comboBoxService.SelectedValue = value;
             }
         }
-        public IDoctorService? _doctorService
-        {
-            get
-            {
-                if (_listDoctorService == null)
-                {
-                    return null;
-                }
-                foreach (var elem in _listDoctorService)
-                {
-                    if (elem.DoctorsId == IdDoctor && elem.ServicesId == IdService)
-                    {
-                        return elem;
-                    }
-                }
-                return null;
-            }
-        }
         private readonly IContractLogic _contractLogic;
-        private readonly IDoctorServiceLogic _doctorServicetLogic;
+        private readonly IDoctorLogic _doctorLogic;
+        private readonly IServiceLogic _serviceLogic;
         private readonly IExecutionStatusLogic _executionStatusLogic;
         private readonly IPatientLogic _patientLogic;
+        private readonly List<ExecutionStatusViewModel>? _listExecutionStatus;
+        private readonly List<PatientViewModel>? _listPatient;
+        private readonly List<DoctorViewModel>? _listDoctor;
+        private readonly List<ServiceViewModel>? _listService;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormContract(IContractLogic contractLogic, IExecutionStatusLogic executionStatusLogic, IDoctorServiceLogic doctorServicetLogic, IPatientLogic patientLogic)
+        public FormContract(IContractLogic contractLogic, IServiceLogic serviceLogic, IExecutionStatusLogic executionStatusLogic, IDoctorLogic doctorLogic, IPatientLogic patientLogic)
         {
             InitializeComponent();
             _contractLogic = contractLogic;
             _executionStatusLogic = executionStatusLogic;
-            _doctorServicetLogic = doctorServicetLogic;
+            _doctorLogic = doctorLogic;
+            _serviceLogic = serviceLogic;
             _patientLogic = patientLogic;
 
             _listExecutionStatus = _executionStatusLogic.ReadList(null);
-            if (_list != null)
+            if (_listExecutionStatus != null)
             {
-                comboBoxComponent.DisplayMember = "ComponentName";
-                comboBoxComponent.ValueMember = "Id";
-                comboBoxComponent.DataSource = _list;
-                comboBoxComponent.SelectedItem = null;
+                comboBoxExecutionStatus.DisplayMember = "ExecutionStatus";
+                comboBoxExecutionStatus.ValueMember = "Id";
+                comboBoxExecutionStatus.DataSource = _listExecutionStatus;
+                comboBoxExecutionStatus.SelectedItem = null;
             }
-            _listPatient = _doctorServicetLogic.ReadList(null);
-            if (_list != null)
+            _listDoctor = _doctorLogic.ReadList(null);
+            if (_listDoctor != null)
             {
-                comboBoxComponent.DisplayMember = "ComponentName";
-                comboBoxComponent.ValueMember = "Id";
-                comboBoxComponent.DataSource = _list;
-                comboBoxComponent.SelectedItem = null;
+                comboBoxDoctor.DisplayMember = "Name";
+                comboBoxDoctor.ValueMember = "Id";
+                comboBoxDoctor.DataSource = _listDoctor;
+                comboBoxDoctor.SelectedItem = null;
             }
-            _listDoctorService = _patientLogic.ReadList(null);
-            if (_list != null)
+            _listService = _serviceLogic.ReadList(null);
+            if (_listService != null)
             {
-                comboBoxComponent.DisplayMember = "ComponentName";
-                comboBoxComponent.ValueMember = "Id";
-                comboBoxComponent.DataSource = _list;
-                comboBoxComponent.SelectedItem = null;
+                comboBoxService.DisplayMember = "ServiceName";
+                comboBoxService.ValueMember = "Id";
+                comboBoxService.DataSource = _listService;
+                comboBoxService.SelectedItem = null;
+            }
+            _listPatient = _patientLogic.ReadList(null);
+            if (_listPatient != null)
+            {
+                comboBoxPatient.DisplayMember = "Name";
+                comboBoxPatient.ValueMember = "Id";
+                comboBoxPatient.DataSource = _listPatient;
+                comboBoxPatient.SelectedItem = null;
             }
         }
 
@@ -195,10 +156,10 @@ namespace HospitalView
                 {
                     Id = _id ?? 0,
                     ExerciseDate = dateTime,
-                    ExecutionStatusId = comboBoxExecutionStatus.SelectedValue,
-                    PatientId = comboBoxPatient.SelectedValue,
-                    ContractDoctorsId = comboBoxPatient.SelectedValue,
-                    ContractServicesId = comboBoxDoctor.SelectedValue,
+                    ExecutionStatusId = (int)comboBoxExecutionStatus.SelectedValue,
+                    PatientId = (int)comboBoxPatient.SelectedValue,
+                    ContractDoctorsId = (int)comboBoxPatient.SelectedValue,
+                    ContractServicesId = (int)comboBoxDoctor.SelectedValue,
                 };
                 var operationResult = _id.HasValue ? _contractLogic.Update(model) : _contractLogic.Create(model);
                 if (!operationResult)
