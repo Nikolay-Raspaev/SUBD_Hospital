@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HospitalDataModels.Models
 {
-    public interface IContract : IId
+    public interface IDoctorService
     {
-        DateOnly ExerciseDate { get; }
+        int DoctorsId { get; }
+
+        int ServicesId { get; }
     }
 }

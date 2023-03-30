@@ -11,7 +11,7 @@ public partial class Contract : IContract
 {
     public int Id { get; set; }
 
-    public DateOnly? ExerciseDate { get; set; }
+    public DateOnly ExerciseDate { get; set; }
 
     public int ExecutionStatusId { get; set; }
 

@@ -22,38 +22,11 @@ namespace HospitalView
 {
     public partial class FormDoctor : Form
     {
+
+        //private Dictionary<int, IService> _doctorServices;
+
         private readonly List<AcademicRankViewModel>? _listAcademicRanks;
-
-        public int IdAcademicRank
-        {
-            get
-            {
-                return Convert.ToInt32(comboBoxAcademicRank.SelectedValue);
-            }
-            set
-            {
-                comboBoxAcademicRank.SelectedValue = value;
-            }
-        }
-
-        public IAcademicRank? AcademicRankModel
-        {
-            get
-            {
-                if (_listAcademicRanks == null)
-                {
-                    return null;
-                }
-                foreach (var elem in _listAcademicRanks)
-                {
-                    if (elem.Id == IdAcademicRank)
-                    {
-                        return elem;
-                    }
-                }
-                return null;
-            }
-        }
+  
         private readonly List<JobViewModel>? _listJobs;
 
         public int IdJob
@@ -68,25 +41,6 @@ namespace HospitalView
             }
         }
 
-        public IJob? JobModel
-        {
-            get
-            {
-                if (_listJobs == null)
-                {
-                    return null;
-                }
-                foreach (var elem in _listJobs)
-                {
-                    if (elem.Id == IdJob)
-                    {
-                        return elem;
-                    }
-                }
-                return null;
-            }
-        }
-
         private readonly IDoctorLogic _doctorLogic;
 
         private readonly IJobLogic _jobLogic;
@@ -95,7 +49,7 @@ namespace HospitalView
 
         private int? _id;
 
-        private Dictionary<int, IService> _doctorServices;
+        
 
         public int Id { set { _id = value; } }
 
@@ -106,7 +60,7 @@ namespace HospitalView
             _jobLogic = jobLogic;
             _academicRankLogic = academicRankLogic;
 
-            _doctorServices = new Dictionary<int, IService>();
+            //_doctorServices = new Dictionary<int, IService>();
 
             _listJobs = _jobLogic.ReadList(null);
             _listAcademicRanks = _academicRankLogic.ReadList(null);
@@ -149,7 +103,7 @@ namespace HospitalView
                         textBoxEducation.Text = view.Education;
                         comboBoxJob.Text = view.JobTitle;
                         comboBoxAcademicRank.Text = view.AcademicRankName;
-                        _doctorServices = view.DoctorServices ?? new Dictionary<int, IService>();
+                       // _doctorServices = view.DoctorServices ?? new Dictionary<int, IService>();
                         LoadData();
                     }
                 }
@@ -164,15 +118,15 @@ namespace HospitalView
         {
             try
             {
-                if (_doctorServices != null)
-                {
-                    dataGridView.Rows.Clear();
-                    foreach (var dc in _doctorServices)
-                    {
-                        dataGridView.Rows.Add(new object[] { dc.Key, dc.Value.ServiceName, dc.Value.ServicePrice });
-                    }
-                    textBoxPrice.Text = CalcPrice().ToString();
-                }
+                //if (_doctorServices != null)
+                //{
+                //    dataGridView.Rows.Clear();
+                //    foreach (var dc in _doctorServices)
+                //    {
+                //        dataGridView.Rows.Add(new object[] { dc.Key, dc.Value.ServiceName, dc.Value.ServicePrice });
+                //    }
+                //    textBoxPrice.Text = CalcPrice().ToString();
+                //}
             }
             catch (Exception ex)
             {
@@ -186,19 +140,19 @@ namespace HospitalView
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    if (form.ServiceModel == null)
-                    {
-                        return;
-                    }
-                    if (_doctorServices.ContainsKey(form.Id))
-                    {
-                        _doctorServices[form.Id] = form.ServiceModel;
-                    }
-                    else
-                    {
-                        _doctorServices.Add(form.Id, form.ServiceModel);
-                    }
-                    LoadData();
+                    //if (form.ServiceModel == null)
+                    //{
+                    //    return;
+                    //}
+                    //if (_doctorServices.ContainsKey(form.Id))
+                    //{
+                    //    _doctorServices[form.Id] = form.ServiceModel;
+                    //}
+                    //else
+                    //{
+                    //    _doctorServices.Add(form.Id, form.ServiceModel);
+                    //}
+                    //LoadData();
                 }
             }
         }
@@ -213,12 +167,12 @@ namespace HospitalView
                     form.Id = id;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        if (form.ServiceModel == null)
-                        {
-                            return;
-                        }
-                        _doctorServices[form.Id] = form.ServiceModel;
-                        LoadData();
+                        //if (form.ServiceModel == null)
+                        //{
+                        //    return;
+                        //}
+                        //_doctorServices[form.Id] = form.ServiceModel;
+                        //LoadData();
                     }
                 }
             }
@@ -232,7 +186,7 @@ namespace HospitalView
                 {
                     try
                     {
-                        _doctorServices?.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
+                        //_doctorServices?.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
                     }
                     catch (Exception ex)
                     {
@@ -270,7 +224,7 @@ namespace HospitalView
                     Education = textBoxEducation.Text,
                     Jobid = (int)comboBoxJob.SelectedValue,
                     AcademicRankId = (int)comboBoxAcademicRank.SelectedValue,
-                    DoctorServices = _doctorServices,
+                   // DoctorServices = _doctorServices,
                 };
                 var operationResult = _id.HasValue ? _doctorLogic.Update(model) : _doctorLogic.Create(model);
                 if (!operationResult)
@@ -291,14 +245,14 @@ namespace HospitalView
             DialogResult = DialogResult.Cancel;
             Close();
         }
-        private decimal CalcPrice()
-        {
-            decimal price = 0;
-            foreach (var elem in _doctorServices)
-            {
-                price += (elem.Value.ServicePrice);
-            }
-            return Decimal.Multiply(price, 1.1m);
-        }
+        //private decimal CalcPrice()
+        //{
+        //    decimal price = 0;
+        //    //foreach (var elem in _doctorServices)
+        //    //{
+        //    //    price += (elem.Value.ServicePrice);
+        //    //}
+        //    //return Decimal.Multiply(price, 1.1m);
+        //}
     }
 }

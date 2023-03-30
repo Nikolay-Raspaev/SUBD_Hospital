@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalContracts.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalDatabaseImplement.Models;
@@ -14,4 +15,12 @@ public partial class DoctorsService
     public virtual Doctor Doctors { get; set; } = null!;
 
     public virtual Service Services { get; set; } = null!;
+
+    public DoctorServiceViewModel GetViewModel => new()
+    {
+        DoctorsId = DoctorsId,
+        ServicesId = ServicesId,
+        DoctorName = Doctors.Name,
+        ServiceName = Services.ServiceName,
+    };
 }

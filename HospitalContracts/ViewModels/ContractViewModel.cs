@@ -13,7 +13,7 @@ namespace HospitalContracts.ViewModels
         public int Id { get; set; }
 
         [DisplayName("Дата оплаты")]
-        public DateOnly? ExerciseDate { get; set; }
+        public DateOnly ExerciseDate { get; set; }
 
         [DisplayName("Статус контракта")]
         public string ExecutionStatusName { get; set; } = string.Empty;

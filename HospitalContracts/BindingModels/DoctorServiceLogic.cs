@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HospitalDataModels.Models
+namespace HospitalContracts.BindingModels
 {
-    public interface IContract : IId
+    internal interface DoctorServiceLogic
     {
-        DateOnly ExerciseDate { get; }
     }
 }
