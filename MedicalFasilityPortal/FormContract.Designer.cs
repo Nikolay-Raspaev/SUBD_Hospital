@@ -44,7 +44,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(200, 331);
+            this.buttonCancel.Location = new System.Drawing.Point(288, 161);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -55,7 +55,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(112, 331);
+            this.buttonSave.Location = new System.Drawing.Point(200, 161);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -67,7 +67,7 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(3, 118);
+            this.labelPrice.Location = new System.Drawing.Point(13, 67);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(54, 15);
             this.labelPrice.TabIndex = 7;
@@ -76,7 +76,7 @@
             // labelBlankName
             // 
             this.labelBlankName.AutoSize = true;
-            this.labelBlankName.Location = new System.Drawing.Point(3, 91);
+            this.labelBlankName.Location = new System.Drawing.Point(13, 40);
             this.labelBlankName.Name = "labelBlankName";
             this.labelBlankName.Size = new System.Drawing.Size(43, 15);
             this.labelBlankName.TabIndex = 6;
@@ -84,15 +84,15 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(123, 63);
+            this.dateTimePicker.Location = new System.Drawing.Point(87, 12);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker.Size = new System.Drawing.Size(283, 23);
             this.dateTimePicker.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 63);
+            this.label1.Location = new System.Drawing.Point(13, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 15);
             this.label1.TabIndex = 17;
@@ -101,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 145);
+            this.label2.Location = new System.Drawing.Point(13, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 15);
             this.label2.TabIndex = 18;
@@ -110,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 172);
+            this.label4.Location = new System.Drawing.Point(13, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 15);
             this.label4.TabIndex = 20;
@@ -119,7 +119,7 @@
             // comboBoxDoctor
             // 
             this.comboBoxDoctor.FormattingEnabled = true;
-            this.comboBoxDoctor.Location = new System.Drawing.Point(113, 145);
+            this.comboBoxDoctor.Location = new System.Drawing.Point(88, 94);
             this.comboBoxDoctor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(282, 23);
@@ -128,25 +128,25 @@
             // comboBoxPatient
             // 
             this.comboBoxPatient.FormattingEnabled = true;
-            this.comboBoxPatient.Location = new System.Drawing.Point(112, 118);
+            this.comboBoxPatient.Location = new System.Drawing.Point(87, 67);
             this.comboBoxPatient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxPatient.Name = "comboBoxPatient";
-            this.comboBoxPatient.Size = new System.Drawing.Size(282, 23);
+            this.comboBoxPatient.Size = new System.Drawing.Size(283, 23);
             this.comboBoxPatient.TabIndex = 22;
             // 
             // comboBoxExecutionStatus
             // 
             this.comboBoxExecutionStatus.FormattingEnabled = true;
-            this.comboBoxExecutionStatus.Location = new System.Drawing.Point(112, 91);
+            this.comboBoxExecutionStatus.Location = new System.Drawing.Point(87, 40);
             this.comboBoxExecutionStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxExecutionStatus.Name = "comboBoxExecutionStatus";
-            this.comboBoxExecutionStatus.Size = new System.Drawing.Size(282, 23);
+            this.comboBoxExecutionStatus.Size = new System.Drawing.Size(283, 23);
             this.comboBoxExecutionStatus.TabIndex = 23;
             // 
             // comboBoxService
             // 
             this.comboBoxService.FormattingEnabled = true;
-            this.comboBoxService.Location = new System.Drawing.Point(113, 172);
+            this.comboBoxService.Location = new System.Drawing.Point(88, 121);
             this.comboBoxService.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxService.Name = "comboBoxService";
             this.comboBoxService.Size = new System.Drawing.Size(282, 23);
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 378);
+            this.ClientSize = new System.Drawing.Size(385, 196);
             this.Controls.Add(this.comboBoxService);
             this.Controls.Add(this.comboBoxExecutionStatus);
             this.Controls.Add(this.comboBoxPatient);
@@ -170,7 +170,7 @@
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelBlankName);
             this.Name = "FormContract";
-            this.Text = "Блюдо";
+            this.Text = "Контракт";
             this.Load += new System.EventHandler(this.FormContract_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

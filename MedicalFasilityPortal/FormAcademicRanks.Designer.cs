@@ -41,7 +41,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(562, 196);
+            this.buttonUpdate.Location = new System.Drawing.Point(343, 99);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(130, 22);
@@ -52,7 +52,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(562, 170);
+            this.buttonDelete.Location = new System.Drawing.Point(343, 73);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(130, 22);
@@ -63,7 +63,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(562, 144);
+            this.buttonEdit.Location = new System.Drawing.Point(343, 47);
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(130, 22);
@@ -74,7 +74,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(562, 118);
+            this.buttonAdd.Location = new System.Drawing.Point(343, 21);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(130, 22);
@@ -94,21 +94,21 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(497, 431);
+            this.dataGridView.Size = new System.Drawing.Size(323, 255);
             this.dataGridView.TabIndex = 5;
             // 
-            // FormPatients
+            // FormAcademicRanks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 431);
+            this.ClientSize = new System.Drawing.Size(483, 255);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
-            this.Name = "FormPatients";
-            this.Text = "Блюда";
+            this.Name = "FormAcademicRanks";
+            this.Text = "Учёные степени";
             this.Load += new System.EventHandler(this.FormAcademicRanks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
