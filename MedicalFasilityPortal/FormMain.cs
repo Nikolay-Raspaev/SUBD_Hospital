@@ -79,5 +79,14 @@ namespace HospitalView
                 form.ShowDialog();
             }
         }
+
+        private void рандомToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var service = Program.ServiceProvider?.GetService(typeof(FormRandom));
+            if (service is FormRandom form)
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.PatientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.рандомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,8 @@
             this.ExecutionStatusToolStripMenuItem,
             this.Job,
             this.PatientsToolStripMenuItem,
-            this.ServicesToolStripMenuItem});
+            this.ServicesToolStripMenuItem,
+            this.рандомToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(975, 24);
@@ -118,6 +120,13 @@
             this.dataGridView.Size = new System.Drawing.Size(975, 426);
             this.dataGridView.TabIndex = 7;
             // 
+            // рандомToolStripMenuItem
+            // 
+            this.рандомToolStripMenuItem.Name = "рандомToolStripMenuItem";
+            this.рандомToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.рандомToolStripMenuItem.Text = "Рандом";
+            this.рандомToolStripMenuItem.Click += new System.EventHandler(this.рандомToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -147,5 +156,6 @@
         private ToolStripMenuItem ExecutionStatusToolStripMenuItem;
         private ToolStripMenuItem Job;
         private ToolStripMenuItem ServicesToolStripMenuItem;
+        private ToolStripMenuItem рандомToolStripMenuItem;
     }
 }

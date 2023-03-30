@@ -63,6 +63,7 @@ namespace HospitalView
             services.AddTransient<FormPatients>();
             services.AddTransient<FormService>();
             services.AddTransient<FormServices>();
+            services.AddTransient<FormRandom>();
         }
     }
 }
