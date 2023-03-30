@@ -104,7 +104,7 @@
             this.Controls.Add(this.textBoxServiceName);
             this.Controls.Add(this.labelPrice);
             this.Name = "FormService";
-            this.Text = "Блюдо";
+            this.Text = "Услуга";
             this.Load += new System.EventHandler(this.FormService_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

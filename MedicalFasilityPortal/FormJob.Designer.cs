@@ -206,7 +206,7 @@
             this.ColumnCount.Name = "ColumnCount";
             this.ColumnCount.Width = 125;
             // 
-            // FormDish
+            // FormJob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,8 +216,8 @@
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelName);
-            this.Name = "FormDish";
-            this.Text = "Набор блюд";
+            this.Name = "FormJob";
+            this.Text = "Профессия";
             this.Load += new System.EventHandler(this.FormJob_Load);
             this.groupBoxComponents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

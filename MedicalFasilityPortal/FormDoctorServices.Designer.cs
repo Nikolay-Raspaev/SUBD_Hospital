@@ -74,7 +74,7 @@
             this.labelComponent.TabIndex = 6;
             this.labelComponent.Text = "Блюдо:";
             // 
-            // FormJobServices
+            // FormDoctorServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,8 +83,8 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxComponent);
             this.Controls.Add(this.labelComponent);
-            this.Name = "FormJobServices";
-            this.Text = "Блюдо набор блюд";
+            this.Name = "FormDoctorServices";
+            this.Text = "Добавление услуги доктору";
             this.ResumeLayout(false);
             this.PerformLayout();
 

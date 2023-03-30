@@ -83,7 +83,7 @@
             this.Controls.Add(this.textBoxStatus);
             this.Controls.Add(this.labelPrice);
             this.Name = "FormExecutionStatus";
-            this.Text = "Блюдо";
+            this.Text = "Статус контракта";
             this.Load += new System.EventHandler(this.FormExecutionStatus_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

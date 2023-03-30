@@ -108,7 +108,7 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormExecutionStatuses";
-            this.Text = "Блюда";
+            this.Text = "Статусы контракта";
             this.Load += new System.EventHandler(this.FormExecutionStatuses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

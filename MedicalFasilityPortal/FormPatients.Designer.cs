@@ -108,7 +108,7 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormPatients";
-            this.Text = "Блюда";
+            this.Text = "Пациенты";
             this.Load += new System.EventHandler(this.FormPatients_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

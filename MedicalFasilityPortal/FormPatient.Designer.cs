@@ -187,7 +187,7 @@
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelBlankName);
             this.Name = "FormPatient";
-            this.Text = "Блюдо";
+            this.Text = "Пациент";
             this.Load += new System.EventHandler(this.FormPatient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

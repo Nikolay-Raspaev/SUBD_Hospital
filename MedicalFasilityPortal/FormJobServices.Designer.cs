@@ -84,7 +84,7 @@
             this.Controls.Add(this.comboBoxComponent);
             this.Controls.Add(this.labelComponent);
             this.Name = "FormJobServices";
-            this.Text = "Блюдо набор блюд";
+            this.Text = "Добавление улсуг в профессию";
             this.ResumeLayout(false);
             this.PerformLayout();
 

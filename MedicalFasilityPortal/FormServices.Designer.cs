@@ -97,7 +97,7 @@
             this.dataGridView.Size = new System.Drawing.Size(497, 431);
             this.dataGridView.TabIndex = 5;
             // 
-            // FormPatients
+            // FormServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,8 +107,8 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
-            this.Name = "FormPatients";
-            this.Text = "Блюда";
+            this.Name = "FormServices";
+            this.Text = "Услуги";
             this.Load += new System.EventHandler(this.FormServices_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
