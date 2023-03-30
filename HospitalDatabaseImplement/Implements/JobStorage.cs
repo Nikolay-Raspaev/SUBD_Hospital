@@ -67,6 +67,7 @@ namespace HospitalDatabaseImplement.Implements
             }
             context.Jobs.Add(newJob);
             context.SaveChanges();
+            Update(model);
             return newJob.GetViewModel;
         }
 

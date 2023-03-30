@@ -38,11 +38,11 @@ public partial class Job : IJob
         {
             Id = model.Id,
             JobTitle = model.JobTitle,
-            ServicesJobs = model.JobServices.Select(x => new ServicesJob
-            {
-                Id = context.ServicesJobs.Count() > 0 ? context.ServicesJobs.Max(x => x.Id) + 1 : 1,
-                Services = context.Services.First(y => y.Id == x.Key),
-            }).ToList()
+            //ServicesJobs = model.JobServices.Select(x => new ServicesJob
+            //{
+            //    Id = context.ServicesJobs.Count() > 0 ? context.ServicesJobs.Max(x => x.Id) + 1 : 1,
+            //    Services = context.Services.First(y => y.Id == x.Key),
+            //}).ToList()
         };
     }
 
