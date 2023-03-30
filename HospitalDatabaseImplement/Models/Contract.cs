@@ -37,6 +37,7 @@ public partial class Contract : IContract
             PatientId = model.PatientId,
             ContractDoctorsId = model.ContractDoctorsId,
             ContractServicesId = model.ContractServicesId,
+            //ContractNavigation = new DoctorsService { DoctorsId = model.ContractDoctorsId, ServicesId = model.ContractServicesId },
         };
     }
 

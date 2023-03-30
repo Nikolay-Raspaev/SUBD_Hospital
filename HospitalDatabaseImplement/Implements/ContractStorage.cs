@@ -3,6 +3,7 @@ using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
 using HospitalDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,11 @@ namespace HospitalDatabaseImplement.Implements
             }
             using var context = new HospitalBdContext();
             return context.Contracts
+                                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Contracts)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .Include(x => x.Patient)
                     .FirstOrDefault(x => (model.Id.HasValue && x.Id == model.Id))
                     ?.GetViewModel;
         }
@@ -43,8 +49,14 @@ namespace HospitalDatabaseImplement.Implements
         {
             using var context = new HospitalBdContext();
             return context.Contracts
-                    .Select(x => x.GetViewModel)
-                    .ToList();
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Services)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .Include(x => x.Patient)
+                .Include(x => x.ExecutionStatus)
+                .Select(x => x.GetViewModel)
+                .ToList();
         }
 
         public ContractViewModel? Insert(ContractBindingModel model)
@@ -58,7 +70,14 @@ namespace HospitalDatabaseImplement.Implements
             }
             context.Contracts.Add(newContract);
             context.SaveChanges();
-            return newContract.GetViewModel;
+            return context.Contracts
+                                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Contracts)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .Include(x => x.Patient)
+                    .FirstOrDefault(x => (x.Id == model.Id))
+                    ?.GetViewModel;
         }
 
         public ContractViewModel? Update(ContractBindingModel model)

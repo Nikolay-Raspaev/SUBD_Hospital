@@ -35,7 +35,6 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxDoctor = new System.Windows.Forms.ComboBox();
             this.comboBoxPatient = new System.Windows.Forms.ComboBox();
@@ -70,18 +69,18 @@
             this.labelPrice.AutoSize = true;
             this.labelPrice.Location = new System.Drawing.Point(3, 118);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(31, 15);
+            this.labelPrice.Size = new System.Drawing.Size(54, 15);
             this.labelPrice.TabIndex = 7;
-            this.labelPrice.Text = "Имя";
+            this.labelPrice.Text = "Пациент";
             // 
             // labelBlankName
             // 
             this.labelBlankName.AutoSize = true;
             this.labelBlankName.Location = new System.Drawing.Point(3, 91);
             this.labelBlankName.Name = "labelBlankName";
-            this.labelBlankName.Size = new System.Drawing.Size(58, 15);
+            this.labelBlankName.Size = new System.Drawing.Size(43, 15);
             this.labelBlankName.TabIndex = 6;
-            this.labelBlankName.Text = "Фамилия";
+            this.labelBlankName.Text = "Статус";
             // 
             // dateTimePicker
             // 
@@ -104,27 +103,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(47, 15);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Отчество";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 210);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 15);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Номер телефона";
+            this.label2.Text = "Доктор";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.Size = new System.Drawing.Size(44, 15);
             this.label4.TabIndex = 20;
-            this.label4.Text = "Паспорт";
+            this.label4.Text = "Услуга";
             // 
             // comboBoxDoctor
             // 
@@ -172,7 +162,6 @@
             this.Controls.Add(this.comboBoxPatient);
             this.Controls.Add(this.comboBoxDoctor);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker);
@@ -197,7 +186,6 @@
         private DateTimePicker dateTimePicker;
         private Label label1;
         private Label label2;
-        private Label label3;
         private Label label4;
         private ComboBox comboBoxDoctor;
         private ComboBox comboBoxPatient;

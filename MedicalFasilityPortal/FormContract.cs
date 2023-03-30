@@ -92,7 +92,7 @@ namespace HospitalView
             _listExecutionStatus = _executionStatusLogic.ReadList(null);
             if (_listExecutionStatus != null)
             {
-                comboBoxExecutionStatus.DisplayMember = "ExecutionStatus";
+                comboBoxExecutionStatus.DisplayMember = "ExecutionStatusName";
                 comboBoxExecutionStatus.ValueMember = "Id";
                 comboBoxExecutionStatus.DataSource = _listExecutionStatus;
                 comboBoxExecutionStatus.SelectedItem = null;
