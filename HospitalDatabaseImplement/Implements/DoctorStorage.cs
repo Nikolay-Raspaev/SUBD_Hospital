@@ -97,7 +97,7 @@ namespace HospitalDatabaseImplement.Implements
         }
 
         public DoctorViewModel? Delete(DoctorBindingModel model)
-        ре{
+        {
             using var context = new HospitalBdContext();
             var element = context.Doctors
                     .Include(x => x.DoctorsServices)
