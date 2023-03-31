@@ -35,6 +35,7 @@ namespace HospitalView
                     dataGridView.DataSource = list;
                     dataGridView.Columns["Id"].Visible = false;
                     dataGridView.Columns["Passport"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns["Education"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dataGridView.Columns["DoctorServices"].Visible = false;
                 }
             }
