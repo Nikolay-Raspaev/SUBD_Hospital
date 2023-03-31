@@ -18,7 +18,14 @@ namespace HospitalDatabaseImplement.Implements
         public ContractViewModel? Delete(ContractBindingModel model)
         {
             using var context = new HospitalBdContext();
-            var element = context.Contracts.FirstOrDefault(rec => rec.Id == model.Id);
+            var element = context.Contracts
+                                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Services)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .Include(x => x.Patient)
+                .Include(x => x.ExecutionStatus)
+                .FirstOrDefault(rec => rec.Id == model.Id);
             if (element != null)
             {
                 context.Contracts.Remove(element);
