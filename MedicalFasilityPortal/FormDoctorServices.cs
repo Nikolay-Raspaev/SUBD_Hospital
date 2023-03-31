@@ -1,4 +1,5 @@
-﻿using HospitalContracts.BuisnessLogicsContracts;
+﻿using HospitalBuisnessLogic.BuisnessLogic;
+using HospitalContracts.BuisnessLogicsContracts;
 using HospitalContracts.ViewModels;
 using HospitalDataModels.Models;
 using System;
@@ -15,7 +16,7 @@ namespace HospitalView
 {
     public partial class FormDoctorServices : Form
     {
-        private readonly List<ServiceViewModel>? _list;
+        private List<ServiceViewModel>? _list;
         public int Id
         {
             get
@@ -27,6 +28,8 @@ namespace HospitalView
                 comboBoxComponent.SelectedValue = value;
             }
         }
+        private int _jobId;
+        public int JobId { get { return _jobId; } set { _jobId = value; } }
         public IService? ServiceModel
         {
             get
@@ -45,18 +48,34 @@ namespace HospitalView
                 return null;
             }
         }
+        private readonly IServiceLogic _serviceLogic;
 
         public FormDoctorServices(IServiceLogic logic)
         {
             InitializeComponent();
-            _list = logic.ReadList(null);
-            if (_list != null)
+            _serviceLogic = logic;
+
+        }
+        private void FormDoctor_Load(object sender, EventArgs e)
+        {
+            
+            try
             {
-                comboBoxComponent.DisplayMember = "ServiceName";
-                comboBoxComponent.ValueMember = "Id";
-                comboBoxComponent.DataSource = _list;
-                comboBoxComponent.SelectedItem = null;
+                _list = _serviceLogic.ReadList(JobId);
+                if (_list != null)
+                {
+                    comboBoxComponent.DisplayMember = "ServiceName";
+                    comboBoxComponent.ValueMember = "Id";
+                    comboBoxComponent.DataSource = _list;
+                    comboBoxComponent.SelectedItem = null;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            
         }
         private void ButtonSave_Click(object sender, EventArgs e)
         {

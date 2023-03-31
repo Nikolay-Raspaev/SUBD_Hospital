@@ -12,7 +12,7 @@ namespace HospitalContracts.StoragesContracts;
 public interface IServiceStorage
 {
     List<ServiceViewModel> GetFullList();
-    List<ServiceViewModel> GetFilteredList(ServiceSearchModel model);
+    List<ServiceViewModel> GetFilteredList(int model);
     ServiceViewModel? GetElement(ServiceSearchModel model);
     ServiceViewModel? Insert(ServiceBindingModel model);
     ServiceViewModel? Update(ServiceBindingModel model);

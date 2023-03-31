@@ -105,7 +105,7 @@ namespace HospitalView
                 comboBoxDoctor.DataSource = _listDoctor;
                 comboBoxDoctor.SelectedItem = null;
             }
-            _listService = _serviceLogic.ReadList(null);
+            _listService = _serviceLogic.ReadList(0);
             if (_listService != null)
             {
                 comboBoxService.DisplayMember = "ServiceName";

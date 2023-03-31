@@ -11,7 +11,7 @@ namespace HospitalContracts.BuisnessLogicsContracts;
 
 public interface IServiceLogic
     {
-        List<ServiceViewModel>? ReadList(ServiceSearchModel? model);
+        List<ServiceViewModel>? ReadList(int id);
         ServiceViewModel? ReadElement(ServiceSearchModel model);
         bool Create(ServiceBindingModel model);
         bool Update(ServiceBindingModel model);

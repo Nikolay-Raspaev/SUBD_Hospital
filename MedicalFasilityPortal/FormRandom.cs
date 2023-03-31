@@ -193,7 +193,7 @@ namespace HospitalView
                         case "Услуги":
                             Stopwatch stopwatch2 = new Stopwatch();
                             stopwatch2.Start();
-                            var list2 = _serviceLogic.ReadList(null);
+                            var list2 = _serviceLogic.ReadList(0);
                             stopwatch2.Stop();
                             TimeSpan ts2 = stopwatch2.Elapsed;
                             string elapsedTime2 = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",

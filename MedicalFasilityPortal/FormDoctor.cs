@@ -138,6 +138,7 @@ namespace HospitalView
             var service = Program.ServiceProvider?.GetService(typeof(FormDoctorServices));
             if (service is FormDoctorServices form)
             {
+                form.JobId = (int)comboBoxJob.SelectedValue;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     if (form.ServiceModel == null)

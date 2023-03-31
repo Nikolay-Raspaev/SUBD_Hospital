@@ -3,6 +3,7 @@ using HospitalContracts.SearchModels;
 using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
 using HospitalDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,6 +50,30 @@ namespace HospitalDatabaseImplement.Implements
             using var context = new HospitalBdContext();
             return context.Services
                     .Where(x => x.ServiceName.Contains(model.ServiceName))
+                    .Select(x => x.GetViewModel)
+                    .ToList();
+        }
+
+        public List<ServiceViewModel> GetFilteredList(int JobId)
+        {
+            using var context = new HospitalBdContext();
+            List<Service> listService = context.Services
+                    .Include(x => x.ServicesJobs)
+                    .ToList();
+            List<Service> listServiceViewModels = new List<Service>();
+            foreach (var service in listService)
+            {
+                foreach (var serviceJob in service.ServicesJobs)
+                {
+                    if (serviceJob.JobId == JobId)
+                    {
+                        listServiceViewModels.Add(service);
+                        break;
+                    }
+                }
+            }
+
+            return listServiceViewModels
                     .Select(x => x.GetViewModel)
                     .ToList();
         }

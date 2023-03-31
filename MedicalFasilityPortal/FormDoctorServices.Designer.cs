@@ -85,6 +85,7 @@
             this.Controls.Add(this.labelComponent);
             this.Name = "FormDoctorServices";
             this.Text = "Добавление услуги доктору";
+            this.Load += new System.EventHandler(this.FormDoctor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

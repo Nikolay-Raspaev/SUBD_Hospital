@@ -18,9 +18,9 @@ namespace HospitalBuisnessLogic.BuisnessLogic
         {
             _serviceStorage = ServiceStorage;
         }
-        public List<ServiceViewModel>? ReadList(ServiceSearchModel? model)
+        public List<ServiceViewModel>? ReadList(int model)
         {
-            var list = model == null ? _serviceStorage.GetFullList() : _serviceStorage.GetFilteredList(model);
+            var list = model == 0 ? _serviceStorage.GetFullList() : _serviceStorage.GetFilteredList(model);
             if (list == null)
             {
                 return null;

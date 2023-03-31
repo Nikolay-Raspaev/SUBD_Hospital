@@ -48,7 +48,7 @@ namespace HospitalView
         public FormJobServices(IServiceLogic logic)
         {
             InitializeComponent();
-            _list = logic.ReadList(null);
+            _list = logic.ReadList(0);
             if (_list != null)
             {
                 comboBoxComponent.DisplayMember = "ServiceName";

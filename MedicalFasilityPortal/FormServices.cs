@@ -28,7 +28,7 @@ namespace HospitalView
         {
             try
             {
-                var list = _serviceLogic.ReadList(null);
+                var list = _serviceLogic.ReadList(0);
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
