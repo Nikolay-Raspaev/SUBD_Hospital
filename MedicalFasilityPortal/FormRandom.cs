@@ -284,7 +284,7 @@ namespace HospitalView
                                     ServiceName = JS.ServiceName,
                                     Surname = doctor.Surname,
                                     Patronymic = doctor.Patronymic,
-                                    doctor = doctor.Name,
+                                    Name = doctor.Name,
                                     Birthdate = doctor.Birthdate,
                                     Passport = doctor.Passport,
                                     TelephoneNumber = doctor.TelephoneNumber,
