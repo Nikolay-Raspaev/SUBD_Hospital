@@ -58,6 +58,7 @@ public partial class Job : IJob
         {   // удалили те в бд, которых нет в модели
             context.ServicesJobs.RemoveRange(jobServices.Where(rec => !model.JobServices.ContainsKey(rec.ServicesId)));
             context.SaveChanges();
+            jobServices = context.ServicesJobs.Where(rec => rec.JobId == model.Id).ToList();
             // обновили количество у существующих записей
             foreach (var updateService in jobServices)
             {

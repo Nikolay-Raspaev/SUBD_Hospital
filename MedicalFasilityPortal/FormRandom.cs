@@ -1,6 +1,11 @@
 ﻿using HospitalBuisnessLogic.BuisnessLogic;
 using HospitalContracts.BindingModels;
 using HospitalContracts.BuisnessLogicsContracts;
+using HospitalDatabaseImplement;
+using HospitalDatabaseImplement.Models;
+using HospitalDataModels;
+using HospitalDataModels.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -23,17 +28,19 @@ namespace HospitalView
         private readonly IPatientLogic _patientLogic;
         private readonly IJobLogic _jobLogic;
         private readonly IServiceLogic _serviceLogic;
-        public FormRandom(IPatientLogic patientLogic, IServiceLogic serviceLogic, IJobLogic jobLogic)
+        private readonly IDoctorLogic _doctorLogic;
+        public FormRandom(IPatientLogic patientLogic, IServiceLogic serviceLogic, IJobLogic jobLogic, IDoctorLogic doctorLogic)
         {
             InitializeComponent();
             _patientLogic = patientLogic;
             _serviceLogic = serviceLogic;
             _jobLogic = jobLogic;
+            _doctorLogic = doctorLogic;
         }
         string[] Names = new string[] { "Захар", "Ева", "Сергей", "Максим", "Максимильян", "Лука", "Олег", "Мишель", "София", "Стела", "Аким", "Матвей", "Анисия", "Василий", "Лукьян", "Руслан", "Клара", "Андрей", "Мстислав", "Федот", "Олег", "Аркадий", "Ангелина", "Анжелика", "Стефания", "Мариам", "Дементий", "Андрон", "Даниил", "Адам", "Евдоким", "Валерий", "Дамир", "Фёдор", "Василиса", "Сафина", "Даниэль", "Дарина", "Мир", "Феофан", "Всеслава", "Инна", "Платон", "Ирина", "Рафаэль", "Милана", "Клавдий", "Лейла", "Роза", "Тимофей", "Пимен", "Модест", "Эмма", "Георгий", "Дарья", "Дмитрий", "Эрик", "Филипп", "Владилен", "Евсей", "Даниль", "Ростислав", "Тихон", "Тея", "Наум", "Виолетта", "Анатолий", "Рустам", "Юлия", "Дана", "Самсон", "Ариадна", "Ибрагим", "Светлана", "Инга", "Али", "Виталий", "Алисия", "Оксана", "Тимур", "Аида", "Камиль", "Иннокентий", "Элина", "Виктория", "Анна", "Амелия", "Япсина", "Эвелина", "Кира", "Артур", "Владлена", "Никифор", "Марина", "Артем", "Моисей", "Иван", "Лидия", "Трофим", "Игорь" };
         string[] Surnames = new string[] { "Пищальников", "Яхонтов", "Кочетов", "Ермилова", "Разбойникова", "Окулова", "Дудинова", "Добрынина", "Кучава", "Лазарев", "Егорова", "Ипатьев", "Байдавлетов", "Шалаганов", "Масмехов", "Шентеряков", "Юдачёв", "Дагина", "Лавлинский", "Гунин", "Яшвили", "Шуршалина", "Сомкина", "Бояринов", "Коленко", "Меншикова", "Бойков", "Ябловский", "Любова", "Ямпольский", "Фанина", "Молчанова", "Верещагин", "Окладников", "Чичерина", "Ключников", "Барышев", "Вятт", "Толбугин", "Радченко", "Веселкова", "Щавлева", "Слепынина", "Садков", "Барышников", "Бенедиктов", "Графова", "Мирнова", "Васильев", "Никишина", "Краснов", "Набатников", "Пронин", "Стрельцов", "Булка", "Саврасова", "Элиашева", "Канаев", "Кичеева", "Портнова", "Машарин", "Ларина", "Курганова", "Лапаева", "Яшуков", "Шлыков", "Арнаутова", "Ширяев", "Зуев", "Синдеева", "Трутнев", "Кошечкин", "Логинов", "Колпаков", "Бендлина", "Мурзакова", "Витинский", "Ратаева", "Щедрин", "Овощников", "Язвецова", "Крупин", "Седельников", "Юхтрица", "Лыков", "Смешной", "Пожарский", "Мичуев", "Шлиппенбах", "Татаринов", "Янютин", "Кулагина", "Семёнов", "Зверева", "Ивакин", "Бабинова", "Цейдлерин", "Сагадиев", "Истлентьев", "Деменока" };
         string[] Patronymic = new string[] { "Владимирович(на)", "Олегович(на)", "Александрович(на)", "Алексеевич(на)", "Генадьевич(на)", "Максимович(на)", "Павлович(на)", "Акимович(на)", "Лукьянович(на)", "Матвеевич(на)", "Адреевич(на)", "Федотович(на)", "Аркадий(на)", "Мстиславович(на)", "Федотович(на)", "Даниилович(на)", "Никитьевич(на)", "Евдокимович(на)", "Валерьевич(на)", "Дамирович(на)", "Клавдьевич(на)", "Мирович(на)", "Миронович(на)", "Платонович(на)", "Игоревич(на)", "Антонович(на)", "Валерьевич(на)", "Модестович(на)", "Тимофеевич(на)", "Владленович(на)", "Дмитриевич(на)", "Бенедиктович(на)", "Рустамович(на)", "Ростиславович(на)", "Николаевич(на)", "Данателович(на)", "Ибрагимович(на)", "Анатольевич(на)" };
-        
+
         Random rd = new Random();
         Random rand = new Random();
         string GetRandomTelNo()
@@ -75,7 +82,7 @@ namespace HospitalView
             var builder = new StringBuilder(size);
 
             char offset = lowerCase ? 'a' : 'A';
-            const int lettersOffset = 26; 
+            const int lettersOffset = 26;
 
             for (var i = 0; i < size; i++)
             {
@@ -87,7 +94,7 @@ namespace HospitalView
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            switch (comboBoxQuary.SelectedItem) 
+            switch (comboBoxQuary.SelectedItem)
             {
                 case "Добавить":
                     switch (comboBoxWhat.SelectedItem)
@@ -96,7 +103,7 @@ namespace HospitalView
                             Stopwatch stopwatch = new Stopwatch();
                             stopwatch.Start();
                             for (int i = 0; i < Convert.ToInt32(textBoxCount.Text); i++)
-                            {                            
+                            {
                                 DateOnly dateTime = DateOnly.FromDateTime(RandomDate());
                                 var modelT = new PatientBindingModel
                                 {
@@ -119,16 +126,65 @@ namespace HospitalView
                                 ts.Milliseconds / 10);
                             label.Text = ("RunTime " + elapsedTime);
                             break;
-                        case "Профессии":
-                            Stopwatch stopwatch1 = new Stopwatch();
-                            stopwatch1.Start();
-                            
+                        case "Врачи":
+                            Stopwatch stopwatch4 = new Stopwatch();
+                            stopwatch4.Start();
+                            int rnd1;
+                            var list = _jobLogic.ReadList(null);
                             for (int i = 0; i < Convert.ToInt32(textBoxCount.Text); i++)
                             {
+                                rnd1 = rand.Next(1, list.Count);
+                                DateOnly dateTime = DateOnly.FromDateTime(RandomDate());
+                                var modelT = new DoctorBindingModel
+                                {
+                                    Id = 0,
+                                    Name = Names[rd.Next(0, Names.Length - 1)],
+                                    Surname = Surnames[rd.Next(0, Surnames.Length - 1)],
+                                    Patronymic = Patronymic[rd.Next(0, Patronymic.Length - 1)],
+                                    Birthdate = dateTime,
+                                    Passport = GetRandomPassport(),
+                                    TelephoneNumber = GetRandomTelNo(),
+                                    Education = "Высшее Улгту",
+                                    Jobid = rnd1,
+                                    AcademicRankId = 1,
+                                };
+                                _doctorLogic.Create(modelT);
+                            }
+                            stopwatch4.Stop();
+                            TimeSpan ts4 = stopwatch4.Elapsed;
+
+
+                            string elapsedTime4 = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                ts4.Hours, ts4.Minutes, ts4.Seconds,
+                                ts4.Milliseconds / 10);
+                            label.Text = ("RunTime " + elapsedTime4);
+                            break;
+                        case "Профессии":
+                            var listService = _serviceLogic.ReadList(0);
+                            Stopwatch stopwatch1 = new Stopwatch();
+                            stopwatch1.Start();
+                            Dictionary<int, IService> _jobServices = new Dictionary<int, IService>();
+                            int rnd;
+                            for (int i = 0; i < Convert.ToInt32(textBoxCount.Text); i++)
+                            {
+                                _jobServices.Clear();
+                                for (int j = 0; j < 20; j++)
+                                {
+                                    rnd = rand.Next(1, listService.Count);
+                                    if (!_jobServices.ContainsKey(rnd))
+                                    {
+                                        _jobServices.Add(rnd, listService.FirstOrDefault(x => x.Id == rnd));
+                                    }
+                                }
+                                if (_jobServices.Count == 0)
+                                {
+                                    _jobServices.Add(1, listService.FirstOrDefault(x => x.Id == 1));
+                                }
                                 var model = new JobBindingModel
                                 {
                                     Id = 0,
                                     JobTitle = RandomString(20, false),
+                                    JobServices = _jobServices
                                 };
                                 _jobLogic.Create(model);
                             }
@@ -143,15 +199,15 @@ namespace HospitalView
                             break;
                         case "Услуги":
                             Stopwatch stopwatch2 = new Stopwatch();
-                            stopwatch2.Start();   
+                            stopwatch2.Start();
                             for (int i = 0; i < Convert.ToInt32(textBoxCount.Text); i++)
-                            {                             
+                            {
                                 var modelT = new ServiceBindingModel
                                 {
                                     Id = 0,
                                     ServiceName = RandomString(20, false),
                                     ServicePrice = rd.Next(1000, 20000),
-                            };
+                                };
                                 _serviceLogic.Create(modelT);
                             }
                             stopwatch2.Stop();
@@ -184,7 +240,7 @@ namespace HospitalView
                             var list1 = _jobLogic.ReadList(null);
                             stopwatch1.Stop();
                             TimeSpan ts1 = stopwatch1.Elapsed;
-                            string elapsedTime1 = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", 
+                            string elapsedTime1 = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                                 ts1.Hours, ts1.Minutes, ts1.Seconds,
                                 ts1.Milliseconds / 10);
                             label.Text = ("RunTime " + elapsedTime1);
@@ -200,10 +256,52 @@ namespace HospitalView
                                 ts2.Milliseconds / 10);
                             label.Text = ("RunTime " + elapsedTime2);
                             break;
+                        case "Join":
+                            Stopwatch stopwatch3 = new Stopwatch();
+                            var context = new HospitalBdContext();
+                            var services = context.Services;
+                            var servicesJobs = context.ServicesJobs;
+                            var doctors = context.Doctors;
+                            stopwatch3.Start();
+                            var employees = context.Jobs
+                                .Join(servicesJobs, // второй набор
+                                 job => job.Id, // свойство-селектор объекта из первого набора
+                                 serviceJobs => serviceJobs.JobId, // свойство-селектор объекта из второго набора
+                                 (job, serviceJobs) => new { JobTitle = job.JobTitle, JobId = job.Id, ServicesId = serviceJobs.ServicesId })// результат
+                                .Join(services,
+                                JS => JS.ServicesId,
+                                service => service.Id,
+                                (JS, service) => new { JobTitle = JS.JobTitle, JobId = JS.JobId, ServicesId = JS.ServicesId, ServicePrice = service.ServicePrice, ServiceName = service.ServiceName })
+                                .Join(doctors,
+                                JS => JS.JobId,
+                                doctor => doctor.Jobid,
+                                (JS, doctor) => new
+                                {
+                                    JobTitle = JS.JobTitle,
+                                    JobId = JS.JobId,
+                                    ServicesId = JS.ServicesId,
+                                    ServicePrice = JS.ServicePrice,
+                                    ServiceName = JS.ServiceName,
+                                    Surname = doctor.Surname,
+                                    Patronymic = doctor.Patronymic,
+                                    doctor = doctor.Name,
+                                    Birthdate = doctor.Birthdate,
+                                    Passport = doctor.Passport,
+                                    TelephoneNumber = doctor.TelephoneNumber,
+                                    Education = doctor.Education,
+                                    AcademicRankId = doctor.AcademicRankId
+                                });
+                            stopwatch3.Stop();
+                            TimeSpan ts3 = stopwatch3.Elapsed;
+                            string elapsedTime3 = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                ts3.Hours, ts3.Minutes, ts3.Seconds,
+                                ts3.Milliseconds / 10);
+                            label.Text = ("RunTime " + elapsedTime3);
+                            break;
                     }
                     break;
             }
-            
+
         }
     }
 }

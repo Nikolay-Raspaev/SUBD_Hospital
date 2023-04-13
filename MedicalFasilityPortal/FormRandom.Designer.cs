@@ -28,82 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.comboBoxWhat = new System.Windows.Forms.ComboBox();
-            this.textBoxCount = new System.Windows.Forms.TextBox();
-            this.label = new System.Windows.Forms.Label();
-            this.comboBoxQuary = new System.Windows.Forms.ComboBox();
-            this.SuspendLayout();
+            buttonAdd = new Button();
+            comboBoxWhat = new ComboBox();
+            textBoxCount = new TextBox();
+            label = new Label();
+            comboBoxQuary = new ComboBox();
+            SuspendLayout();
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(118, 146);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(82, 22);
-            this.buttonAdd.TabIndex = 0;
-            this.buttonAdd.Text = "Добавить";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            buttonAdd.Location = new Point(118, 146);
+            buttonAdd.Margin = new Padding(3, 2, 3, 2);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(82, 22);
+            buttonAdd.TabIndex = 0;
+            buttonAdd.Text = "Добавить";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // comboBoxWhat
             // 
-            this.comboBoxWhat.FormattingEnabled = true;
-            this.comboBoxWhat.Items.AddRange(new object[] {
-            "Пациенты",
-            "Услуги",
-            "Профессии"});
-            this.comboBoxWhat.Location = new System.Drawing.Point(68, 31);
-            this.comboBoxWhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBoxWhat.Name = "comboBoxWhat";
-            this.comboBoxWhat.Size = new System.Drawing.Size(133, 23);
-            this.comboBoxWhat.TabIndex = 1;
+            comboBoxWhat.FormattingEnabled = true;
+            comboBoxWhat.Items.AddRange(new object[] { "Пациенты", "Услуги", "Профессии", "Врачи", "Join" });
+            comboBoxWhat.Location = new Point(68, 31);
+            comboBoxWhat.Margin = new Padding(3, 2, 3, 2);
+            comboBoxWhat.Name = "comboBoxWhat";
+            comboBoxWhat.Size = new Size(133, 23);
+            comboBoxWhat.TabIndex = 1;
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(68, 6);
-            this.textBoxCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxCount.Name = "textBoxCount";
-            this.textBoxCount.Size = new System.Drawing.Size(133, 23);
-            this.textBoxCount.TabIndex = 2;
+            textBoxCount.Location = new Point(68, 6);
+            textBoxCount.Margin = new Padding(3, 2, 3, 2);
+            textBoxCount.Name = "textBoxCount";
+            textBoxCount.Size = new Size(133, 23);
+            textBoxCount.TabIndex = 2;
             // 
             // label
             // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(10, 89);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(38, 15);
-            this.label.TabIndex = 3;
-            this.label.Text = "label1";
+            label.AutoSize = true;
+            label.Location = new Point(10, 89);
+            label.Name = "label";
+            label.Size = new Size(38, 15);
+            label.TabIndex = 3;
+            label.Text = "label1";
             // 
             // comboBoxQuary
             // 
-            this.comboBoxQuary.FormattingEnabled = true;
-            this.comboBoxQuary.Items.AddRange(new object[] {
-            "Добавить",
-            "Select?"});
-            this.comboBoxQuary.Location = new System.Drawing.Point(68, 56);
-            this.comboBoxQuary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBoxQuary.Name = "comboBoxQuary";
-            this.comboBoxQuary.Size = new System.Drawing.Size(133, 23);
-            this.comboBoxQuary.TabIndex = 4;
+            comboBoxQuary.FormattingEnabled = true;
+            comboBoxQuary.Items.AddRange(new object[] { "Добавить", "Select?" });
+            comboBoxQuary.Location = new Point(68, 56);
+            comboBoxQuary.Margin = new Padding(3, 2, 3, 2);
+            comboBoxQuary.Name = "comboBoxQuary";
+            comboBoxQuary.Size = new Size(133, 23);
+            comboBoxQuary.TabIndex = 4;
             // 
             // FormRandom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 176);
-            this.Controls.Add(this.comboBoxQuary);
-            this.Controls.Add(this.label);
-            this.Controls.Add(this.textBoxCount);
-            this.Controls.Add(this.comboBoxWhat);
-            this.Controls.Add(this.buttonAdd);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FormRandom";
-            this.Text = "FormRandom";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(319, 176);
+            Controls.Add(comboBoxQuary);
+            Controls.Add(label);
+            Controls.Add(textBoxCount);
+            Controls.Add(comboBoxWhat);
+            Controls.Add(buttonAdd);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "FormRandom";
+            Text = "FormRandom";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
