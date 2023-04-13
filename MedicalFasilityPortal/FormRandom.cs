@@ -125,7 +125,6 @@ namespace HospitalView
                             
                             for (int i = 0; i < Convert.ToInt32(textBoxCount.Text); i++)
                             {
-                                int random = rd.Next(1, 29);
                                 var model = new JobBindingModel
                                 {
                                     Id = 0,

@@ -98,5 +98,16 @@ namespace HospitalView
         {
             LoadData();
         }
+
+        private void buttonGetReport_Click(object sender, EventArgs e)
+        {
+            var list = _ContractLogic.ReadList(null);
+            decimal sum = 0;
+            foreach (var contract in list)
+            {
+                sum += contract.ServicePrice;
+            }
+            textBoxSum.Text = sum.ToString();
+        }
     }
 }
