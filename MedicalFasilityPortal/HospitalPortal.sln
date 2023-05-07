@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalView", "HospitalVie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalDatabaseImplement", "..\HospitalDatabaseImplement\HospitalDatabaseImplement.csproj", "{F0DC9A08-20D6-4123-96AD-F53B4808BBE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalDataModels", "..\HospitalDataModels\HospitalDataModels.csproj", "{91975ABB-288E-48F5-BBEE-27FC9C566453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalDataModels", "..\HospitalDataModels\HospitalDataModels.csproj", "{91975ABB-288E-48F5-BBEE-27FC9C566453}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalContracts", "..\HospitalContracts\HospitalContracts.csproj", "{C833C292-A12F-4CB7-A689-3CE4CF1AE82B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalContracts", "..\HospitalContracts\HospitalContracts.csproj", "{C833C292-A12F-4CB7-A689-3CE4CF1AE82B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalBuisnessLogic", "..\HospitalBuisnessLogic\HospitalBuisnessLogic.csproj", "{B726C660-C1DD-4D9F-8E2D-49888734D4DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalBuisnessLogic", "..\HospitalBuisnessLogic\HospitalBuisnessLogic.csproj", "{B726C660-C1DD-4D9F-8E2D-49888734D4DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo", "..\Mongo\Mongo.csproj", "{27D33656-E5F2-4612-A6B4-526CCCCA48B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoForm", "..\MongoForm\MongoForm.csproj", "{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B726C660-C1DD-4D9F-8E2D-49888734D4DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D33656-E5F2-4612-A6B4-526CCCCA48B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D33656-E5F2-4612-A6B4-526CCCCA48B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D33656-E5F2-4612-A6B4-526CCCCA48B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D33656-E5F2-4612-A6B4-526CCCCA48B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
