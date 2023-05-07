@@ -24,7 +24,5 @@ namespace Mongo.Database.Models
         public string TelephoneNumber { get; set; }
 
         public List<INoUserContract> PatientContracts { get; set; }
-
-        public List<Contract> PatientContract { get; set; }
     }
 }

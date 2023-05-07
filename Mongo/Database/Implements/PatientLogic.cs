@@ -30,8 +30,7 @@ namespace Mongo.Database.Implements
                     Birthdate = model.Birthdate,
                     Passport = model.Passport,
                     TelephoneNumber = model.TelephoneNumber,
-                    PatientContracts = model.PatientContracts,
-                    PatientContract = model.PatientContract
+                    PatientContracts = model.PatientContracts
                 };
                 collection.InsertOne(update);
                 return update;
@@ -97,7 +96,6 @@ namespace Mongo.Database.Implements
                     .Set("Passport", model.Passport)
                     .Set("TelephoneNumber", model.TelephoneNumber)
                     .Set("PatientContracts", model.PatientContracts)
-                    .Set("PatientContract", model.PatientContract);
                 collection.UpdateOne(filter, update);
                 return true;
             }

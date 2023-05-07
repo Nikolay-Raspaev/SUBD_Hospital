@@ -169,8 +169,7 @@ namespace MongoForm
                         Birthdate = model.Patient.Birthdate,
                         Passport = model.Patient.Passport,
                         TelephoneNumber = model.Patient.TelephoneNumber,
-                        PatientContracts = listContract,
-                        PatientContract = new() { (Contract)contract }
+                        PatientContracts = listContract
                     });
                     if (_id != null) operationResult = true;
                 }
