@@ -17,10 +17,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormDoctors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormDoctorServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormJob.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormJobs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormServices.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

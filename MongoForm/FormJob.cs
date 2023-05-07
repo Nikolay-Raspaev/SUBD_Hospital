@@ -60,11 +60,12 @@ namespace MongoForm
                     MessageBox.Show("Произошла ошибка");
                     Close();
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Успешно");
                     Close();
-                }         
+                    DialogResult = DialogResult.OK;
+                }
             }
             else
             {
@@ -82,6 +83,7 @@ namespace MongoForm
                 {
                     MessageBox.Show("Успешно");
                     Close();
+                    DialogResult = DialogResult.OK;
                 }
             }
         }

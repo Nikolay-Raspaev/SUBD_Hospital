@@ -13,22 +13,23 @@ using Mongo.Database.Models;
 
 namespace Mongo.Database.Implements
 {
-    public class JobLogic : IJobLogic
+    public class ServiceLogic : IServiceLogic
     {
 
-        public bool CreateJob(IJob model)
+        public bool CreateService(IService model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
+
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Job>("job");
-            var filter = Builders<Job>.Filter.Eq(a => a.id, model.id);
+            var collection = database.GetCollection<Service>("service");
             var id = ReadList().Count == 0 ? 1 : ReadList().Max(x => x.id) + 1;
             try
             {
-                var update = new Job
+                var update = new Service
                 {
                     id = id,
-                    jobTitle = model.jobTitle,
+                    Name = model.Name,
+                    Price = model.Price,
                 };
                 collection.InsertOne(update);
                 return true;
@@ -39,12 +40,12 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public bool DeleteJob(IJob model)
+        public bool DeleteService(IService model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Job>("job");
-            var filter = Builders<Job>.Filter.Eq(a => a.id, model.id);
+            var collection = database.GetCollection<Service>("service");
+            var filter = Builders<Service>.Filter.Eq("_id", model.id);
             try
             {
                 collection.DeleteOne(filter);
@@ -56,35 +57,37 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public IJob? ReadElement(int id)
+        public IService? ReadElement(int id)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Job> ("job");
-            var filter = Builders<Job>.Filter.Eq(a => a.id, id);
-            var job = collection.Find(filter).FirstOrDefault();
-            return job;
+            var collection = database.GetCollection<Service>("service");
+            var filter = Builders<Service>.Filter.Eq("_id", id);
+            var service = collection.Find(filter).FirstOrDefault();
+            return service;
         }
 
-        public List<Job>? ReadList()
+        public List<Service>? ReadList()
         {
             MongoClient dbClient = new MongoClient(@"mongodb://localhost:27017/Databases");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Job>("job");
-            var filter = Builders<Job>.Filter.Empty;
-            var listJob = collection.Find(filter).ToList();
-            return listJob;
+            var collection = database.GetCollection<Service>("service");
+            var filter = Builders<Service>.Filter.Empty;
+            var lisrService = collection.Find(filter).ToList();
+            return lisrService;
         }
 
-        public bool UpdateJob(IJob model)
+        public bool UpdateService(IService model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Job>("job");       
+            var collection = database.GetCollection<Service>("service");       
             try
             {
-                var filter = Builders<Job>.Filter.Eq(a => a.id, model.id);
-                var update = Builders<Job>.Update.Set("jobTitle", model.jobTitle);
+                var filter = Builders<Service>.Filter.Eq("_id", model.id);
+                var update = Builders<Service>.Update
+                    .Set("Name", model.Name)
+                    .Set("Price", model.Price);
                 collection.UpdateOne(filter, update);
                 return true;
             }

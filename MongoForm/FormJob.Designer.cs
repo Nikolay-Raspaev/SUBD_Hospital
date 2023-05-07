@@ -69,7 +69,7 @@
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(79, 22);
             buttonAdd.TabIndex = 1;
-            buttonAdd.Text = "Добавить";
+            buttonAdd.Text = "Сохранить";
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += ButtonAdd_Click;
             // 
@@ -77,7 +77,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(432, 126);
+            ClientSize = new Size(407, 97);
             Controls.Add(buttonCancel);
             Controls.Add(textBoxName);
             Controls.Add(labelName);

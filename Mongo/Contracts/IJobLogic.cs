@@ -1,4 +1,5 @@
-﻿using Mongo.Models;
+﻿using Mongo.Database.Models;
+using Mongo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Mongo.Contracts
 {
     public interface IJobLogic
     {
-        List<IJob>? ReadList();
+        List<Job>? ReadList();
         IJob? ReadElement(int id);
         bool CreateJob(IJob model);
         bool DeleteJob(IJob model);

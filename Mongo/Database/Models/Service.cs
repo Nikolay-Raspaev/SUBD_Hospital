@@ -1,0 +1,18 @@
+﻿using Mongo.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Mongo.Database.Models
+{
+    public class Service : IService
+    {
+        public int id { get; set; }
+
+        public string Name { get; set; }
+
+        public double Price { get; set; }
+    }
+}
