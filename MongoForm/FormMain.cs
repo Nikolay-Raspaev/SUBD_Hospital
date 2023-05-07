@@ -17,22 +17,14 @@ namespace MongoForm
             InitializeComponent();
         }
 
-        private void AcademicRanksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var service = Program.ServiceProvider?.GetService(typeof(FormAcademicRanks));
-            //if (service is FormAcademicRanks form)
-            //{
-            //    form.ShowDialog();
-            //}
-        }
 
         private void ContractsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //var service = Program.ServiceProvider?.GetService(typeof(FormContracts));
-            //if (service is FormContracts form)
-            //{
-            //    form.ShowDialog();
-            //}
+            var service = Program.ServiceProvider?.GetService(typeof(FormContracts));
+            if (service is FormContracts form)
+            {
+                form.ShowDialog();
+            }
         }
 
         private void DoctorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,15 +34,6 @@ namespace MongoForm
             {
                 form.ShowDialog();
             }
-        }
-
-        private void ExecutionStatusToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var service = Program.ServiceProvider?.GetService(typeof(FormExecutionStatuses));
-            //if (service is FormExecutionStatuses form)
-            //{
-            //    form.ShowDialog();
-            //}
         }
 
         private void Job_Click(object sender, EventArgs e)
@@ -64,11 +47,11 @@ namespace MongoForm
 
         private void PatientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //var service = Program.ServiceProvider?.GetService(typeof(FormPatients));
-            //if (service is FormPatients form)
-            //{
-            //    form.ShowDialog();
-            //}
+            var service = Program.ServiceProvider?.GetService(typeof(FormPatients));
+            if (service is FormPatients form)
+            {
+                form.ShowDialog();
+            }
         }
 
         private void ServicesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,15 +61,6 @@ namespace MongoForm
             {
                 form.ShowDialog();
             }
-        }
-
-        private void рандомToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var service = Program.ServiceProvider?.GetService(typeof(FormRandom));
-            //if (service is FormRandom form)
-            //{
-            //    form.ShowDialog();
-            //}
         }
     }
 }

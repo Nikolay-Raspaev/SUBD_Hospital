@@ -27,6 +27,10 @@ namespace MongoForm
             _serviceProvider = services.BuildServiceProvider();
 
             BsonClassMap.RegisterClassMap<Service>();
+            BsonClassMap.RegisterClassMap<Patient>();
+            BsonClassMap.RegisterClassMap<Doctor>();
+            BsonClassMap.RegisterClassMap<Contract>();
+            BsonClassMap.RegisterClassMap<NoUserContract>();
             var objectSerializer = new ObjectSerializer(type => ObjectSerializer.DefaultAllowedTypes(type) || type.FullName.StartsWith("Mongo"));
             BsonSerializer.RegisterSerializer(objectSerializer);
 
@@ -36,32 +40,24 @@ namespace MongoForm
         private static void ConfigureServices(ServiceCollection services)
         {
 
-            //services.AddTransient<IAcademicRankLogic, AcademicRankLogic>();
-            //services.AddTransient<IContractLogic, ContractLogic>();
+            services.AddTransient<IContractLogic, ContractLogic>();
             services.AddTransient<IDoctorLogic, DoctorLogic>();
-            //services.AddTransient<IExecutionStatusLogic, ExecutionStatusLogic>();
             services.AddTransient<IJobLogic, JobLogic>();
-            //services.AddTransient<IPatientLogic, PatientLogic>();
+            services.AddTransient<IPatientLogic, PatientLogic>();
             services.AddTransient<IServiceLogic, ServiceLogic>();
 
             services.AddTransient<FormMain>();
-            //services.AddTransient<FormAcademicRank>();
-            //services.AddTransient<FormAcademicRanks>();
-            //services.AddTransient<FormContract>();
-            //services.AddTransient<FormContracts>();
+            services.AddTransient<FormContract>();
+            services.AddTransient<FormContracts>();
             services.AddTransient<FormDoctor>();
             services.AddTransient<FormDoctors>();
             services.AddTransient<FormDoctorServices>();
-            //services.AddTransient<FormExecutionStatus>();
-            //services.AddTransient<FormExecutionStatuses>();
             services.AddTransient<FormJobs>();
             services.AddTransient<FormJob>();
-            //services.AddTransient<FormJobServices>();
-            //services.AddTransient<FormPatient>();
-            //services.AddTransient<FormPatients>();
+            services.AddTransient<FormPatient>();
+            services.AddTransient<FormPatients>();
             services.AddTransient<FormService>();
             services.AddTransient<FormServices>();
-            //services.AddTransient<FormRandom>();
         }
     }
 }

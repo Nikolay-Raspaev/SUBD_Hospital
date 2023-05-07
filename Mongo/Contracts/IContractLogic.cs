@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Mongo.Contracts
 {
-    public interface IDoctorLogic
+    public interface IContractLogic
     {
-        List<Doctor>? ReadList();
-        IDoctor? ReadElement(int id);
-        IDoctor CreateDoctor(IDoctor model);
-        bool DeleteDoctor(IDoctor model);
-        bool UpdateDoctor(IDoctor model);
+        List<Contract>? ReadList();
+        IContract? ReadElement(int id);
+        IContract CreateContract(IContract model);
+        bool DeleteContract(IContract model);
+        bool UpdateContract(IContract model);
     }
 }

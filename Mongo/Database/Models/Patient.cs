@@ -1,34 +1,30 @@
-﻿using Mongo.Database.Models;
+﻿using Mongo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mongo.Models
+namespace Mongo.Database.Models
 {
-    public interface IDoctor
+    public class Patient : IPatient
     {
-        int id { get; }
+        public int id { get; set; }
 
-        string Surname { get; }
+        public string Surname { get; set; }
 
-        string Name { get; }
+        public string Name { get; set; }
 
-        string Patronymic { get; }
+        public string Patronymic { get; set; }
 
-        DateTime? Birthdate { get; }
+        public DateTime? Birthdate { get; set; }
 
-        string Passport { get; }
+        public string Passport { get; set; }
 
-        string TelephoneNumber { get; }
+        public string TelephoneNumber { get; set; }
 
-        string Education { get; }
+        public List<INoUserContract> PatientContracts { get; set; }
 
-        string JobTitle { get; }
-
-        string AcademicRank { get; }
-
-        public List<IService> DoctorServices { get; }
+        public List<Contract> PatientContract { get; set; }
     }
 }

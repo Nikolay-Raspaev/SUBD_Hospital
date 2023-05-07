@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace Mongo.Models
 {
-    public interface IContract
+    public interface INoUserContract
     {
         int id { get; }
         DateTime? ExerciseDate { get; }
         string Status { get; }
-        IPatient Patient { get; }
-        string PatientName { get; set; }
         IDoctor Doctor { get; }
-        string DoctorName { get; set; }
+        string DoctorName { get; }
         int ServiceId { get; }
     }
 }

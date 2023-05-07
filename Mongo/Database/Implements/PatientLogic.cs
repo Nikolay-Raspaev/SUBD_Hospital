@@ -10,18 +10,18 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace Mongo.Database.Implements
 {
-    public class DoctorLogic : IDoctorLogic
+    public class PatientLogic : IPatientLogic
     {
         
-        public IDoctor CreateDoctor(IDoctor model)
+        public IPatient CreatePatient(IPatient model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
+            var collection = database.GetCollection<Patient>("patient");
             var id = ReadList().Count == 0 ? 1 : ReadList().Max(x => x.id) + 1;
             try
             {
-                var update = new Doctor
+                var update = new Patient
                 {
                     id = id,
                     Surname = model.Surname,
@@ -30,10 +30,8 @@ namespace Mongo.Database.Implements
                     Birthdate = model.Birthdate,
                     Passport = model.Passport,
                     TelephoneNumber = model.TelephoneNumber,
-                    Education = model.Education,
-                    JobTitle = model.JobTitle,
-                    AcademicRank = model.AcademicRank,
-                    DoctorServices = model.DoctorServices
+                    PatientContracts = model.PatientContracts,
+                    PatientContract = model.PatientContract
                 };
                 collection.InsertOne(update);
                 return update;
@@ -44,12 +42,12 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public bool DeleteDoctor(IDoctor model)
+        public bool DeletePatient(IPatient model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
-            var filter = Builders<Doctor>.Filter.Eq("_id", model.id);
+            var collection = database.GetCollection<Patient>("patient");
+            var filter = Builders<Patient>.Filter.Eq("_id", model.id);
             try
             {
                 collection.DeleteOne(filter);
@@ -61,36 +59,36 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public IDoctor? ReadElement(int id)
+        public IPatient? ReadElement(int id)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
-            var filter = Builders<Doctor>.Filter.Eq("_id", id);
-            var doctor = collection.Find(filter).FirstOrDefault();
-            return doctor;
+            var collection = database.GetCollection<Patient>("patient");
+            var filter = Builders<Patient>.Filter.Eq("_id", id);
+            var patient = collection.Find(filter).FirstOrDefault();
+            return patient;
         }
 
-        public List<Doctor>? ReadList()
+        public List<Patient>? ReadList()
         {
             MongoClient dbClient = new MongoClient(@"mongodb://localhost:27017/Databases");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
-            var filter = Builders<Doctor>.Filter.Empty;
-            var listDoctor = collection.Find(filter).ToList();
-            return listDoctor;
+            var collection = database.GetCollection<Patient>("patient");
+            var filter = Builders<Patient>.Filter.Empty;
+            var listPatient = collection.Find(filter).ToList();
+            return listPatient;
         }
 
-        public bool UpdateDoctor(IDoctor model)
+        public bool UpdatePatient(IPatient model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
 
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
+            var collection = database.GetCollection<Patient>("patient");
             try
             {
-                var filter = Builders<Doctor>.Filter.Eq("_id", model.id);
-                var update = Builders<Doctor>.Update      
+                var filter = Builders<Patient>.Filter.Eq("_id", model.id);
+                var update = Builders<Patient>.Update
                     .Set("Patronymic", model.Patronymic)
                     .Set("Surname", model.Surname)
                     .Set("Name", model.Name)
@@ -98,10 +96,8 @@ namespace Mongo.Database.Implements
                     .Set("Birthdate", model.Birthdate)
                     .Set("Passport", model.Passport)
                     .Set("TelephoneNumber", model.TelephoneNumber)
-                    .Set("Education", model.Education)
-                    .Set("JobTitle", model.JobTitle)
-                    .Set("AcademicRank", model.AcademicRank)
-                    .Set("DoctorServices", model.DoctorServices);
+                    .Set("PatientContracts", model.PatientContracts)
+                    .Set("PatientContract", model.PatientContract);
                 collection.UpdateOne(filter, update);
                 return true;
             }

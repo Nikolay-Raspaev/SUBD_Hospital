@@ -59,13 +59,6 @@
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
-            // AcademicRanksToolStripMenuItem
-            // 
-            this.AcademicRanksToolStripMenuItem.Name = "AcademicRanksToolStripMenuItem";
-            this.AcademicRanksToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
-            this.AcademicRanksToolStripMenuItem.Text = "Учёная степень";
-            this.AcademicRanksToolStripMenuItem.Click += new System.EventHandler(this.AcademicRanksToolStripMenuItem_Click);
-            // 
             // ContractsToolStripMenuItem
             // 
             this.ContractsToolStripMenuItem.Name = "ContractsToolStripMenuItem";
@@ -79,13 +72,6 @@
             this.DoctorsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.DoctorsToolStripMenuItem.Text = "Доктора";
             this.DoctorsToolStripMenuItem.Click += new System.EventHandler(this.DoctorsToolStripMenuItem_Click);
-            // 
-            // ExecutionStatusToolStripMenuItem
-            // 
-            this.ExecutionStatusToolStripMenuItem.Name = "ExecutionStatusToolStripMenuItem";
-            this.ExecutionStatusToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
-            this.ExecutionStatusToolStripMenuItem.Text = "Статус контракта";
-            this.ExecutionStatusToolStripMenuItem.Click += new System.EventHandler(this.ExecutionStatusToolStripMenuItem_Click);
             // 
             // Job
             // 
@@ -119,13 +105,6 @@
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(975, 426);
             this.dataGridView.TabIndex = 7;
-            // 
-            // рандомToolStripMenuItem
-            // 
-            this.рандомToolStripMenuItem.Name = "рандомToolStripMenuItem";
-            this.рандомToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.рандомToolStripMenuItem.Text = "Рандом";
-            this.рандомToolStripMenuItem.Click += new System.EventHandler(this.рандомToolStripMenuItem_Click);
             // 
             // FormMain
             // 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mongo.Models
 {
-    public interface IDoctor
+    public interface IPatient
     {
         int id { get; }
 
@@ -23,12 +23,7 @@ namespace Mongo.Models
 
         string TelephoneNumber { get; }
 
-        string Education { get; }
-
-        string JobTitle { get; }
-
-        string AcademicRank { get; }
-
-        public List<IService> DoctorServices { get; }
+        public List<INoUserContract> PatientContracts { get; set; }
+        public List<Contract> PatientContract { get; set; }
     }
 }

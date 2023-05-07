@@ -10,30 +10,27 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace Mongo.Database.Implements
 {
-    public class DoctorLogic : IDoctorLogic
+    public class ContractLogic : IContractLogic
     {
         
-        public IDoctor CreateDoctor(IDoctor model)
+        public IContract CreateContract(IContract model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
+            var collection = database.GetCollection<Contract>("contract");
             var id = ReadList().Count == 0 ? 1 : ReadList().Max(x => x.id) + 1;
             try
             {
-                var update = new Doctor
+                var update = new Contract
                 {
                     id = id,
-                    Surname = model.Surname,
-                    Name = model.Name,
-                    Patronymic = model.Patronymic,
-                    Birthdate = model.Birthdate,
-                    Passport = model.Passport,
-                    TelephoneNumber = model.TelephoneNumber,
-                    Education = model.Education,
-                    JobTitle = model.JobTitle,
-                    AcademicRank = model.AcademicRank,
-                    DoctorServices = model.DoctorServices
+                    ExerciseDate = model.ExerciseDate,
+                    Status = model.Status,
+                    Patient = model.Patient,
+                    PatientName = model.Patient.Name,
+                    Doctor = model.Doctor,
+                    DoctorName = model.Doctor.Name,
+                    ServiceId = model.ServiceId,
                 };
                 collection.InsertOne(update);
                 return update;
@@ -44,12 +41,12 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public bool DeleteDoctor(IDoctor model)
+        public bool DeleteContract(IContract model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
-            var filter = Builders<Doctor>.Filter.Eq("_id", model.id);
+            var collection = database.GetCollection<Contract>("contract");
+            var filter = Builders<Contract>.Filter.Eq("_id", model.id);
             try
             {
                 collection.DeleteOne(filter);
@@ -61,47 +58,38 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public IDoctor? ReadElement(int id)
+        public IContract? ReadElement(int id)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
-            var filter = Builders<Doctor>.Filter.Eq("_id", id);
-            var doctor = collection.Find(filter).FirstOrDefault();
-            return doctor;
+            var collection = database.GetCollection<Contract>("contract");
+            var filter = Builders<Contract>.Filter.Eq("_id", id);
+            var contract = collection.Find(filter).FirstOrDefault();
+            return contract;
         }
 
-        public List<Doctor>? ReadList()
+        public List<Contract>? ReadList()
         {
             MongoClient dbClient = new MongoClient(@"mongodb://localhost:27017/Databases");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
-            var filter = Builders<Doctor>.Filter.Empty;
-            var listDoctor = collection.Find(filter).ToList();
-            return listDoctor;
+            var collection = database.GetCollection<Contract>("contract");
+            var filter = Builders<Contract>.Filter.Empty;
+            var listContract = collection.Find(filter).ToList();
+            return listContract;
         }
 
-        public bool UpdateDoctor(IDoctor model)
+        public bool UpdateContract(IContract model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
 
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Doctor>("doctor");
+            var collection = database.GetCollection<Contract>("contract");
             try
             {
-                var filter = Builders<Doctor>.Filter.Eq("_id", model.id);
-                var update = Builders<Doctor>.Update      
-                    .Set("Patronymic", model.Patronymic)
-                    .Set("Surname", model.Surname)
-                    .Set("Name", model.Name)
-                    .Set("Patronymic", model.Patronymic)
-                    .Set("Birthdate", model.Birthdate)
-                    .Set("Passport", model.Passport)
-                    .Set("TelephoneNumber", model.TelephoneNumber)
-                    .Set("Education", model.Education)
-                    .Set("JobTitle", model.JobTitle)
-                    .Set("AcademicRank", model.AcademicRank)
-                    .Set("DoctorServices", model.DoctorServices);
+                var filter = Builders<Contract>.Filter.Eq("_id", model.id);
+                var update = Builders<Contract>.Update
+                    .Set("Status", model.Status)
+                    .Set("ExerciseDate", model.ExerciseDate);
                 collection.UpdateOne(filter, update);
                 return true;
             }
