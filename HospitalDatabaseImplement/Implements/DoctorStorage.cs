@@ -41,9 +41,17 @@ namespace HospitalDatabaseImplement.Implements
                     .ThenInclude(x => x.Services)
                     .Include(x => x.AcademicRank)
                     .Include(x => x.Job)
-                .FirstOrDefault(x => (!string.IsNullOrEmpty(model.Passport) && x.Passport == model.Passport) ||
-                                (model.Id.HasValue && x.Id == model.Id))
+                .FirstOrDefault(x => (!string.IsNullOrEmpty(model.Passport) && x.Passport == model.Passport) || (model.Id.HasValue && x.Id == model.Id))
                 ?.GetViewModel;
+        }
+
+        public List<Doctor> GetFullListDoctor()
+        {
+            using var context = new HospitalBdContext();
+            return context.Doctors
+                .Include(x => x.Job)
+                .Include(x => x.AcademicRank)
+                .ToList();
         }
 
         public DoctorViewModel? Insert(DoctorBindingModel model)

@@ -3,6 +3,8 @@ using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
 using HospitalContracts.ViewModels;
 using HospitalDatabaseImplement;
+using HospitalDatabaseImplement.Implements;
+using HospitalDatabaseImplement.Models;
 using HospitalDatabaseImplement.StoragesContracts;
 using System;
 using System.Collections.Generic;
@@ -57,6 +59,16 @@ namespace HospitalBuisnessLogic.BuisnessLogic
         public List<DoctorViewModel>? ReadList(DoctorSearchModel? model)
         {
             var list = _doctorStorage.GetFullList();
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
+        }
+
+        public List<Doctor>? ReadListDoctor()
+        {
+            var list = _doctorStorage.GetFullListDoctor();
             if (list == null)
             {
                 return null;

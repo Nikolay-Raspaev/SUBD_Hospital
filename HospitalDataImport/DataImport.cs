@@ -8,6 +8,7 @@ using Mongo.Contracts;
 using Mongo.Database.Models;
 using Mongo.Models;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace HospitalDataImport
 {
@@ -106,7 +107,36 @@ namespace HospitalDataImport
 
         public void DataImportDoctor()
         {
-            throw new NotImplementedException();
+            _doctorMongoLogic.DeleteAllDoctor();
+            var listDoctor = _doctorLogic.ReadListDoctor();
+            foreach (var doctor in listDoctor)
+            {
+                DateTime doctorBirthdate = doctor.Birthdate.ToDateTime(TimeOnly.Parse("10:00 PM"));
+                List<IService> doctorServices = new List<IService>();
+                foreach (var service in _doctorLogic.ReadElement(new DoctorSearchModel { Id = doctor.Id }).DoctorServices)
+                {
+                    doctorServices.Add(new Mongo.Database.Models.Service
+                    {
+                        id = service.Value.Id,
+                        Name = service.Value.ServiceName,
+                        Price = (double)service.Value.ServicePrice,
+                    });
+                }
+                _doctorMongoLogic.CreateDoctor(new Mongo.Database.Models.Doctor
+                {
+                    id = doctor.Id,
+                    Surname = doctor.Surname,
+                    Name = doctor.Name,
+                    Patronymic = doctor.Patronymic,
+                    Birthdate = doctorBirthdate,
+                    Passport = doctor.Passport,
+                    TelephoneNumber = doctor.TelephoneNumber,
+                    Education = doctor.Education,
+                    JobTitle = doctor.Job.JobTitle,
+                    AcademicRank = doctor.AcademicRank.AcademicRankName,
+                    DoctorServices = doctorServices,
+                });
+            }
         }
 
         public void DataImportJob()
@@ -122,12 +152,7 @@ namespace HospitalDataImport
                 });
             }
         }
-        int id { get; }
-        DateTime? ExerciseDate { get; }
-        string Status { get; }
-        IDoctor Doctor { get; }
-        string DoctorName { get; }
-        int ServiceId { get; }
+
         public void DataImportPatient()
         {
             _patientMongoLogic.DeleteAllPatient();

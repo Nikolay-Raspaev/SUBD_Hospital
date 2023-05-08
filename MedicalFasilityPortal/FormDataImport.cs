@@ -40,5 +40,10 @@ namespace HospitalView
         {
             _dataImport.DataImportPatient();
         }
+
+        private void buttonDoctor_Click(object sender, EventArgs e)
+        {
+            _dataImport.DataImportDoctor();
+        }
     }
 }

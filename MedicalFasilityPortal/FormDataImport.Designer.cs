@@ -53,6 +53,7 @@
             buttonDoctor.TabIndex = 2;
             buttonDoctor.Text = "Doctor";
             buttonDoctor.UseVisualStyleBackColor = true;
+            buttonDoctor.Click += buttonDoctor_Click;
             // 
             // buttonService
             // 

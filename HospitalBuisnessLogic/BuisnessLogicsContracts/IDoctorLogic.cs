@@ -1,6 +1,7 @@
 ﻿using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace HospitalBuisnessLogic.BuisnessLogicsContracts;
 public interface IDoctorLogic
     {
         List<DoctorViewModel>? ReadList(DoctorSearchModel? model);
+        List<Doctor>? ReadListDoctor();
         DoctorViewModel? ReadElement(DoctorSearchModel model);
         bool Create(DoctorBindingModel model);
         bool Update(DoctorBindingModel model);
