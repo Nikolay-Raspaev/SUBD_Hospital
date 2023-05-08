@@ -33,6 +33,7 @@
             buttonService = new Button();
             buttonJob = new Button();
             buttonPatient = new Button();
+            label = new Label();
             SuspendLayout();
             // 
             // buttonContract
@@ -85,11 +86,21 @@
             buttonPatient.UseVisualStyleBackColor = true;
             buttonPatient.Click += buttonPatient_Click;
             // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Location = new Point(14, 57);
+            label.Name = "label";
+            label.Size = new Size(38, 15);
+            label.TabIndex = 6;
+            label.Text = "label1";
+            // 
             // FormDataImport
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label);
             Controls.Add(buttonPatient);
             Controls.Add(buttonJob);
             Controls.Add(buttonService);
@@ -98,6 +109,7 @@
             Name = "FormDataImport";
             Text = "FormDataImport";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -107,5 +119,6 @@
         private Button buttonService;
         private Button buttonJob;
         private Button buttonPatient;
+        private Label label;
     }
 }
