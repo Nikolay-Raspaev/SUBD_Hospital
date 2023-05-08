@@ -10,7 +10,7 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace Mongo.Database.Implements
 {
-    public class ContractLogic : IContractLogic
+    public class MongoContractLogic : IMongoContractLogic
     {
         
         public IContract CreateContract(IContract model)
@@ -18,7 +18,9 @@ namespace Mongo.Database.Implements
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
             var collection = database.GetCollection<Contract>("contract");
-            var id = ReadList().Count == 0 ? 1 : ReadList().Max(x => x.id) + 1;
+            var id = 0;
+            if (model.id == 0) id = ReadList().Count == 0 ? 1 : ReadList().Max(x => x.id) + 1;
+            else id = model.id;
             try
             {
                 var update = new Contract
@@ -38,6 +40,23 @@ namespace Mongo.Database.Implements
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public bool DeleteAllContract()
+        {
+            MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
+            var database = dbClient.GetDatabase("database");
+            var collection = database.GetCollection<Contract>("contract");
+            var filter = Builders<Contract>.Filter.Empty;
+            try
+            {
+                collection.DeleteMany(filter);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 

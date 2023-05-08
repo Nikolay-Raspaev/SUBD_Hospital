@@ -13,23 +13,22 @@ using Mongo.Database.Models;
 
 namespace Mongo.Database.Implements
 {
-    public class ServiceLogic : IServiceLogic
+    public class MongoJobLogic : IMongoJobLogic
     {
 
-        public bool CreateService(IService model)
+        public bool CreateJob(IJob model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
-
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Service>("service");
+            var collection = database.GetCollection<Job>("job");
+            var filter = Builders<Job>.Filter.Eq(a => a.id, model.id);
             var id = ReadList().Count == 0 ? 1 : ReadList().Max(x => x.id) + 1;
             try
             {
-                var update = new Service
+                var update = new Job
                 {
                     id = id,
-                    Name = model.Name,
-                    Price = model.Price,
+                    jobTitle = model.jobTitle,
                 };
                 collection.InsertOne(update);
                 return true;
@@ -40,12 +39,12 @@ namespace Mongo.Database.Implements
             }
         }
 
-        public bool DeleteService(IService model)
+        public bool DeleteJob(IJob model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Service>("service");
-            var filter = Builders<Service>.Filter.Eq("_id", model.id);
+            var collection = database.GetCollection<Job>("job");
+            var filter = Builders<Job>.Filter.Eq(a => a.id, model.id);
             try
             {
                 collection.DeleteOne(filter);
@@ -56,38 +55,52 @@ namespace Mongo.Database.Implements
                 return false;
             }
         }
-
-        public IService? ReadElement(int id)
+        public bool DeleteAllJob()
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Service>("service");
-            var filter = Builders<Service>.Filter.Eq("_id", id);
-            var service = collection.Find(filter).FirstOrDefault();
-            return service;
+            var collection = database.GetCollection<Job>("job");
+            var filter = Builders<Job>.Filter.Empty;
+            try
+            {
+                collection.DeleteMany(filter);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        public List<Service>? ReadList()
+        public IJob? ReadElement(int id)
+        {
+            MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
+            var database = dbClient.GetDatabase("database");
+            var collection = database.GetCollection<Job> ("job");
+            var filter = Builders<Job>.Filter.Eq(a => a.id, id);
+            var job = collection.Find(filter).FirstOrDefault();
+            return job;
+        }
+
+        public List<Job>? ReadList()
         {
             MongoClient dbClient = new MongoClient(@"mongodb://localhost:27017/Databases");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Service>("service");
-            var filter = Builders<Service>.Filter.Empty;
-            var lisrService = collection.Find(filter).ToList();
-            return lisrService;
+            var collection = database.GetCollection<Job>("job");
+            var filter = Builders<Job>.Filter.Empty;
+            var listJob = collection.Find(filter).ToList();
+            return listJob;
         }
 
-        public bool UpdateService(IService model)
+        public bool UpdateJob(IJob model)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
             var database = dbClient.GetDatabase("database");
-            var collection = database.GetCollection<Service>("service");       
+            var collection = database.GetCollection<Job>("job");       
             try
             {
-                var filter = Builders<Service>.Filter.Eq("_id", model.id);
-                var update = Builders<Service>.Update
-                    .Set("Name", model.Name)
-                    .Set("Price", model.Price);
+                var filter = Builders<Job>.Filter.Eq(a => a.id, model.id);
+                var update = Builders<Job>.Update.Set("jobTitle", model.jobTitle);
                 collection.UpdateOne(filter, update);
                 return true;
             }

@@ -16,8 +16,8 @@ namespace MongoForm
 {
     public partial class FormDoctors : Form
     {
-        private readonly IDoctorLogic _doctorLogic;
-        public FormDoctors(IDoctorLogic logic)
+        private readonly IMongoDoctorLogic _doctorLogic;
+        public FormDoctors(IMongoDoctorLogic logic)
         {
             InitializeComponent();
             _doctorLogic = logic;

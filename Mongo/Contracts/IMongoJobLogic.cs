@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace Mongo.Contracts
 {
-    public interface IJobLogic
+    public interface IMongoJobLogic
     {
         List<Job>? ReadList();
         IJob? ReadElement(int id);
         bool CreateJob(IJob model);
         bool DeleteJob(IJob model);
+        bool DeleteAllJob();
         bool UpdateJob(IJob model);
     }
 }

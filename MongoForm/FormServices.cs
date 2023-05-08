@@ -14,8 +14,8 @@ namespace MongoForm
 {
     public partial class FormServices : Form
     {
-        private readonly IServiceLogic _serviceLogic;
-        public FormServices(IServiceLogic logic)
+        private readonly IMongoServiceLogic _serviceLogic;
+        public FormServices(IMongoServiceLogic logic)
         {
             InitializeComponent();
             _serviceLogic = logic;

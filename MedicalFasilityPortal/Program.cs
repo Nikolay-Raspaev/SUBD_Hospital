@@ -1,9 +1,14 @@
-using HospitalContracts.BuisnessLogicsContracts;
-using HospitalContracts.StoragesContracts;
 using HospitalBuisnessLogic.BuisnessLogic;
 using HospitalDatabaseImplement;
 using HospitalDatabaseImplement.Implements;
 using Microsoft.Extensions.DependencyInjection;
+using HospitalDataImport;
+using Mongo.Contracts;
+using Mongo.Database.Implements;
+using HospitalDatabaseImplement.StoragesContracts;
+using HospitalBuisnessLogic.BuisnessLogicsContracts;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
 
 namespace HospitalView
 {
@@ -24,6 +29,8 @@ namespace HospitalView
             var services = new ServiceCollection();
             ConfigureServices(services);
             _serviceProvider = services.BuildServiceProvider();
+            var objectSerializer = new ObjectSerializer(type => ObjectSerializer.DefaultAllowedTypes(type) || type.FullName.StartsWith("Mongo"));
+            BsonSerializer.RegisterSerializer(objectSerializer);
 
             Application.Run(_serviceProvider.GetRequiredService<FormMain>());
         }
@@ -46,6 +53,14 @@ namespace HospitalView
             services.AddTransient<IPatientLogic, PatientLogic>();
             services.AddTransient<IServiceLogic, ServiceLogic>();
 
+            services.AddTransient<IMongoContractLogic, MongoContractLogic>();
+            services.AddTransient<IMongoDoctorLogic, MongoDoctorLogic>();
+            services.AddTransient<IMongoJobLogic, MongoJobLogic>();
+            services.AddTransient<IMongoPatientLogic, MongoPatientLogic>();
+            services.AddTransient<IMongoServiceLogic, MongoServiceLogic>();
+
+            services.AddTransient<IDataImport, DataImport>();
+            
             services.AddTransient<FormMain>();
             services.AddTransient<FormAcademicRank>();
             services.AddTransient<FormAcademicRanks>();
@@ -63,7 +78,8 @@ namespace HospitalView
             services.AddTransient<FormPatients>();
             services.AddTransient<FormService>();
             services.AddTransient<FormServices>();
-            services.AddTransient<FormRandom>();
+            services.AddTransient<FormRandom>(); 
+            services.AddTransient<FormDataImport>(); 
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
+﻿using HospitalBuisnessLogic.BuisnessLogicsContracts;
+using HospitalContracts.BindingModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

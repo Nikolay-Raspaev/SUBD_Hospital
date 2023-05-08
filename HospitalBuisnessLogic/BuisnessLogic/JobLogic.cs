@@ -1,8 +1,8 @@
-﻿using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
+﻿using HospitalBuisnessLogic.BuisnessLogicsContracts;
+using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
-using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.StoragesContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

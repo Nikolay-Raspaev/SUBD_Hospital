@@ -48,9 +48,9 @@ namespace MongoForm
                 return null;
             }
         }
-        private readonly IServiceLogic _serviceLogic;
+        private readonly IMongoServiceLogic _serviceLogic;
 
-        public FormDoctorServices(IServiceLogic logic)
+        public FormDoctorServices(IMongoServiceLogic logic)
         {
             InitializeComponent();
             _serviceLogic = logic;

@@ -18,10 +18,10 @@ namespace MongoForm
 {
     public partial class FormJob : Form
     {
-        private readonly IJobLogic _jobLogic;
+        private readonly IMongoJobLogic _jobLogic;
         private int? _id;
         public int Id { set { _id = value; } }
-        public FormJob(IJobLogic logic)
+        public FormJob(IMongoJobLogic logic)
         {
             InitializeComponent();
             _jobLogic = logic;

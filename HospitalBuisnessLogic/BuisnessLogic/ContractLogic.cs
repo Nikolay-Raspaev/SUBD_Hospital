@@ -1,8 +1,9 @@
-﻿using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
+﻿using HospitalBuisnessLogic.BuisnessLogicsContracts;
+using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
-using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Models;
+using HospitalDatabaseImplement.StoragesContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,15 @@ namespace HospitalBuisnessLogic.BuisnessLogic
         public List<ContractViewModel>? ReadList(ContractSearchModel? model)
         {
             var list = _contractStorage.GetFullList();
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
+        }
+        public List<Contract>? ReadListContract(ContractSearchModel? model)
+        {
+            var list = _contractStorage.GetFullListContract();
             if (list == null)
             {
                 return null;

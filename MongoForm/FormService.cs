@@ -15,11 +15,11 @@ namespace MongoForm
 {
     public partial class FormService : Form
     {
-        private readonly IServiceLogic _perviceLogic;
+        private readonly IMongoServiceLogic _perviceLogic;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormService(IServiceLogic logic)
+        public FormService(IMongoServiceLogic logic)
         {
             InitializeComponent();
             _perviceLogic = logic;

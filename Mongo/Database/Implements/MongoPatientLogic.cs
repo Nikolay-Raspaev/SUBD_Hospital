@@ -10,7 +10,7 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace Mongo.Database.Implements
 {
-    public class PatientLogic : IPatientLogic
+    public class MongoPatientLogic : IMongoPatientLogic
     {
         
         public IPatient CreatePatient(IPatient model)
@@ -58,6 +58,22 @@ namespace Mongo.Database.Implements
             }
         }
 
+        public bool DeleteAllPatient()
+        {
+            MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
+            var database = dbClient.GetDatabase("database");
+            var collection = database.GetCollection<Patient>("patient");
+            var filter = Builders<Patient>.Filter.Empty;
+            try
+            {
+                collection.DeleteMany(filter);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public IPatient? ReadElement(int id)
         {
             MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
@@ -95,7 +111,7 @@ namespace Mongo.Database.Implements
                     .Set("Birthdate", model.Birthdate)
                     .Set("Passport", model.Passport)
                     .Set("TelephoneNumber", model.TelephoneNumber)
-                    .Set("PatientContracts", model.PatientContracts)
+                    .Set("PatientContracts", model.PatientContracts);
                 collection.UpdateOne(filter, update);
                 return true;
             }

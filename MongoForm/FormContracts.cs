@@ -14,8 +14,8 @@ namespace MongoForm
 {
     public partial class FormContracts : Form
     {
-        private readonly IContractLogic _ContractLogic;
-        public FormContracts(IContractLogic logic)
+        private readonly IMongoContractLogic _ContractLogic;
+        public FormContracts(IMongoContractLogic logic)
         {
             InitializeComponent();
             _ContractLogic = logic;

@@ -88,5 +88,14 @@ namespace HospitalView
                 form.ShowDialog();
             }
         }
+
+        private void монгоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var service = Program.ServiceProvider?.GetService(typeof(FormDataImport));
+            if (service is FormDataImport form)
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }

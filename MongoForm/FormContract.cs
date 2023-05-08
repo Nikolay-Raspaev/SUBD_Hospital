@@ -52,17 +52,17 @@ namespace MongoForm
                 comboBoxService.SelectedValue = value;
             }
         }
-        private readonly IContractLogic _contractLogic;
-        private readonly IDoctorLogic _doctorLogic;
-        private readonly IServiceLogic _serviceLogic;
-        private readonly IPatientLogic _patientLogic;
+        private readonly IMongoContractLogic _contractLogic;
+        private readonly IMongoDoctorLogic _doctorLogic;
+        private readonly IMongoServiceLogic _serviceLogic;
+        private readonly IMongoPatientLogic _patientLogic;
         private readonly List<Patient>? _listPatient;
         private readonly List<Doctor>? _listDoctor;
         private readonly List<Service>? _listService;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormContract(IContractLogic contractLogic, IServiceLogic serviceLogic, IDoctorLogic doctorLogic, IPatientLogic patientLogic)
+        public FormContract(IMongoContractLogic contractLogic, IMongoServiceLogic serviceLogic, IMongoDoctorLogic doctorLogic, IMongoPatientLogic patientLogic)
         {
             InitializeComponent();
             _contractLogic = contractLogic;
@@ -104,7 +104,7 @@ namespace MongoForm
                     var view = _contractLogic.ReadElement(_id.Value);
                     if (view != null)
                     {
-                        if (view.ExerciseDate != null) dateTimePicker.Value = (DateTime)view.ExerciseDate;
+                        if (view.ExerciseDate != null && view.Status == "Оплачен") dateTimePicker.Value = (DateTime)view.ExerciseDate;
                         textBoxExecutionStatus.Text = view.Status;
                         comboBoxPatient.Text = view.Patient.id.ToString();
                         comboBoxDoctor.Text = view.Doctor.id.ToString();
@@ -123,13 +123,14 @@ namespace MongoForm
             try
             {
                 DateOnly dateTime;
-
+                var patient = _patientLogic.ReadElement((int)comboBoxPatient.SelectedValue);
+                patient.PatientContracts = null;
                 var model = new Contract
                 {
                     id = _id ?? 0,
                     ExerciseDate = dateTimePicker.Value.Date,
                     Status = textBoxExecutionStatus.Text,
-                    Patient = _patientLogic.ReadElement((int)comboBoxPatient.SelectedValue),
+                    Patient = patient,
                     PatientName = _patientLogic.ReadElement((int)comboBoxPatient.SelectedValue).Name,
                     Doctor = _doctorLogic.ReadElement((int)comboBoxDoctor.SelectedValue),
                     DoctorName = _doctorLogic.ReadElement((int)comboBoxDoctor.SelectedValue).Name,

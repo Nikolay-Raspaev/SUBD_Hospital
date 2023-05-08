@@ -1,4 +1,4 @@
-﻿using HospitalContracts.BuisnessLogicsContracts;
+﻿using HospitalBuisnessLogic.BuisnessLogicsContracts;
 using HospitalContracts.ViewModels;
 using HospitalDataModels.Models;
 using System;

@@ -8,7 +8,7 @@ namespace MongoForm
     {
         private List<IService> _doctorServices = new List<IService>();
 
-        private readonly IDoctorLogic _doctorLogic;
+        private readonly IMongoDoctorLogic _doctorLogic;
 
         private int? _id;
 
@@ -16,7 +16,7 @@ namespace MongoForm
 
         public int Id { set { _id = value; } }
 
-        public FormDoctor(IDoctorLogic doctorLogic, IServiceLogic serviceLogic)
+        public FormDoctor(IMongoDoctorLogic doctorLogic, IMongoServiceLogic serviceLogic)
         {
             InitializeComponent();
             _doctorLogic = doctorLogic;

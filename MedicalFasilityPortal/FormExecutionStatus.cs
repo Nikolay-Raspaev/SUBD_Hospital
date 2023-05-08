@@ -1,5 +1,5 @@
 ﻿using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
+using HospitalBuisnessLogic.BuisnessLogicsContracts;
 using HospitalContracts.SearchModels;
 using System;
 using System.Collections.Generic;

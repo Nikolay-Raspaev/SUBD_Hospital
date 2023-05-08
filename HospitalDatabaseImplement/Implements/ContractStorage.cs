@@ -1,8 +1,8 @@
 ﻿using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
-using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
 using HospitalDatabaseImplement.Models;
+using HospitalDatabaseImplement.StoragesContracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace HospitalDatabaseImplement.Implements
         {
             using var context = new HospitalBdContext();
             var element = context.Contracts
-                                .Include(x => x.ContractNavigation)
+                .Include(x => x.ContractNavigation)
                 .ThenInclude(x => x.Services)
                 .Include(x => x.ContractNavigation)
                 .ThenInclude(x => x.Doctors)
@@ -67,6 +67,22 @@ namespace HospitalDatabaseImplement.Implements
                 .ToList();
         }
 
+        public List<Contract> GetFullListContract()
+        {
+            using var context = new HospitalBdContext();
+            return context.Contracts
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Services)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .ThenInclude(x => x.Job)
+                .Include(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .ThenInclude(x => x.AcademicRank)
+                .Include(x => x.Patient)
+                .Include(x => x.ExecutionStatus)
+                .ToList();
+        }
         public ContractViewModel? Insert(ContractBindingModel model)
         {
             using var context = new HospitalBdContext();

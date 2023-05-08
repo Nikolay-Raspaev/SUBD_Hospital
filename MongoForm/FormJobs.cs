@@ -16,8 +16,8 @@ namespace MongoForm
 {
     public partial class FormJobs : Form
     {
-        private readonly IJobLogic _jobLogic;
-        public FormJobs(IJobLogic logic)
+        private readonly IMongoJobLogic _jobLogic;
+        public FormJobs(IMongoJobLogic logic)
         {
             InitializeComponent();
             _jobLogic = logic;

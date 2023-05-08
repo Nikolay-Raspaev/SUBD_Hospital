@@ -40,11 +40,11 @@ namespace MongoForm
         private static void ConfigureServices(ServiceCollection services)
         {
 
-            services.AddTransient<IContractLogic, ContractLogic>();
-            services.AddTransient<IDoctorLogic, DoctorLogic>();
-            services.AddTransient<IJobLogic, JobLogic>();
-            services.AddTransient<IPatientLogic, PatientLogic>();
-            services.AddTransient<IServiceLogic, ServiceLogic>();
+            services.AddTransient<IMongoContractLogic, MongoContractLogic>();
+            services.AddTransient<IMongoDoctorLogic, MongoDoctorLogic>();
+            services.AddTransient<IMongoJobLogic, MongoJobLogic>();
+            services.AddTransient<IMongoPatientLogic, MongoPatientLogic>();
+            services.AddTransient<IMongoServiceLogic, MongoServiceLogic>();
 
             services.AddTransient<FormMain>();
             services.AddTransient<FormContract>();

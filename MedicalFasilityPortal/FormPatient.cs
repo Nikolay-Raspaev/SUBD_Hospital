@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HospitalContracts.BuisnessLogicsContracts;
+using HospitalBuisnessLogic.BuisnessLogicsContracts;
 using HospitalContracts.SearchModels;
 using HospitalContracts.BindingModels;
 

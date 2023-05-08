@@ -1,8 +1,10 @@
-﻿using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
+﻿using HospitalBuisnessLogic.BuisnessLogicsContracts;
+using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
-using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
+using HospitalDatabaseImplement.Implements;
+using HospitalDatabaseImplement.Models;
+using HospitalDatabaseImplement.StoragesContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +87,16 @@ namespace HospitalBuisnessLogic.BuisnessLogic
             {
                 throw new InvalidOperationException("Компонент с таким названием уже есть");
             }
+        }
+
+        public List<Patient>? ReadListPatient()
+        {
+            var list = _patientStorage.GetFullListPatient();
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
         }
     }
 }

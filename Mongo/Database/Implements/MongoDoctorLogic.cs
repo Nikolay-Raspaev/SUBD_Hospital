@@ -10,7 +10,7 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace Mongo.Database.Implements
 {
-    public class DoctorLogic : IDoctorLogic
+    public class MongoDoctorLogic : IMongoDoctorLogic
     {
         
         public IDoctor CreateDoctor(IDoctor model)
@@ -53,6 +53,23 @@ namespace Mongo.Database.Implements
             try
             {
                 collection.DeleteOne(filter);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteAllDoctor()
+        {
+            MongoClient dbClient = new MongoClient(@"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
+            var database = dbClient.GetDatabase("database");
+            var collection = database.GetCollection<Doctor>("doctor");
+            var filter = Builders<Doctor>.Filter.Empty;
+            try
+            {
+                collection.DeleteMany(filter);
                 return true;
             }
             catch (Exception ex)

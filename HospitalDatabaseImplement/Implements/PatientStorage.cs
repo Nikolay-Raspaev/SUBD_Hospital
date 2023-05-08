@@ -1,8 +1,9 @@
 ﻿using HospitalContracts.BindingModels;
 using HospitalContracts.SearchModels;
-using HospitalContracts.StoragesContracts;
 using HospitalContracts.ViewModels;
 using HospitalDatabaseImplement.Models;
+using HospitalDatabaseImplement.StoragesContracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,23 @@ namespace HospitalDatabaseImplement.Implements
             return context.Patients
                     .Select(x => x.GetViewModel)
                     .ToList();
+        }
+
+        public List<Patient> GetFullListPatient()
+        {
+            using var context = new HospitalBdContext();
+            return context.Patients
+                .Include(x => x.Contracts)
+                .ThenInclude(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .ThenInclude(x => x.Job)
+                .Include(x => x.Contracts)
+                .ThenInclude(x => x.ContractNavigation)
+                .ThenInclude(x => x.Doctors)
+                .ThenInclude(x => x.AcademicRank)
+                .Include(x => x.Contracts)
+                .ThenInclude(x => x.ExecutionStatus)
+                .ToList();
         }
 
         public PatientViewModel? Insert(PatientBindingModel model)

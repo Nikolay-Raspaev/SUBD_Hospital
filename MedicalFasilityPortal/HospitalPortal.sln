@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalContracts", "..\Hos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalBuisnessLogic", "..\HospitalBuisnessLogic\HospitalBuisnessLogic.csproj", "{B726C660-C1DD-4D9F-8E2D-49888734D4DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo", "..\Mongo\Mongo.csproj", "{27D33656-E5F2-4612-A6B4-526CCCCA48B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo", "..\Mongo\Mongo.csproj", "{27D33656-E5F2-4612-A6B4-526CCCCA48B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoForm", "..\MongoForm\MongoForm.csproj", "{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoForm", "..\MongoForm\MongoForm.csproj", "{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalDataImport", "..\HospitalDataImport\HospitalDataImport.csproj", "{40FE58E0-2F77-4B14-887F-03DE3D1BDFCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B01ABCBA-80C7-4E67-90FA-52FB92AEDD62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40FE58E0-2F77-4B14-887F-03DE3D1BDFCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40FE58E0-2F77-4B14-887F-03DE3D1BDFCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40FE58E0-2F77-4B14-887F-03DE3D1BDFCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40FE58E0-2F77-4B14-887F-03DE3D1BDFCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

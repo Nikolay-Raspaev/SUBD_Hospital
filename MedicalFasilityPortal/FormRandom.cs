@@ -1,6 +1,6 @@
 ﻿using HospitalBuisnessLogic.BuisnessLogic;
 using HospitalContracts.BindingModels;
-using HospitalContracts.BuisnessLogicsContracts;
+using HospitalBuisnessLogic.BuisnessLogicsContracts;
 using HospitalDatabaseImplement;
 using HospitalDatabaseImplement.Models;
 using HospitalDataModels;

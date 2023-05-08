@@ -15,11 +15,11 @@ namespace MongoForm
 {
     public partial class FormPatient : Form
     {
-        private readonly IPatientLogic _patientLogic;
+        private readonly IMongoPatientLogic _patientLogic;
         private int? _id;
         public int Id { set { _id = value; } }
 
-        public FormPatient(IPatientLogic logic)
+        public FormPatient(IMongoPatientLogic logic)
         {
             InitializeComponent();
             _patientLogic = logic;

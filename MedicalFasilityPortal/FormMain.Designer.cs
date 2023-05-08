@@ -28,121 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.AcademicRanksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContractsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DoctorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExecutionStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Job = new System.Windows.Forms.ToolStripMenuItem();
-            this.PatientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.рандомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.SuspendLayout();
+            menuStrip = new MenuStrip();
+            AcademicRanksToolStripMenuItem = new ToolStripMenuItem();
+            ContractsToolStripMenuItem = new ToolStripMenuItem();
+            DoctorsToolStripMenuItem = new ToolStripMenuItem();
+            ExecutionStatusToolStripMenuItem = new ToolStripMenuItem();
+            Job = new ToolStripMenuItem();
+            PatientsToolStripMenuItem = new ToolStripMenuItem();
+            ServicesToolStripMenuItem = new ToolStripMenuItem();
+            рандомToolStripMenuItem = new ToolStripMenuItem();
+            dataGridView = new DataGridView();
+            монгоToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            SuspendLayout();
             // 
             // menuStrip
             // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AcademicRanksToolStripMenuItem,
-            this.ContractsToolStripMenuItem,
-            this.DoctorsToolStripMenuItem,
-            this.ExecutionStatusToolStripMenuItem,
-            this.Job,
-            this.PatientsToolStripMenuItem,
-            this.ServicesToolStripMenuItem,
-            this.рандомToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(975, 24);
-            this.menuStrip.TabIndex = 0;
-            this.menuStrip.Text = "menuStrip1";
+            menuStrip.Items.AddRange(new ToolStripItem[] { AcademicRanksToolStripMenuItem, ContractsToolStripMenuItem, DoctorsToolStripMenuItem, ExecutionStatusToolStripMenuItem, Job, PatientsToolStripMenuItem, ServicesToolStripMenuItem, рандомToolStripMenuItem, монгоToolStripMenuItem });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Size = new Size(975, 24);
+            menuStrip.TabIndex = 0;
+            menuStrip.Text = "menuStrip1";
             // 
             // AcademicRanksToolStripMenuItem
             // 
-            this.AcademicRanksToolStripMenuItem.Name = "AcademicRanksToolStripMenuItem";
-            this.AcademicRanksToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
-            this.AcademicRanksToolStripMenuItem.Text = "Учёная степень";
-            this.AcademicRanksToolStripMenuItem.Click += new System.EventHandler(this.AcademicRanksToolStripMenuItem_Click);
+            AcademicRanksToolStripMenuItem.Name = "AcademicRanksToolStripMenuItem";
+            AcademicRanksToolStripMenuItem.Size = new Size(104, 20);
+            AcademicRanksToolStripMenuItem.Text = "Учёная степень";
+            AcademicRanksToolStripMenuItem.Click += AcademicRanksToolStripMenuItem_Click;
             // 
             // ContractsToolStripMenuItem
             // 
-            this.ContractsToolStripMenuItem.Name = "ContractsToolStripMenuItem";
-            this.ContractsToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.ContractsToolStripMenuItem.Text = "Контракты";
-            this.ContractsToolStripMenuItem.Click += new System.EventHandler(this.ContractsToolStripMenuItem_Click);
+            ContractsToolStripMenuItem.Name = "ContractsToolStripMenuItem";
+            ContractsToolStripMenuItem.Size = new Size(78, 20);
+            ContractsToolStripMenuItem.Text = "Контракты";
+            ContractsToolStripMenuItem.Click += ContractsToolStripMenuItem_Click;
             // 
             // DoctorsToolStripMenuItem
             // 
-            this.DoctorsToolStripMenuItem.Name = "DoctorsToolStripMenuItem";
-            this.DoctorsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.DoctorsToolStripMenuItem.Text = "Доктора";
-            this.DoctorsToolStripMenuItem.Click += new System.EventHandler(this.DoctorsToolStripMenuItem_Click);
+            DoctorsToolStripMenuItem.Name = "DoctorsToolStripMenuItem";
+            DoctorsToolStripMenuItem.Size = new Size(65, 20);
+            DoctorsToolStripMenuItem.Text = "Доктора";
+            DoctorsToolStripMenuItem.Click += DoctorsToolStripMenuItem_Click;
             // 
             // ExecutionStatusToolStripMenuItem
             // 
-            this.ExecutionStatusToolStripMenuItem.Name = "ExecutionStatusToolStripMenuItem";
-            this.ExecutionStatusToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
-            this.ExecutionStatusToolStripMenuItem.Text = "Статус контракта";
-            this.ExecutionStatusToolStripMenuItem.Click += new System.EventHandler(this.ExecutionStatusToolStripMenuItem_Click);
+            ExecutionStatusToolStripMenuItem.Name = "ExecutionStatusToolStripMenuItem";
+            ExecutionStatusToolStripMenuItem.Size = new Size(113, 20);
+            ExecutionStatusToolStripMenuItem.Text = "Статус контракта";
+            ExecutionStatusToolStripMenuItem.Click += ExecutionStatusToolStripMenuItem_Click;
             // 
             // Job
             // 
-            this.Job.Name = "Job";
-            this.Job.Size = new System.Drawing.Size(83, 20);
-            this.Job.Text = "Профессии";
-            this.Job.Click += new System.EventHandler(this.Job_Click);
+            Job.Name = "Job";
+            Job.Size = new Size(83, 20);
+            Job.Text = "Профессии";
+            Job.Click += Job_Click;
             // 
             // PatientsToolStripMenuItem
             // 
-            this.PatientsToolStripMenuItem.Name = "PatientsToolStripMenuItem";
-            this.PatientsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.PatientsToolStripMenuItem.Text = "Пациенты";
-            this.PatientsToolStripMenuItem.Click += new System.EventHandler(this.PatientsToolStripMenuItem_Click);
+            PatientsToolStripMenuItem.Name = "PatientsToolStripMenuItem";
+            PatientsToolStripMenuItem.Size = new Size(75, 20);
+            PatientsToolStripMenuItem.Text = "Пациенты";
+            PatientsToolStripMenuItem.Click += PatientsToolStripMenuItem_Click;
             // 
             // ServicesToolStripMenuItem
             // 
-            this.ServicesToolStripMenuItem.Name = "ServicesToolStripMenuItem";
-            this.ServicesToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.ServicesToolStripMenuItem.Text = "Услуги";
-            this.ServicesToolStripMenuItem.Click += new System.EventHandler(this.ServicesToolStripMenuItem_Click);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridView.Location = new System.Drawing.Point(0, 24);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(975, 426);
-            this.dataGridView.TabIndex = 7;
+            ServicesToolStripMenuItem.Name = "ServicesToolStripMenuItem";
+            ServicesToolStripMenuItem.Size = new Size(57, 20);
+            ServicesToolStripMenuItem.Text = "Услуги";
+            ServicesToolStripMenuItem.Click += ServicesToolStripMenuItem_Click;
             // 
             // рандомToolStripMenuItem
             // 
-            this.рандомToolStripMenuItem.Name = "рандомToolStripMenuItem";
-            this.рандомToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.рандомToolStripMenuItem.Text = "Рандом";
-            this.рандомToolStripMenuItem.Click += new System.EventHandler(this.рандомToolStripMenuItem_Click);
+            рандомToolStripMenuItem.Name = "рандомToolStripMenuItem";
+            рандомToolStripMenuItem.Size = new Size(61, 20);
+            рандомToolStripMenuItem.Text = "Рандом";
+            рандомToolStripMenuItem.Click += рандомToolStripMenuItem_Click;
+            // 
+            // dataGridView
+            // 
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Dock = DockStyle.Left;
+            dataGridView.Location = new Point(0, 24);
+            dataGridView.Margin = new Padding(3, 2, 3, 2);
+            dataGridView.Name = "dataGridView";
+            dataGridView.RowHeadersWidth = 51;
+            dataGridView.RowTemplate.Height = 29;
+            dataGridView.Size = new Size(975, 426);
+            dataGridView.TabIndex = 7;
+            // 
+            // монгоToolStripMenuItem
+            // 
+            монгоToolStripMenuItem.Name = "монгоToolStripMenuItem";
+            монгоToolStripMenuItem.Size = new Size(56, 20);
+            монгоToolStripMenuItem.Text = "Монго";
+            монгоToolStripMenuItem.Click += монгоToolStripMenuItem_Click;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 450);
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.menuStrip);
-            this.MainMenuStrip = this.menuStrip;
-            this.Name = "FormMain";
-            this.Text = "Портал медицинского учреждения";
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(975, 450);
+            Controls.Add(dataGridView);
+            Controls.Add(menuStrip);
+            MainMenuStrip = menuStrip;
+            Name = "FormMain";
+            Text = "Портал медицинского учреждения";
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -157,5 +156,6 @@
         private ToolStripMenuItem Job;
         private ToolStripMenuItem ServicesToolStripMenuItem;
         private ToolStripMenuItem рандомToolStripMenuItem;
+        private ToolStripMenuItem монгоToolStripMenuItem;
     }
 }
