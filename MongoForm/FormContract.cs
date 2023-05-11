@@ -151,12 +151,24 @@ namespace MongoForm
                         ServiceId = contract.ServiceId
                     };
                     List<INoUserContract> listContract = new List<INoUserContract>();
-                    if (model.Patient.PatientContracts == null)
+                    var patient1 = _patientLogic.ReadElement(model.Patient.id);
+                    if (patient1.PatientContracts == null)
                     {
                         listContract = new() { noUserContract };
                     }
                     else 
                     {
+                        foreach (var contr in patient1.PatientContracts)
+                        {
+                            listContract.Add(new NoUserContract{
+                                id = contr.id,
+                                ExerciseDate = contr.ExerciseDate,
+                                Status = contr.Status,
+                                Doctor = contr.Doctor,
+                                DoctorName = contr.Doctor.Name,
+                                ServiceId = contr.ServiceId
+                            });
+                        }
                         listContract.Add(noUserContract);
                     }
                     
