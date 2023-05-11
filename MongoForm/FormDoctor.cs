@@ -85,12 +85,7 @@ namespace MongoForm
                     {
                         return;
                     }
-                    _doctorServices.Add(new Service
-                    {
-                        id = form.ServiceModel.id,
-                        Name = form.ServiceModel.Name,
-                        Price = form.ServiceModel.Price
-                    });
+                    _doctorServices.Add(form.ServiceModel);
                     //_doctorServices[form.Id] = form.ServiceModel;
                     LoadData();
                 }
